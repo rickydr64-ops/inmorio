@@ -1,0 +1,978 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("imagenes/riobamba.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 60px;
+
+    background: rgba(0, 0, 0, 0.75);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+
+/* LOGO */
+
+.logo {
+    color: #D4AF37;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+
+/* MENU */
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #D4AF37;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 10%;
+}
+
+
+/* TEXTO */
+
+.hero-content {
+    max-width: 650px;
+}
+
+.subtitle {
+    color: #D4AF37;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 60px;
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+}
+
+.description {
+    font-size: 18px;
+    line-height: 1.6;
+
+    color: #eeeeee;
+
+    max-width: 500px;
+
+    margin-bottom: 35px;
+}
+
+
+/* BOTÓN */
+
+.button {
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    background: #D4AF37;
+    color: #111111;
+
+    text-decoration: none;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: white;
+    color: #111111;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+        url("Imagenes/Riobamba..jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/* =========================
+   PÁGINA NOSOTROS
+   ========================= */
+
+.nosotros-page {
+    min-height: 100vh;
+    background: #0b0b0b;
+    color: white;
+}
+
+
+/* ENCABEZADO */
+
+.nosotros-hero {
+    text-align: center;
+    padding: 100px 20px 70px;
+}
+
+.nosotros-hero h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.nosotros-hero > p:last-child {
+    max-width: 650px;
+    margin: auto;
+    color: #cccccc;
+    line-height: 1.7;
+}
+
+
+/* IMAGEN + TEXTO */
+
+.nosotros-info {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+    align-items: center;
+
+    padding: 60px 30px 100px;
+}
+
+.nosotros-imagen img {
+    width: 100%;
+    height: 430px;
+
+    object-fit: cover;
+
+    border-radius: 4px;
+
+    border: 1px solid rgba(212, 175, 55, 0.5);
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+.nosotros-texto h2 {
+    font-size: 38px;
+    line-height: 1.2;
+
+    margin-bottom: 25px;
+}
+
+.nosotros-texto p:not(.subtitle) {
+    color: #cccccc;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+
+/* MISIÓN Y VISIÓN */
+
+.mision-vision {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+
+    padding: 30px;
+}
+
+.info-card {
+    background: #111111;
+
+    border: 1px solid rgba(212, 175, 55, 0.35);
+
+    padding: 45px;
+
+    transition: 0.3s;
+}
+
+.info-card:hover {
+    border-color: #D4AF37;
+    transform: translateY(-5px);
+}
+
+.info-card span {
+    color: #D4AF37;
+
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.info-card h2 {
+    color: #D4AF37;
+
+    font-size: 28px;
+
+    margin: 15px 0;
+}
+
+.info-card p {
+    color: #cccccc;
+
+    line-height: 1.7;
+}
+
+
+/* VALORES */
+
+.valores {
+    text-align: center;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 100px 30px;
+}
+
+.valores > h2 {
+    font-size: 38px;
+
+    margin-bottom: 50px;
+}
+
+.valores-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.valores-grid div {
+    padding: 30px 20px;
+
+    border-top: 1px solid rgba(212, 175, 55, 0.5);
+}
+
+.valores-grid span {
+    color: #D4AF37;
+
+    font-size: 13px;
+}
+
+.valores-grid h3 {
+    font-size: 21px;
+
+    margin: 15px 0;
+}
+
+.valores-grid p {
+    color: #aaaaaa;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+/* =========================
+   PÁGINA CONTACTO
+   ========================= */
+
+.contacto-page {
+    min-height: 100vh;
+    background: #0b0b0b;
+    color: white;
+}
+
+.contacto-hero {
+    text-align: center;
+    padding: 90px 20px 70px;
+}
+
+.contacto-hero h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.contacto-hero > p:last-child {
+    max-width: 600px;
+    margin: auto;
+    color: #cccccc;
+    line-height: 1.7;
+}
+
+
+/* INFORMACIÓN + FORMULARIO */
+
+.contacto-contenido {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    padding: 40px 30px 100px;
+}
+
+
+/* INFORMACIÓN */
+
+.contacto-info h2 {
+    font-size: 35px;
+    margin-bottom: 40px;
+}
+
+.dato-contacto {
+    margin-bottom: 30px;
+    border-left: 2px solid #D4AF37;
+    padding-left: 20px;
+}
+
+.dato-contacto span {
+    color: #D4AF37;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.dato-contacto p {
+    color: #dddddd;
+    margin-top: 8px;
+}
+
+
+/* FORMULARIO */
+
+.contacto-formulario {
+    background: #111111;
+    padding: 40px;
+
+    border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.contacto-formulario h2 {
+    color: #D4AF37;
+    margin-bottom: 30px;
+}
+
+.contacto-formulario form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contacto-formulario input,
+.contacto-formulario textarea {
+    width: 100%;
+    padding: 15px;
+
+    box-sizing: border-box;
+
+    background: #0b0b0b;
+    border: 1px solid #333333;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+}
+
+.contacto-formulario textarea {
+    height: 130px;
+    resize: vertical;
+}
+
+.contacto-formulario input:focus,
+.contacto-formulario textarea:focus {
+    outline: none;
+    border-color: #D4AF37;
+}
+
+.contacto-formulario button {
+    padding: 15px;
+
+    background: #D4AF37;
+    color: #111111;
+
+    border: none;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.contacto-formulario button:hover {
+    background: white;
+}
+
+/* =========================
+   PÁGINA PROPIEDADES
+   ========================= */
+
+.propiedades-page {
+    min-height: 100vh;
+    background: #0b0b0b;
+    color: white;
+}
+
+
+/* ENCABEZADO */
+
+.propiedades-hero {
+    text-align: center;
+    padding: 90px 20px 70px;
+}
+
+.propiedades-hero h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.propiedades-hero > p:last-child {
+    max-width: 650px;
+    margin: auto;
+    color: #cccccc;
+    line-height: 1.7;
+}
+
+
+/* GRID */
+
+.propiedades-grid {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 20px 30px 100px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+
+/* TARJETA */
+
+.propiedad-card {
+    background: #111111;
+
+    border: 1px solid rgba(212, 175, 55, 0.25);
+
+    overflow: hidden;
+
+    transition: 0.35s;
+}
+
+.propiedad-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #D4AF37;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+
+/* IMAGEN */
+
+.propiedad-imagen {
+    position: relative;
+
+    height: 260px;
+
+    overflow: hidden;
+}
+
+.propiedad-imagen img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.5s;
+}
+
+.propiedad-card:hover .propiedad-imagen img {
+    transform: scale(1.05);
+}
+
+
+/* ESTADO */
+
+.estado {
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    padding: 7px 12px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.estado.disponible {
+    background: #D4AF37;
+
+    color: #111111;
+}
+
+
+/* INFORMACIÓN */
+
+.propiedad-info {
+    padding: 25px;
+}
+
+.tipo-propiedad {
+    color: #D4AF37;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.propiedad-info h2 {
+    font-size: 24px;
+
+    margin: 0 0 10px;
+}
+
+.ubicacion {
+    color: #aaaaaa;
+
+    font-size: 14px;
+
+    margin-bottom: 22px;
+}
+
+
+/* CARACTERÍSTICAS */
+
+.caracteristicas {
+    display: flex;
+
+    gap: 18px;
+
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid #292929;
+
+    color: #cccccc;
+
+    font-size: 13px;
+}
+
+
+/* PRECIO + BOTÓN */
+
+.propiedad-footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 22px;
+}
+
+.propiedad-footer strong {
+    color: #D4AF37;
+
+    font-size: 22px;
+}
+
+.propiedad-footer a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    border-bottom: 1px solid #D4AF37;
+
+    padding-bottom: 4px;
+
+    transition: 0.3s;
+}
+
+.propiedad-footer a:hover {
+    color: #D4AF37;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .propiedades-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .propiedades-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .propiedades-hero h1 {
+        font-size: 40px;
+    }
+
+}
+
+/* =========================
+   CATEGORÍAS
+   ========================= */
+
+.categorias {
+    max-width: 1200px;
+
+    margin: 0 auto 40px;
+
+    padding: 0 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.categoria {
+    background: transparent;
+
+    color: #aaaaaa;
+
+    border: 1px solid #333333;
+
+    padding: 12px 22px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.categoria:hover {
+    color: #D4AF37;
+
+    border-color: #D4AF37;
+}
+
+.categoria.activa {
+    background: #D4AF37;
+
+    color: #111111;
+
+    border-color: #D4AF37;
+}
+
+/* =========================
+   DETALLE DE PROPIEDAD
+   ========================= */
+
+.detalle-propiedad {
+    min-height: 100vh;
+    background: #0b0b0b;
+    color: white;
+
+    padding: 100px 30px;
+}
+
+.detalle-contenido {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+
+/* IMAGEN */
+
+.detalle-imagen {
+    width: 100%;
+    height: 600px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(212, 175, 55, 0.35);
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.detalle-imagen img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* INFORMACIÓN */
+
+.detalle-info {
+    padding: 20px 0;
+}
+
+.detalle-info .subtitle {
+    color: #D4AF37;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+.detalle-info h1 {
+    font-size: 52px;
+
+    line-height: 1.1;
+
+    margin: 0 0 18px;
+}
+
+.detalle-ubicacion {
+    color: #aaaaaa;
+
+    font-size: 16px;
+
+    margin-bottom: 25px;
+}
+
+
+/* PRECIO */
+
+.detalle-precio {
+    color: #D4AF37;
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    margin-bottom: 35px;
+}
+
+
+/* CARACTERÍSTICAS */
+
+.detalle-caracteristicas {
+    display: flex;
+
+    gap: 35px;
+
+    padding: 25px 0;
+
+    border-top: 1px solid #292929;
+
+    border-bottom: 1px solid #292929;
+}
+
+.detalle-caracteristicas div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.detalle-caracteristicas strong {
+    font-size: 20px;
+
+    color: white;
+}
+
+.detalle-caracteristicas span {
+    font-size: 12px;
+
+    color: #888888;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* DESCRIPCIÓN */
+
+.detalle-descripcion {
+    margin-top: 30px;
+}
+
+.detalle-descripcion h2 {
+    font-size: 20px;
+
+    color: #D4AF37;
+
+    margin-bottom: 15px;
+}
+
+.detalle-descripcion p {
+    color: #bbbbbb;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+
+/* BOTÓN */
+
+.boton-contacto {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    padding: 15px 28px;
+
+    background: #D4AF37;
+
+    color: #111111;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.boton-contacto:hover {
+    background: white;
+
+    transform: translateY(-3px);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .detalle-contenido {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .detalle-imagen {
+        height: 450px;
+    }
+
+    .detalle-info h1 {
+        font-size: 42px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .detalle-propiedad {
+        padding: 70px 20px;
+    }
+
+    .detalle-imagen {
+        height: 350px;
+    }
+
+    .detalle-info h1 {
+        font-size: 35px;
+    }
+
+    .detalle-precio {
+        font-size: 30px;
+    }
+
+    .detalle-caracteristicas {
+        gap: 20px;
+    }
+
+}

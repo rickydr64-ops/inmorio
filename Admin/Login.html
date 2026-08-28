@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administración | INMORIO</title>
+
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+
+<body>
+
+    <main class="login-admin">
+
+        <div class="login-box">
+
+            <div class="logo">
+                INMORIO
+            </div>
+
+            <p class="login-subtitle">
+                PANEL ADMINISTRATIVO
+            </p>
+
+            <h1>
+                Iniciar sesión
+            </h1>
+
+            <form id="loginForm">
+
+                <label>
+                    Correo
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Correo del administrador"
+                    required
+                >
+
+                <label>
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Contraseña"
+                    required
+                >
+
+                <button type="submit">
+                    ENTRAR
+                </button>
+
+                <p id="mensaje"></p>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <script type="module">
+
+        import {
+            createClient
+        } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+        const SUPABASE_URL =
+            "https://suvhbicsdldrncwkwzdz.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_9qelxkXyfJopNRFMN41JGA_vleUoVW5";
+
+
+        const supabase =
+            createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        const formulario =
+            document.getElementById("loginForm");
+
+        const mensaje =
+            document.getElementById("mensaje");
+
+
+        formulario.addEventListener("submit", async (e) => {
+
+            e.preventDefault();
+
+
+            const email =
+                document.getElementById("email").value;
+
+            const password =
+                document.getElementById("password").value;
+
+
+            mensaje.textContent =
+                "Iniciando sesión...";
+
+
+            const { data, error } =
+                await supabase.auth.signInWithPassword({
+
+                    email: email,
+                    password: password
+
+                });
+
+
+            if (error) {
+
+                mensaje.textContent =
+                    "Correo o contraseña incorrectos.";
+
+                return;
+
+            }
+
+
+            window.location.href =
+                "panel.html";
+
+        });
+
+    </script>
+
+</body>
+
+</html>

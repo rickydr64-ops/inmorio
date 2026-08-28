@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Propiedades | INMORIO</title>
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+            INMORIO
+        </div>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="Propiedades.html">Propiedades</a>
+            <a href="Nosotros.html">Nosotros</a>
+            <a href="Contactos.html">Contacto</a>
+        </nav>
+
+    </header>
+
+
+    <main class="propiedades-page">
+
+        <section class="propiedades-hero">
+
+            <p class="subtitle">INMORIO</p>
+
+            <h1>
+                Encuentra tu<br>
+                próximo espacio.
+            </h1>
+
+            <p>
+                Explora nuestras propiedades y encuentra el lugar
+                ideal para comenzar tu próxima historia.
+            </p>
+
+        </section>
+
+
+        <!-- CATEGORÍAS -->
+
+        <section class="categorias">
+
+            <button class="categoria activa" onclick="mostrarPropiedades('todas')">
+                TODAS
+            </button>
+
+            <button class="categoria" onclick="mostrarPropiedades('casa')">
+                CASAS
+            </button>
+
+            <button class="categoria" onclick="mostrarPropiedades('departamento')">
+                DEPARTAMENTOS
+            </button>
+
+            <button class="categoria" onclick="mostrarPropiedades('terreno')">
+                TERRENOS
+            </button>
+
+        </section>
+
+
+        <!-- PROPIEDADES -->
+
+        <section class="propiedades-grid">
+
+
+            <!-- CASA -->
+
+            <article class="propiedad-card propiedad casa">
+
+                <div class="propiedad-imagen">
+
+                    <img src="imagenes/riobamba.jpeg" alt="Casa moderna">
+
+                    <span class="estado disponible">
+                        DISPONIBLE
+                    </span>
+
+                </div>
+
+                <div class="propiedad-info">
+
+                    <p class="tipo-propiedad">
+                        CASA
+                    </p>
+
+                    <h2>
+                        Casa Moderna
+                    </h2>
+
+                    <p class="ubicacion">
+                        📍 Riobamba
+                    </p>
+
+                    <div class="caracteristicas">
+
+                        <span>🛏 3</span>
+                        <span>🚿 2</span>
+                        <span>📐 180 m²</span>
+
+                    </div>
+
+                    <div class="propiedad-footer">
+
+                        <strong>
+                            $120.000
+                        </strong>
+
+                        <a href="propiedad.html">
+                            VER MÁS
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- DEPARTAMENTO -->
+
+            <article class="propiedad-card propiedad departamento">
+
+                <div class="propiedad-imagen">
+
+                    <img src="imagenes/riobamba.jpeg" alt="Departamento">
+
+                    <span class="estado disponible">
+                        DISPONIBLE
+                    </span>
+
+                </div>
+
+                <div class="propiedad-info">
+
+                    <p class="tipo-propiedad">
+                        DEPARTAMENTO
+                    </p>
+
+                    <h2>
+                        Departamento Central
+                    </h2>
+
+                    <p class="ubicacion">
+                        📍 Riobamba
+                    </p>
+
+                    <div class="caracteristicas">
+
+                        <span>🛏 2</span>
+                        <span>🚿 2</span>
+                        <span>📐 95 m²</span>
+
+                    </div>
+
+                    <div class="propiedad-footer">
+
+                        <strong>
+                            $85.000
+                        </strong>
+                         <a href="propiedad.html?id=depto1">
+                            VER MÁS
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- TERRENO -->
+
+            <article class="propiedad-card propiedad terreno">
+
+                <div class="propiedad-imagen">
+
+                    <img src="imagenes/riobamba.jpeg" alt="Terreno">
+
+                    <span class="estado disponible">
+                        DISPONIBLE
+                    </span>
+
+                </div>
+
+                <div class="propiedad-info">
+
+                    <p class="tipo-propiedad">
+                        TERRENO
+                    </p>
+
+                    <h2>
+                        Terreno Residencial
+                    </h2>
+
+                    <p class="ubicacion">
+                        📍 Riobamba
+                    </p>
+
+                    <div class="caracteristicas">
+
+                        <span>📐 250 m²</span>
+
+                    </div>
+
+                    <div class="propiedad-footer">
+
+                        <strong>
+                            $60.000
+                        </strong>
+
+                        <a href="propiedad.html?id=terreno1">
+                            VER MÁS
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function mostrarPropiedades(categoria) {
+
+            const propiedades = document.querySelectorAll('.propiedad');
+
+            const botones = document.querySelectorAll('.categoria');
+
+
+            botones.forEach(boton => {
+                boton.classList.remove('activa');
+            });
+
+
+            event.target.classList.add('activa');
+
+
+            propiedades.forEach(propiedad => {
+
+                if (categoria === 'todas') {
+
+                    propiedad.style.display = 'block';
+
+                } else {
+
+                    if (propiedad.classList.contains(categoria)) {
+
+                        propiedad.style.display = 'block';
+
+                    } else {
+
+                        propiedad.style.display = 'none';
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>
