@@ -278,13 +278,15 @@
 
         async function cargarPropiedades() {
 
-            const {
-                data,
-                error
-            } = await supabase
-                .from("Inmorio")
-                .select("*")
-                .order(
+          const {
+    data,
+    error
+} = await supabase
+    .from("Inmorio")
+    .select("*");
+
+console.log("PROPIEDADES:", data);
+console.log("ERROR:", error);
                     "id",
                     {
                         ascending: false
