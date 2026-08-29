@@ -3,10 +3,11 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Propiedades | INMORIO</title>
 
 <link rel="stylesheet" href="estilos.css">
@@ -16,81 +17,98 @@
 
 <body>
 
-```
 <header class="navbar">
 
-    <div class="logo">
-        INMORIO
-    </div>
+```
+<div class="logo">
+    INMORIO
+</div>
 
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="Propiedades.html">Propiedades</a>
-        <a href="Nosotros.html">Nosotros</a>
-        <a href="Contactos.html">Contacto</a>
-    </nav>
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="Propiedades.html">Propiedades</a>
+    <a href="Nosotros.html">Nosotros</a>
+    <a href="Contactos.html">Contacto</a>
+</nav>
+```
 
 </header>
 
-
 <main class="propiedades-page">
 
-    <section class="propiedades-hero">
+```
+<section class="propiedades-hero">
 
-        <p class="subtitle">
-            INMORIO
-        </p>
+    <p class="subtitle">
+        INMORIO
+    </p>
 
-        <h1>
-            Encuentra tu<br>
-            próximo espacio.
-        </h1>
+    <h1>
+        Encuentra tu<br>
+        próximo espacio.
+    </h1>
 
-        <p>
-            Explora nuestras propiedades y encuentra el lugar
-            ideal para comenzar tu próxima historia.
-        </p>
+    <p>
+        Explora nuestras propiedades y encuentra el lugar
+        ideal para comenzar tu próxima historia.
+    </p>
 
-    </section>
-
-
-    <!-- CATEGORÍAS -->
-
-    <section class="categorias">
-
-        <button class="categoria activa" onclick="mostrarPropiedades('todas')">
-            TODAS
-        </button>
-
-        <button class="categoria" onclick="mostrarPropiedades('casa')">
-            CASAS
-        </button>
-
-        <button class="categoria" onclick="mostrarPropiedades('departamento')">
-            DEPARTAMENTOS
-        </button>
-
-        <button class="categoria" onclick="mostrarPropiedades('terreno')">
-            TERRENOS
-        </button>
-
-    </section>
+</section>
 
 
-    <!-- PROPIEDADES -->
+<!-- CATEGORÍAS -->
 
-    <section
-        id="propiedadesGrid"
-        class="propiedades-grid">
+<section class="categorias">
 
-        <p style="text-align:center;">
-            Cargando propiedades...
-        </p>
+    <button
+        class="categoria activa"
+        onclick="mostrarPropiedades('todas')">
 
-    </section>
+        TODAS
+
+    </button>
+
+    <button
+        class="categoria"
+        onclick="mostrarPropiedades('casa')">
+
+        CASAS
+
+    </button>
+
+    <button
+        class="categoria"
+        onclick="mostrarPropiedades('departamento')">
+
+        DEPARTAMENTOS
+
+    </button>
+
+    <button
+        class="categoria"
+        onclick="mostrarPropiedades('terreno')">
+
+        TERRENOS
+
+    </button>
+
+</section>
+
+
+<!-- PROPIEDADES -->
+
+<section
+    id="propiedadesGrid"
+    class="propiedades-grid">
+
+    <p style="text-align:center;">
+        Cargando propiedades...
+    </p>
+
+</section>
+```
 
 </main>
-
 
 <!-- SUPABASE -->
 
@@ -119,40 +137,162 @@
     let propiedades = [];
 
 
+
     /*
     =====================================
-    CARGAR PROPIEDADES DESDE SUPABASE
+    CONVERTIR IMÁGENES
     =====================================
     */
-async function cargarPropiedades() {
 
-    const {
-        data,
-        error
-    } = await supabase
-        .from("Inmorio")
-        .select("*");
+    function obtenerPrimeraImagen(valor) {
 
-    console.log("PROPIEDADES SUPABASE:", data);
-    console.log("ERROR SUPABASE:", error);
+        if (!valor) {
 
-    if (error) {
+            return "";
 
-        document
-            .getElementById("propiedadesGrid")
-            .innerHTML = `
-                <p style="text-align:center;">
-                    ERROR: ${error.message}
-                </p>
-            `;
+        }
 
-        return;
+
+        /*
+        SI YA ES UN ARRAY
+        */
+
+        if (Array.isArray(valor)) {
+
+            return valor[0] || "";
+
+        }
+
+
+        /*
+        SI ES TEXTO
+        */
+
+        if (typeof valor === "string") {
+
+            const texto =
+                valor.trim();
+
+
+            /*
+            INTENTAR LEER JSON
+            */
+
+            try {
+
+                const resultado =
+                    JSON.parse(texto);
+
+
+                if (
+                    Array.isArray(
+                        resultado
+                    )
+                ) {
+
+                    return resultado[0] || "";
+
+                }
+
+
+                if (
+                    typeof resultado ===
+                    "string"
+                ) {
+
+                    return resultado;
+
+                }
+
+            }
+
+            catch (error) {
+
+                /*
+                NO ES JSON.
+
+                ENTONCES SUPONEMOS
+                QUE ES UNA URL NORMAL.
+                */
+
+            }
+
+
+            return texto;
+
+        }
+
+
+        return "";
+
     }
 
-    propiedades = data || [];
 
-    mostrarPropiedades("todas");
-}
+
+    /*
+    =====================================
+    CARGAR PROPIEDADES
+    =====================================
+    */
+
+    async function cargarPropiedades() {
+
+        const {
+            data,
+            error
+        } =
+            await supabase
+                .from("Inmorio")
+                .select("*");
+
+
+        console.log(
+            "PROPIEDADES SUPABASE:",
+            data
+        );
+
+
+        console.log(
+            "ERROR SUPABASE:",
+            error
+        );
+
+
+        if (error) {
+
+            document
+                .getElementById(
+                    "propiedadesGrid"
+                )
+                .innerHTML = `
+
+                    <p style="
+                        text-align:center;
+                    ">
+
+                        ERROR:
+                        ${error.message}
+
+                    </p>
+
+                `;
+
+            return;
+
+        }
+
+
+        propiedades =
+            data || [];
+
+
+        mostrarPropiedades(
+            "todas"
+        );
+
+    }
+
+
 
     /*
     =====================================
@@ -163,11 +303,16 @@ async function cargarPropiedades() {
     window.mostrarPropiedades =
         function(categoria) {
 
+
             const container =
                 document.getElementById(
                     "propiedadesGrid"
                 );
 
+
+            /*
+            BOTONES
+            */
 
             const botones =
                 document.querySelectorAll(
@@ -189,15 +334,34 @@ async function cargarPropiedades() {
             botones.forEach(
                 boton => {
 
-                    if (
+                    const texto =
                         boton.textContent
                             .trim()
-                            .toLowerCase()
-                            .includes(
-                                categoria === "todas"
-                                    ? "todas"
-                                    : categoria
-                            )
+                            .toLowerCase();
+
+
+                    if (
+                        categoria ===
+                        "todas"
+                    ) {
+
+                        if (
+                            texto ===
+                            "todas"
+                        ) {
+
+                            boton.classList.add(
+                                "activa"
+                            );
+
+                        }
+
+                    }
+
+                    else if (
+                        texto.includes(
+                            categoria
+                        )
                     ) {
 
                         boton.classList.add(
@@ -210,31 +374,52 @@ async function cargarPropiedades() {
             );
 
 
+
+            /*
+            FILTRAR
+            */
+
             let filtradas =
                 propiedades;
 
 
-            if (categoria !== "todas") {
+            if (
+                categoria !==
+                "todas"
+            ) {
 
                 filtradas =
                     propiedades.filter(
-                        propiedad =>
-                            propiedad.tipo
-                                ?.toLowerCase()
-                                === categoria
+                        propiedad => {
+
+                            return (
+                                propiedad.tipo
+                                    ?.toLowerCase()
+                                    ===
+                                categoria
+                            );
+
+                        }
                     );
 
             }
 
 
-            if (filtradas.length === 0) {
+
+            /*
+            SIN PROPIEDADES
+            */
+
+            if (
+                filtradas.length === 0
+            ) {
 
                 container.innerHTML = `
 
                     <div style="
-                        grid-column: 1 / -1;
-                        text-align: center;
-                        padding: 60px 20px;
+                        grid-column:1 / -1;
+                        text-align:center;
+                        padding:60px 20px;
                     ">
 
                         <h2>
@@ -242,8 +427,8 @@ async function cargarPropiedades() {
                         </h2>
 
                         <p>
-                            Actualmente no tenemos propiedades
-                            de este tipo.
+                            Actualmente no tenemos
+                            propiedades de este tipo.
                         </p>
 
                     </div>
@@ -255,162 +440,207 @@ async function cargarPropiedades() {
             }
 
 
+
+            /*
+            =====================================
+            CREAR TARJETAS
+            =====================================
+            */
+
             container.innerHTML =
                 filtradas.map(
-                    propiedad => `
-
-                    <article
-                        class="propiedad-card propiedad ${propiedad.tipo || ""}"
-                    >
-
-                        <div class="propiedad-imagen">
-
-                           ${
-    (() => {
-
-        let primeraImagen = "";
-
-        if (Array.isArray(propiedad.imagen)) {
-
-            primeraImagen =
-                propiedad.imagen[0] || "";
-
-        }
-
-        else if (typeof propiedad.imagen === "string") {
-
-            try {
-
-                const imagenes =
-                    JSON.parse(propiedad.imagen);
-
-                if (Array.isArray(imagenes)) {
-
-                    primeraImagen =
-                        imagenes[0] || "";
-
-                }
-
-                else {
-
-                    primeraImagen =
-                        propiedad.imagen;
-
-                }
-
-            }
-
-            catch {
-
-                primeraImagen =
-                    propiedad.imagen;
-
-            }
-
-        }
-
-        return primeraImagen
-
-            ?
-
-            `
-            <img
-                src="${primeraImagen}"
-                alt="${propiedad.nombre || "Propiedad INMORIO"}"
-            >
-            `
-
-            :
-
-            `
-            <div class="no-image">
-                SIN IMAGEN
-            </div>
-            `;
-
-    })()
-}
+                    propiedad => {
 
 
-                            <span class="
-                                estado
+                        /*
+                        OBTENER PRIMERA FOTO
+                        */
+
+                        const primeraImagen =
+                            obtenerPrimeraImagen(
+                                propiedad.imagen
+                            );
+
+
+                        return `
+
+                        <article
+                            class="
+                                propiedad-card
+                                propiedad
+                                ${propiedad.tipo || ""}
+                            "
+                        >
+
+
+                            <!-- IMAGEN -->
+
+                            <div class="propiedad-imagen">
+
+
                                 ${
-                                    propiedad.estado
-                                        ?.toLowerCase()
-                                        === "vendida"
+                                    primeraImagen
+
+                                    ?
+
+                                    `
+                                    <img
+                                        src="${primeraImagen}"
+                                        alt="${
+                                            propiedad.nombre
+                                            ||
+                                            "Propiedad INMORIO"
+                                        }"
+                                        loading="lazy"
+                                        onerror="
+                                            this.style.display='none';
+                                            this.parentElement
+                                                .querySelector('.no-image')
+                                                .style.display='flex';
+                                        "
+                                    >
+
+                                    <div
+                                        class="no-image"
+                                        style="
+                                            display:none;
+                                            width:100%;
+                                            height:100%;
+                                            align-items:center;
+                                            justify-content:center;
+                                        "
+                                    >
+                                        SIN IMAGEN
+                                    </div>
+                                    `
+
+                                    :
+
+                                    `
+                                    <div class="no-image">
+                                        SIN IMAGEN
+                                    </div>
+                                    `
+
+                                }
+
+
+
+                                <!-- ESTADO -->
+
+                                <span class="
+                                    estado
+
+                                    ${
+                                        propiedad.estado
+                                            ?.toLowerCase()
+                                            ===
+                                        "vendida"
+
                                         ? "vendida"
+
                                         : "disponible"
-                                }
-                            ">
+                                    }
+                                ">
 
-                                ${propiedad.estado || "DISPONIBLE"}
+                                    ${
+                                        propiedad.estado
+                                        ||
+                                        "DISPONIBLE"
+                                    }
 
-                            </span>
+                                </span>
 
-                        </div>
-
-
-                        <div class="propiedad-info">
-
-                            <p class="tipo-propiedad">
-
-                                ${
-                                    propiedad.tipo
-                                        ?.toUpperCase()
-                                        || "PROPIEDAD"
-                                }
-
-                            </p>
-
-
-                            <h2>
-
-                                ${
-                                    propiedad.nombre
-                                        || "Propiedad INMORIO"
-                                }
-
-                            </h2>
-
-
-                            <p class="ubicacion">
-
-                                📍
-                                ${
-                                    propiedad.ubicacion
-                                        || "Ubicación no disponible"
-                                }
-
-                            </p>
-
-
-                            <div class="propiedad-footer">
-
-                                <strong>
-
-                                    $${Number(
-                                        propiedad.precio || 0
-                                    ).toLocaleString()}
-
-                                </strong>
-
-
-                                <a
-                                    href="propiedad.html?id=${propiedad.id}"
-                                >
-                                    VER MÁS
-                                </a>
 
                             </div>
 
-                        </div>
 
-                    </article>
 
-                `
+                            <!-- INFORMACIÓN -->
+
+                            <div class="propiedad-info">
+
+
+                                <p class="tipo-propiedad">
+
+                                    ${
+                                        propiedad.tipo
+                                            ?.toUpperCase()
+                                            ||
+                                        "PROPIEDAD"
+                                    }
+
+                                </p>
+
+
+                                <h2>
+
+                                    ${
+                                        propiedad.nombre
+                                            ||
+                                        "Propiedad INMORIO"
+                                    }
+
+                                </h2>
+
+
+                                <p class="ubicacion">
+
+                                    📍
+
+                                    ${
+                                        propiedad.ubicacion
+                                            ||
+                                        "Ubicación no disponible"
+                                    }
+
+                                </p>
+
+
+                                <div class="propiedad-footer">
+
+
+                                    <strong>
+
+                                        $${
+                                            Number(
+                                                propiedad.precio
+                                                ||
+                                                0
+                                            ).toLocaleString()
+                                        }
+
+                                    </strong>
+
+
+                                    <a
+                                        href="
+                                            propiedad.html?id=${
+                                                propiedad.id
+                                            }
+                                        "
+                                    >
+
+                                        VER MÁS
+
+                                    </a>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </article>
+
+                        `;
+
+                    }
                 ).join("");
 
         };
+
 
 
     /*
@@ -422,7 +652,6 @@ async function cargarPropiedades() {
     cargarPropiedades();
 
 </script>
-```
 
 </body>
 
