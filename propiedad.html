@@ -363,20 +363,22 @@
         =====================================
         */
 
-        const {
-            data,
-            error
-        } =
-            await supabase
-                .from("Inmorio")
-                .select("*")
-                .eq(
-                    "id",
-                    id
-                )
-                .single();
+       const {
+    data,
+    error
+} =
+    await supabase
+        .from("Inmorio")
+        .select("*")
+        .eq(
+            "id",
+            id
+        )
+        .single();
 
-
+console.log("ID recibido:", id);
+console.log("DATOS RECIBIDOS:", data);
+console.log("ERROR:", error);
 
         /*
         =====================================
