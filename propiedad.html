@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-
-<html lang="es">
-
-<head>
-
-```
-<meta charset="UTF-8">
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
 
 <meta name="viewport"
     content="width=device-width, initial-scale=1.0">
@@ -16,6 +9,7 @@
 
 <link rel="stylesheet"
     href="estilos.css">
+
 
 <style>
 
@@ -28,12 +22,14 @@
         overflow: hidden;
     }
 
+
     .detalle-imagen img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
     }
+
 
     .galeria-boton {
         position: absolute;
@@ -54,18 +50,22 @@
         transition: 0.2s;
     }
 
+
     .galeria-boton:hover {
         background: rgba(0, 0, 0, 0.8);
         transform: translateY(-50%) scale(1.05);
     }
 
+
     #anterior {
         left: 15px;
     }
 
+
     #siguiente {
         right: 15px;
     }
+
 
     .galeria-indicadores {
         position: absolute;
@@ -77,6 +77,7 @@
         z-index: 5;
     }
 
+
     .galeria-indicador {
         width: 9px;
         height: 9px;
@@ -86,10 +87,12 @@
         transition: 0.2s;
     }
 
+
     .galeria-indicador.activo {
         background: white;
         transform: scale(1.25);
     }
+
 
     .galeria-contador {
         position: absolute;
@@ -103,24 +106,10 @@
         z-index: 5;
     }
 
-    /* Ocultar controles cuando solo hay una imagen */
 
     .galeria-oculta {
         display: none !important;
     }
-
-    <style>
-
-    /* =====================================
-       GALERÍA DE IMÁGENES
-    ===================================== */
-
-    .detalle-imagen {
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* ...todo tu CSS actual... */
 
 
     /* =====================================
@@ -143,11 +132,13 @@
         transition: all 0.2s ease;
     }
 
+
     .boton-volver-nuevo span {
         font-size: 28px;
         line-height: 14px;
         font-weight: 300;
     }
+
 
     .boton-volver-nuevo:hover {
         transform: translateX(-3px);
@@ -155,200 +146,117 @@
         color: #b08d57;
     }
 
-
 </style>
 
-
-</head>
-
-<body>
-
-<!-- NAVBAR -->
+</head><body><!-- NAVBAR -->
 
 <header class="navbar">
 
-```
-<div class="logo">
-    INMORIO
-</div>
+    <div class="logo">
+        INMORIO
+    </div>
 
 
-<nav>
+    <nav>
 
-    <a href="index.html">
-        Inicio
-    </a>
+        <a href="index.html">
+            Inicio
+        </a>
 
-    <a href="Propiedades.html">
-        Propiedades
-    </a>
+        <a href="Propiedades.html">
+            Propiedades
+        </a>
 
-    <a href="Nosotros.html">
-        Nosotros
-    </a>
+        <a href="Nosotros.html">
+            Nosotros
+        </a>
 
-    <a href="Contactos.html">
-        Contacto
-    </a>
+        <a href="Contactos.html">
+            Contacto
+        </a>
 
-</nav>
-```
+    </nav>
 
 </header>
+
+
 
 <!-- DETALLE -->
 
 <main class="detalle-propiedad">
 
-    <a href="Propiedades.html" class="boton-volver-nuevo">
+
+    <!-- BOTÓN VOLVER -->
+
+    <a
+        href="Propiedades.html"
+        class="boton-volver-nuevo">
+
         <span>‹</span>
+
         Volver a propiedades
+
     </a>
+
+
 
     <section class="detalle-contenido">
 
 
-    <!-- GALERÍA -->
+        <!-- =====================================
+             GALERÍA
+        ====================================== -->
 
-    <div class="detalle-imagen">
-
-        <img
-            id="imagenPropiedad"
-            src=""
-            alt="Propiedad"
-        >
+        <div class="detalle-imagen">
 
 
-        <!-- BOTÓN ANTERIOR -->
-
-        <button
-            id="anterior"
-            class="galeria-boton galeria-oculta"
-            type="button">
-
-            ‹
-
-        </button>
+            <img
+                id="imagenPropiedad"
+                src=""
+                alt="Propiedad"
+            >
 
 
-        <!-- BOTÓN SIGUIENTE -->
+            <!-- ANTERIOR -->
 
-        <button
-            id="siguiente"
-            class="galeria-boton galeria-oculta"
-            type="button">
+            <button
+                id="anterior"
+                class="galeria-boton galeria-oculta"
+                type="button">
 
-            ›
+                ‹
 
-        </button>
-
-
-        <!-- CONTADOR -->
-
-        <div
-            id="contadorFotos"
-            class="galeria-contador galeria-oculta">
-
-            1 / 1
-
-        </div>
+            </button>
 
 
-        <!-- INDICADORES -->
+            <!-- SIGUIENTE -->
 
-        <div
-            id="indicadores"
-            class="galeria-indicadores">
-        </div>
+            <button
+                id="siguiente"
+                class="galeria-boton galeria-oculta"
+                type="button">
 
-    </div>
+                ›
 
-
-
-    <!-- INFORMACIÓN -->
-
-    <div class="detalle-info">
+            </button>
 
 
-        <p
-            class="subtitle"
-            id="tipoPropiedad">
+            <!-- CONTADOR -->
 
-            PROPIEDAD
+            <div
+                id="contadorFotos"
+                class="galeria-contador galeria-oculta">
 
-        </p>
-
-
-
-        <h1 id="nombrePropiedad">
-
-            Cargando...
-
-        </h1>
-
-
-
-        <p
-            class="detalle-ubicacion"
-            id="ubicacionPropiedad">
-
-            📍 Cargando...
-
-        </p>
-
-
-
-        <div
-            class="detalle-precio"
-            id="precioPropiedad">
-
-            $0
-
-        </div>
-
-
-
-        <!-- CARACTERÍSTICAS -->
-
-        <div class="detalle-caracteristicas">
-
-
-            <div>
-
-                <strong id="habitaciones">
-                    —
-                </strong>
-
-                <span>
-                    Habitaciones
-                </span>
+                1 / 1
 
             </div>
 
 
-            <div>
+            <!-- INDICADORES -->
 
-                <strong id="banos">
-                    —
-                </strong>
-
-                <span>
-                    Baños
-                </span>
-
-            </div>
-
-
-            <div>
-
-                <strong id="area">
-                    —
-                </strong>
-
-                <span>
-                    Área
-                </span>
-
+            <div
+                id="indicadores"
+                class="galeria-indicadores">
             </div>
 
 
@@ -356,57 +264,170 @@
 
 
 
-        <!-- ESTADO -->
+        <!-- =====================================
+             INFORMACIÓN
+        ====================================== -->
 
-        <div
-            id="estadoPropiedad"
-            class="detalle-estado">
-
-            Cargando...
-
-        </div>
+        <div class="detalle-info">
 
 
+            <p
+                class="subtitle"
+                id="tipoPropiedad">
 
-        <!-- DESCRIPCIÓN -->
-
-        <div class="detalle-descripcion">
-
-            <h2>
-                Descripción
-            </h2>
-
-
-            <p id="descripcionPropiedad">
-
-                Cargando información...
+                PROPIEDAD
 
             </p>
 
+
+
+            <h1 id="nombrePropiedad">
+
+                Cargando...
+
+            </h1>
+
+
+
+            <p
+                class="detalle-ubicacion"
+                id="ubicacionPropiedad">
+
+                📍 Cargando...
+
+            </p>
+
+
+
+            <div
+                class="detalle-precio"
+                id="precioPropiedad">
+
+                $0
+
+            </div>
+
+
+
+            <!-- =====================================
+                 CARACTERÍSTICAS
+            ====================================== -->
+
+            <div class="detalle-caracteristicas">
+
+
+                <!-- HABITACIONES -->
+
+                <div id="caracteristicaHabitaciones">
+
+                    <strong id="habitaciones">
+                        —
+                    </strong>
+
+                    <span>
+                        Habitaciones
+                    </span>
+
+                </div>
+
+
+                <!-- BAÑOS -->
+
+                <div id="caracteristicaBanos">
+
+                    <strong id="banos">
+                        —
+                    </strong>
+
+                    <span>
+                        Baños
+                    </span>
+
+                </div>
+
+
+                <!-- ÁREA -->
+
+                <div>
+
+                    <strong id="area">
+                        —
+                    </strong>
+
+                    <span>
+                        Área
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =====================================
+                 ESTADO
+            ====================================== -->
+
+            <div
+                id="estadoPropiedad"
+                class="detalle-estado">
+
+                Cargando...
+
+            </div>
+
+
+
+            <!-- =====================================
+                 DESCRIPCIÓN
+            ====================================== -->
+
+            <div class="detalle-descripcion">
+
+
+                <h2>
+                    Descripción
+                </h2>
+
+
+                <p id="descripcionPropiedad">
+
+                    Cargando información...
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- =====================================
+                 CONTACTO
+            ====================================== -->
+
+            <a
+                href="Contactos.html"
+                class="boton-contacto">
+
+                ESTOY INTERESADO
+
+            </a>
+
+
         </div>
 
 
+    </section>
 
-        <!-- CONTACTO -->
-
-        <a
-            href="Contactos.html"
-            class="boton-contacto">
-
-            ESTOY INTERESADO
-
-        </a>
-
-
-    </div>
-
-
-</section>
-```
 
 </main>
 
-<!-- SUPABASE -->
+
+
+<!-- =====================================
+     SUPABASE
+====================================== -->
 
 <script type="module">
 
@@ -416,11 +437,10 @@
     } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
-    /*
-    =====================================
-    CONFIGURACIÓN SUPABASE
-    =====================================
-    */
+
+    /* =====================================
+       CONFIGURACIÓN SUPABASE
+    ===================================== */
 
     const SUPABASE_URL =
         "https://suvhbicsdldrncwkwzdz.supabase.co";
@@ -438,11 +458,9 @@
 
 
 
-    /*
-    =====================================
-    OBTENER ID
-    =====================================
-    */
+    /* =====================================
+       OBTENER ID
+    ===================================== */
 
     const parametros =
         new URLSearchParams(
@@ -455,11 +473,9 @@
 
 
 
-    /*
-    =====================================
-    ELEMENTOS
-    =====================================
-    */
+    /* =====================================
+       ELEMENTOS
+    ===================================== */
 
     const imagen =
         document.getElementById(
@@ -545,12 +561,22 @@
         );
 
 
+    const caracteristicaHabitaciones =
+        document.getElementById(
+            "caracteristicaHabitaciones"
+        );
 
-    /*
-    =====================================
-    VARIABLES DE GALERÍA
-    =====================================
-    */
+
+    const caracteristicaBanos =
+        document.getElementById(
+            "caracteristicaBanos"
+        );
+
+
+
+    /* =====================================
+       VARIABLES GALERÍA
+    ===================================== */
 
     let imagenes = [];
 
@@ -558,24 +584,12 @@
 
 
 
-    /*
-    =====================================
-    CONVERTIR IMAGEN A ARRAY
-    =====================================
-
-    Esto permite trabajar con:
-
-    1. Una imagen antigua:
-    "https://..."
-
-    2. Varias imágenes:
-    ["https://...", "https://..."]
-
-    3. JSON guardado como texto:
-    '["https://...", "https://..."]'
-    */
+    /* =====================================
+       PREPARAR IMÁGENES
+    ===================================== */
 
     function prepararImagenes(valor) {
+
 
         if (!valor) {
 
@@ -595,13 +609,19 @@
 
         if (typeof valor === "string") {
 
+
             try {
+
 
                 const posibles =
                     JSON.parse(valor);
 
 
-                if (Array.isArray(posibles)) {
+                if (
+                    Array.isArray(
+                        posibles
+                    )
+                ) {
 
                     return posibles.filter(
                         imagen => imagen
@@ -609,10 +629,12 @@
 
                 }
 
+
             }
             catch (error) {
 
                 // Es una URL normal.
+
             }
 
 
@@ -627,33 +649,38 @@
 
 
 
-    /*
-    =====================================
-    MOSTRAR IMAGEN
-    =====================================
-    */
+    /* =====================================
+       MOSTRAR IMAGEN
+    ===================================== */
 
     function mostrarImagen() {
 
+
         if (!imagenes.length) {
+
 
             imagen.style.display =
                 "none";
+
 
             anterior.classList.add(
                 "galeria-oculta"
             );
 
+
             siguiente.classList.add(
                 "galeria-oculta"
             );
+
 
             contador.classList.add(
                 "galeria-oculta"
             );
 
+
             indicadores.innerHTML =
                 "";
+
 
             return;
 
@@ -673,17 +700,15 @@
             || "Propiedad INMORIO";
 
 
-        /*
-        CONTADOR
-        */
+
+        /* CONTADOR */
 
         contador.textContent =
             `${indiceActual + 1} / ${imagenes.length}`;
 
 
-        /*
-        INDICADORES
-        */
+
+        /* INDICADORES */
 
         indicadores.innerHTML =
             imagenes.map(
@@ -699,35 +724,42 @@
             ).join("");
 
 
-        /*
-        SI SOLO HAY UNA FOTO
-        */
 
-        if (imagenes.length <= 1) {
+        /* SOLO UNA FOTO */
+
+        if (
+            imagenes.length <= 1
+        ) {
+
 
             anterior.classList.add(
                 "galeria-oculta"
             );
 
+
             siguiente.classList.add(
                 "galeria-oculta"
             );
+
 
             contador.classList.add(
                 "galeria-oculta"
             );
 
-        }
 
+        }
         else {
+
 
             anterior.classList.remove(
                 "galeria-oculta"
             );
 
+
             siguiente.classList.remove(
                 "galeria-oculta"
             );
+
 
             contador.classList.remove(
                 "galeria-oculta"
@@ -736,9 +768,8 @@
         }
 
 
-        /*
-        CLICK EN INDICADORES
-        */
+
+        /* CLICK INDICADORES */
 
         document
             .querySelectorAll(
@@ -747,14 +778,17 @@
             .forEach(
                 indicador => {
 
+
                     indicador.addEventListener(
                         "click",
                         () => {
+
 
                             indiceActual =
                                 Number(
                                     indicador.dataset.index
                                 );
+
 
                             mostrarImagen();
 
@@ -768,17 +802,18 @@
 
 
 
-    /*
-    =====================================
-    FOTO ANTERIOR
-    =====================================
-    */
+    /* =====================================
+       FOTO ANTERIOR
+    ===================================== */
 
     anterior.addEventListener(
         "click",
         () => {
 
-            if (!imagenes.length) {
+
+            if (
+                !imagenes.length
+            ) {
 
                 return;
 
@@ -787,7 +822,10 @@
 
             indiceActual--;
 
-            if (indiceActual < 0) {
+
+            if (
+                indiceActual < 0
+            ) {
 
                 indiceActual =
                     imagenes.length - 1;
@@ -802,17 +840,18 @@
 
 
 
-    /*
-    =====================================
-    FOTO SIGUIENTE
-    =====================================
-    */
+    /* =====================================
+       FOTO SIGUIENTE
+    ===================================== */
 
     siguiente.addEventListener(
         "click",
         () => {
 
-            if (!imagenes.length) {
+
+            if (
+                !imagenes.length
+            ) {
 
                 return;
 
@@ -820,6 +859,7 @@
 
 
             indiceActual++;
+
 
             if (
                 indiceActual >=
@@ -838,13 +878,12 @@
 
 
 
-    /*
-    =====================================
-    COMPROBAR ID
-    =====================================
-    */
+    /* =====================================
+       COMPROBAR ID
+    ===================================== */
 
     if (!id) {
+
 
         nombre.textContent =
             "Propiedad no encontrada";
@@ -853,16 +892,14 @@
         descripcion.textContent =
             "No se recibió el identificador de la propiedad.";
 
-    }
 
+    }
     else {
 
 
-        /*
-        =====================================
-        BUSCAR PROPIEDAD
-        =====================================
-        */
+        /* =====================================
+           BUSCAR PROPIEDAD
+        ===================================== */
 
         const {
             data,
@@ -898,13 +935,12 @@
 
 
 
-        /*
-        =====================================
-        ERROR
-        =====================================
-        */
+        /* =====================================
+           ERROR
+        ===================================== */
 
         if (error) {
+
 
             console.error(
                 "Error cargando propiedad:",
@@ -919,16 +955,14 @@
             descripcion.textContent =
                 "No se pudo encontrar esta propiedad.";
 
-        }
 
+        }
         else {
 
 
-            /*
-            =====================================
-            MOSTRAR INFORMACIÓN
-            =====================================
-            */
+            /* =====================================
+               INFORMACIÓN
+            ===================================== */
 
             tipo.textContent =
                 data.tipo
@@ -936,9 +970,43 @@
                     || "PROPIEDAD";
 
 
+
+            /* =====================================
+               MOSTRAR / OCULTAR CARACTERÍSTICAS
+            ===================================== */
+
+            if (
+                data.tipo?.toLowerCase()
+                === "terreno"
+            ) {
+
+
+                caracteristicaHabitaciones.style.display =
+                    "none";
+
+
+                caracteristicaBanos.style.display =
+                    "none";
+
+
+            }
+            else {
+
+
+                caracteristicaHabitaciones.style.display =
+                    "";
+
+
+                caracteristicaBanos.style.display =
+                    "";
+
+            }
+
+
+
             nombre.textContent =
                 data.nombre
-                    || "Propiedad INMORIO";
+                || "Propiedad INMORIO";
 
 
             ubicacion.textContent =
@@ -956,6 +1024,9 @@
                 ).toLocaleString();
 
 
+
+            /* HABITACIONES */
+
             habitaciones.textContent =
                 data.habitaciones !== null
                 &&
@@ -963,6 +1034,9 @@
                     ? data.habitaciones
                     : "—";
 
+
+
+            /* BAÑOS */
 
             banos.textContent =
                 data.banos !== null
@@ -972,6 +1046,9 @@
                     : "—";
 
 
+
+            /* ÁREA */
+
             area.textContent =
                 data.area !== null
                 &&
@@ -980,22 +1057,27 @@
                     : "—";
 
 
+
+            /* DESCRIPCIÓN */
+
             descripcion.textContent =
                 data.descripcion
-                    || "No hay una descripción disponible para esta propiedad.";
+                ||
+                "No hay una descripción disponible para esta propiedad.";
 
+
+
+            /* ESTADO */
 
             estado.textContent =
                 data.estado
-                    || "Disponible";
+                || "Disponible";
 
 
 
-            /*
-            =====================================
-            CARGAR TODAS LAS IMÁGENES
-            =====================================
-            */
+            /* =====================================
+               CARGAR IMÁGENES
+            ===================================== */
 
             imagenes =
                 prepararImagenes(
@@ -1010,11 +1092,9 @@
 
 
 
-            /*
-            =====================================
-            TÍTULO
-            =====================================
-            */
+            /* =====================================
+               TÍTULO
+            ===================================== */
 
             document.title =
                 (
@@ -1029,17 +1109,18 @@
 
 
 
-    /*
-    =====================================
-    CAMBIAR FOTO CON TECLADO
-    =====================================
-    */
+    /* =====================================
+       TECLADO
+    ===================================== */
 
     document.addEventListener(
         "keydown",
         (event) => {
 
-            if (imagenes.length <= 1) {
+
+            if (
+                imagenes.length <= 1
+            ) {
 
                 return;
 
@@ -1068,9 +1149,7 @@
         }
     );
 
+
 </script>
 
-</body>
-
-</html>
-</html>
+</body></html>
