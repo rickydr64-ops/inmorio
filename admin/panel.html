@@ -4,11 +4,10 @@
 
 <head>
 
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+ content="width=device-width, initial-scale=1.0">
 
 <title>
     Panel | INMORIO
@@ -16,300 +15,297 @@
 
 <link rel="stylesheet"
     href="admin.css">
-```
 
 </head>
 
 <body>
 
-```
 <div class="dashboard">
 
+```
+<!-- SIDEBAR -->
 
-    <!-- SIDEBAR -->
+<aside class="sidebar">
 
-    <aside class="sidebar">
+    <div class="brand">
 
-        <div class="brand">
+        <span>
+            INMORIO
+        </span>
 
-            <span>
-                INMORIO
+        <small>
+            ADMINISTRACIÓN
+        </small>
+
+    </div>
+
+
+    <nav class="menu">
+
+        <a
+            href="#"
+            class="menu-item active">
+
+            <span class="menu-icon">
+                ⌂
             </span>
 
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a
+            href="#propiedades"
+            class="menu-item">
+
+            <span class="menu-icon">
+                ▦
+            </span>
+
+            <span>
+                Propiedades
+            </span>
+
+        </a>
+
+
+        <a
+            href="agregar.html"
+            class="menu-item">
+
+            <span class="menu-icon">
+                ＋
+            </span>
+
+            <span>
+                Agregar propiedad
+            </span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="gold-line"></div>
+
+
+        <button
+            type="button"
+            id="logoutBtn"
+            class="logout-btn">
+
+            <span>
+                ↪
+            </span>
+
+            Cerrar sesión
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- CONTENIDO PRINCIPAL -->
+
+<main class="main-content">
+
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <div class="welcome">
+
+            <span class="eyebrow">
+                PANEL DE CONTROL
+            </span>
+
+            <h1>
+                Bienvenido, Administrador
+            </h1>
+
+            <p>
+                Gestiona las propiedades de INMORIO desde aquí.
+            </p>
+
+        </div>
+
+
+        <div class="profile">
+
+            <div class="profile-avatar">
+                A
+            </div>
+
+            <div class="profile-info">
+
+                <strong>
+                    Administrador
+                </strong>
+
+                <span>
+                    Cuenta activa
+                </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ESTADÍSTICAS -->
+
+    <section class="statistics">
+
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <span>
+                    Total propiedades
+                </span>
+
+                <div class="stat-symbol">
+                    ▦
+                </div>
+
+            </div>
+
+            <strong id="totalPropiedades">
+                0
+            </strong>
+
             <small>
-                ADMINISTRACIÓN
+                Propiedades registradas
             </small>
 
         </div>
 
 
-        <nav class="menu">
 
-            <a
-                href="#"
-                class="menu-item active">
+        <div class="stat">
 
-                <span class="menu-icon">
-                    ⌂
-                </span>
+            <div class="stat-top">
 
                 <span>
-                    Dashboard
+                    Disponibles
                 </span>
 
-            </a>
+                <div class="stat-symbol">
+                    ✓
+                </div>
+
+            </div>
+
+            <strong id="disponibles">
+                0
+            </strong>
+
+            <small>
+                Actualmente disponibles
+            </small>
+
+        </div>
 
 
-            <a
-                href="#propiedades"
-                class="menu-item">
 
-                <span class="menu-icon">
-                    ▦
-                </span>
+        <div class="stat">
+
+            <div class="stat-top">
 
                 <span>
+                    Vendidas
+                </span>
+
+                <div class="stat-symbol">
+                    ◆
+                </div>
+
+            </div>
+
+            <strong id="vendidas">
+                0
+            </strong>
+
+            <small>
+                Propiedades vendidas
+            </small>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- PROPIEDADES -->
+
+    <section
+        id="propiedades"
+        class="properties">
+
+
+        <div class="section-title">
+
+            <div>
+
+                <span class="eyebrow">
+                    INVENTARIO
+                </span>
+
+                <h2>
                     Propiedades
-                </span>
+                </h2>
 
-            </a>
-
-
-            <a
-                href="agregar.html"
-                class="menu-item">
-
-                <span class="menu-icon">
-                    ＋
-                </span>
-
-                <span>
-                    Agregar propiedad
-                </span>
-
-            </a>
-
-        </nav>
-
-
-        <div class="sidebar-bottom">
-
-            <div class="gold-line"></div>
+            </div>
 
 
             <button
                 type="button"
-                id="logoutBtn"
-                class="logout-btn">
+                id="addPropertyBtn"
+                class="add-btn">
 
                 <span>
-                    ↪
+                    ＋
                 </span>
 
-                Cerrar sesión
+                Nueva propiedad
 
             </button>
 
         </div>
 
-    </aside>
 
 
+        <div
+            id="propertiesContainer"
+            class="property-grid">
 
-    <!-- CONTENIDO PRINCIPAL -->
-
-    <main class="main-content">
-
-
-        <!-- HEADER -->
-
-        <header class="topbar">
-
-            <div class="welcome">
-
-                <span class="eyebrow">
-                    PANEL DE CONTROL
-                </span>
-
-                <h1>
-                    Bienvenido, Administrador
-                </h1>
-
-                <p>
-                    Gestiona las propiedades de INMORIO desde aquí.
-                </p>
-
+            <div class="loading">
+                Cargando propiedades...
             </div>
 
+        </div>
 
-            <div class="profile">
 
-                <div class="profile-avatar">
-                    A
-                </div>
+    </section>
 
-                <div class="profile-info">
 
-                    <strong>
-                        Administrador
-                    </strong>
-
-                    <span>
-                        Cuenta activa
-                    </span>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-
-        <!-- ESTADÍSTICAS -->
-
-        <section class="statistics">
-
-
-            <div class="stat">
-
-                <div class="stat-top">
-
-                    <span>
-                        Total propiedades
-                    </span>
-
-                    <div class="stat-symbol">
-                        ▦
-                    </div>
-
-                </div>
-
-                <strong id="totalPropiedades">
-                    0
-                </strong>
-
-                <small>
-                    Propiedades registradas
-                </small>
-
-            </div>
-
-
-
-            <div class="stat">
-
-                <div class="stat-top">
-
-                    <span>
-                        Disponibles
-                    </span>
-
-                    <div class="stat-symbol">
-                        ✓
-                    </div>
-
-                </div>
-
-                <strong id="disponibles">
-                    0
-                </strong>
-
-                <small>
-                    Actualmente disponibles
-                </small>
-
-            </div>
-
-
-
-            <div class="stat">
-
-                <div class="stat-top">
-
-                    <span>
-                        Vendidas
-                    </span>
-
-                    <div class="stat-symbol">
-                        ◆
-                    </div>
-
-                </div>
-
-                <strong id="vendidas">
-                    0
-                </strong>
-
-                <small>
-                    Propiedades vendidas
-                </small>
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- PROPIEDADES -->
-
-        <section
-            id="propiedades"
-            class="properties">
-
-
-            <div class="section-title">
-
-                <div>
-
-                    <span class="eyebrow">
-                        INVENTARIO
-                    </span>
-
-                    <h2>
-                        Propiedades
-                    </h2>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    id="addPropertyBtn"
-                    class="add-btn">
-
-                    <span>
-                        ＋
-                    </span>
-
-                    Nueva propiedad
-
-                </button>
-
-            </div>
-
-
-
-            <div
-                id="propertiesContainer"
-                class="property-grid">
-
-                <div class="loading">
-                    Cargando propiedades...
-                </div>
-
-            </div>
-
-
-        </section>
-
-
-    </main>
+</main>
+```
 
 </div>
-
-
 
 <!-- SUPABASE -->
 
@@ -341,6 +337,97 @@
             SUPABASE_URL,
             SUPABASE_KEY
         );
+
+
+
+    /*
+    =====================================
+    OBTENER PRIMERA IMAGEN
+    =====================================
+    */
+
+    function obtenerPrimeraImagen(valor) {
+
+        if (!valor) {
+
+            return "";
+
+        }
+
+
+        /*
+        SI SUPABASE DEVUELVE UN ARRAY
+        */
+
+        if (Array.isArray(valor)) {
+
+            return valor[0] || "";
+
+        }
+
+
+        /*
+        SI VIENE COMO TEXTO
+        */
+
+        if (typeof valor === "string") {
+
+            const texto =
+                valor.trim();
+
+
+            /*
+            INTENTAR CONVERTIR
+            EL JSON A ARRAY
+            */
+
+            try {
+
+                const resultado =
+                    JSON.parse(texto);
+
+
+                if (
+                    Array.isArray(resultado)
+                ) {
+
+                    return resultado[0] || "";
+
+                }
+
+
+                /*
+                SI FUERA UNA CADENA
+                */
+
+                if (
+                    typeof resultado ===
+                    "string"
+                ) {
+
+                    return resultado;
+
+                }
+
+            }
+
+            catch (error) {
+
+                /*
+                ES UNA URL NORMAL.
+                */
+
+            }
+
+
+            return texto;
+
+        }
+
+
+        return "";
+
+    }
 
 
 
@@ -591,8 +678,20 @@
         container.innerHTML =
 
             propiedades.map(
-                propiedad => `
+                propiedad => {
 
+
+                    /*
+                    OBTENER PRIMERA FOTO
+                    */
+
+                    const primeraImagen =
+                        obtenerPrimeraImagen(
+                            propiedad.imagen
+                        );
+
+
+                    return `
 
                 <article
                     class="property-card">
@@ -604,19 +703,40 @@
 
 
                         ${
-                            propiedad.imagen
+                            primeraImagen
 
                             ?
 
                             `
 
                             <img
-                                src="${propiedad.imagen}"
+                                src="${primeraImagen}"
                                 alt="${
                                     propiedad.nombre
                                     || "Propiedad"
                                 }"
+                                onerror="
+                                    this.style.display='none';
+                                    this.parentElement
+                                        .querySelector('.no-image')
+                                        .style.display='flex';
+                                "
                             >
+
+                            <div
+                                class="no-image"
+                                style="
+                                    display:none;
+                                    width:100%;
+                                    height:100%;
+                                    align-items:center;
+                                    justify-content:center;
+                                "
+                            >
+
+                                SIN IMAGEN
+
+                            </div>
 
                             `
 
@@ -783,7 +903,9 @@
                 </article>
 
 
-            `
+            `;
+
+                }
             ).join("");
 
 
@@ -1011,7 +1133,6 @@
 
 
 </script>
-```
 
 </body>
 
