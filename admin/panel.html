@@ -3,13 +3,19 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
-<title>Panel | INMORIO</title>
+<meta charset="UTF-8">
 
-<link rel="stylesheet" href="admin.css">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>
+    Panel | INMORIO
+</title>
+
+<link rel="stylesheet"
+    href="admin.css">
 ```
 
 </head>
@@ -19,44 +25,87 @@
 ```
 <div class="dashboard">
 
+
     <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
         <div class="brand">
-            <span>INMORIO</span>
-            <small>ADMINISTRACIÓN</small>
+
+            <span>
+                INMORIO
+            </span>
+
+            <small>
+                ADMINISTRACIÓN
+            </small>
+
         </div>
+
 
         <nav class="menu">
 
-            <a href="#" class="menu-item active">
-                <span class="menu-icon">⌂</span>
-                <span>Dashboard</span>
+            <a
+                href="#"
+                class="menu-item active">
+
+                <span class="menu-icon">
+                    ⌂
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
             </a>
 
-            <a href="#propiedades" class="menu-item">
-                <span class="menu-icon">▦</span>
-                <span>Propiedades</span>
+
+            <a
+                href="#propiedades"
+                class="menu-item">
+
+                <span class="menu-icon">
+                    ▦
+                </span>
+
+                <span>
+                    Propiedades
+                </span>
+
             </a>
 
-            <a href="agregar.html" class="menu-item">
-                <span class="menu-icon">＋</span>
-                <span>Agregar propiedad</span>
+
+            <a
+                href="agregar.html"
+                class="menu-item">
+
+                <span class="menu-icon">
+                    ＋
+                </span>
+
+                <span>
+                    Agregar propiedad
+                </span>
+
             </a>
 
         </nav>
 
+
         <div class="sidebar-bottom">
 
             <div class="gold-line"></div>
+
 
             <button
                 type="button"
                 id="logoutBtn"
                 class="logout-btn">
 
-                <span>↪</span>
+                <span>
+                    ↪
+                </span>
+
                 Cerrar sesión
 
             </button>
@@ -66,9 +115,11 @@
     </aside>
 
 
+
     <!-- CONTENIDO PRINCIPAL -->
 
     <main class="main-content">
+
 
         <!-- HEADER -->
 
@@ -89,6 +140,7 @@
                 </p>
 
             </div>
+
 
             <div class="profile">
 
@@ -113,9 +165,11 @@
         </header>
 
 
+
         <!-- ESTADÍSTICAS -->
 
         <section class="statistics">
+
 
             <div class="stat">
 
@@ -140,6 +194,7 @@
                 </small>
 
             </div>
+
 
 
             <div class="stat">
@@ -167,6 +222,7 @@
             </div>
 
 
+
             <div class="stat">
 
                 <div class="stat-top">
@@ -191,7 +247,9 @@
 
             </div>
 
+
         </section>
+
 
 
         <!-- PROPIEDADES -->
@@ -199,6 +257,7 @@
         <section
             id="propiedades"
             class="properties">
+
 
             <div class="section-title">
 
@@ -218,8 +277,7 @@
                 <button
                     type="button"
                     id="addPropertyBtn"
-                    class="add-btn"
-                    onclick="window.location.href='agregar.html'">
+                    class="add-btn">
 
                     <span>
                         ＋
@@ -232,6 +290,7 @@
             </div>
 
 
+
             <div
                 id="propertiesContainer"
                 class="property-grid">
@@ -242,26 +301,31 @@
 
             </div>
 
+
         </section>
+
 
     </main>
 
 </div>
 
 
+
 <!-- SUPABASE -->
 
 <script type="module">
+
 
     import {
         createClient
     } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
+
     /*
-    ================================
-    CONFIGURACIÓN SUPABASE
-    ================================
+    =====================================
+    CONFIGURACIÓN
+    =====================================
     */
 
     const SUPABASE_URL =
@@ -279,10 +343,11 @@
         );
 
 
+
     /*
-    ================================
+    =====================================
     COMPROBAR SESIÓN
-    ================================
+    =====================================
     */
 
     const {
@@ -301,14 +366,17 @@
     }
 
 
+
     /*
-    ================================
+    =====================================
     CERRAR SESIÓN
-    ================================
+    =====================================
     */
 
     document
-        .getElementById("logoutBtn")
+        .getElementById(
+            "logoutBtn"
+        )
         .addEventListener(
             "click",
             async () => {
@@ -322,13 +390,37 @@
         );
 
 
+
     /*
-    ================================
+    =====================================
+    BOTÓN NUEVA PROPIEDAD
+    =====================================
+    */
+
+    document
+        .getElementById(
+            "addPropertyBtn"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    "agregar.html";
+
+            }
+        );
+
+
+
+    /*
+    =====================================
     CARGAR PROPIEDADES
-    ================================
+    =====================================
     */
 
     async function cargarPropiedades() {
+
 
         const {
             data,
@@ -367,7 +459,7 @@
 
                         Error al cargar propiedades:
 
-                        <br>
+                        <br><br>
 
                         ${error.message}
 
@@ -380,24 +472,16 @@
         }
 
 
-        /*
-        DATOS RECIBIDOS
-        */
-
-        console.log(
-            "Propiedades encontradas:",
-            data
-        );
-
 
         const propiedades =
             data || [];
 
 
+
         /*
-        ================================
+        =====================================
         ESTADÍSTICAS
-        ================================
+        =====================================
         */
 
         document
@@ -406,6 +490,7 @@
             )
             .textContent =
             propiedades.length;
+
 
 
         const disponibles =
@@ -419,6 +504,7 @@
             ).length;
 
 
+
         const vendidas =
             propiedades.filter(
                 propiedad =>
@@ -430,12 +516,14 @@
             ).length;
 
 
+
         document
             .getElementById(
                 "disponibles"
             )
             .textContent =
             disponibles;
+
 
 
         document
@@ -446,16 +534,18 @@
             vendidas;
 
 
+
         /*
-        ================================
+        =====================================
         CONTENEDOR
-        ================================
+        =====================================
         */
 
         const container =
             document.getElementById(
                 "propertiesContainer"
             );
+
 
 
         /*
@@ -491,10 +581,11 @@
         }
 
 
+
         /*
-        ================================
+        =====================================
         CREAR TARJETAS
-        ================================
+        =====================================
         */
 
         container.innerHTML =
@@ -502,9 +593,15 @@
             propiedades.map(
                 propiedad => `
 
-                <article class="property-card">
+
+                <article
+                    class="property-card">
+
+
+                    <!-- IMAGEN -->
 
                     <div class="property-image">
+
 
                         ${
                             propiedad.imagen
@@ -512,6 +609,7 @@
                             ?
 
                             `
+
                             <img
                                 src="${propiedad.imagen}"
                                 alt="${
@@ -519,16 +617,22 @@
                                     || "Propiedad"
                                 }"
                             >
+
                             `
 
                             :
 
                             `
+
                             <div class="no-image">
+
                                 SIN IMAGEN
+
                             </div>
+
                             `
                         }
+
 
 
                         <span class="property-badge">
@@ -540,10 +644,15 @@
 
                         </span>
 
+
                     </div>
 
 
+
+                    <!-- INFORMACIÓN -->
+
                     <div class="property-details">
+
 
                         <h3>
 
@@ -555,7 +664,10 @@
                         </h3>
 
 
+
                         <p class="property-location">
+
+                            📍
 
                             ${
                                 propiedad.ubicacion
@@ -565,7 +677,9 @@
                         </p>
 
 
+
                         <div class="property-footer">
+
 
                             <strong class="price">
 
@@ -576,9 +690,9 @@
                             </strong>
 
 
+
                             <span class="
                                 property-status
-
                                 ${
                                     propiedad.estado
                                         ?.toLowerCase()
@@ -597,25 +711,304 @@
 
                             </span>
 
+
                         </div>
+
+
+
+                        <!-- BOTONES ADMIN -->
+
+                        <div
+                            class="property-actions">
+
+
+                            <!-- EDITAR -->
+
+                            <button
+                                type="button"
+                                class="edit-property-btn"
+                                data-id="${propiedad.id}">
+
+                                ✏️ Editar
+
+                            </button>
+
+
+
+                            <!-- CAMBIAR ESTADO -->
+
+                            <button
+                                type="button"
+                                class="status-property-btn"
+                                data-id="${propiedad.id}"
+                                data-status="${
+                                    propiedad.estado
+                                    || "Disponible"
+                                }">
+
+                                🔄
+
+                                ${
+                                    propiedad.estado
+                                        ?.toLowerCase()
+                                        === "vendida"
+
+                                        ? "Marcar disponible"
+
+                                        : "Marcar vendida"
+                                }
+
+                            </button>
+
+
+
+                            <!-- ELIMINAR -->
+
+                            <button
+                                type="button"
+                                class="delete-property-btn"
+                                data-id="${propiedad.id}">
+
+                                🗑️ Eliminar
+
+                            </button>
+
+
+                        </div>
+
 
                     </div>
 
+
                 </article>
+
 
             `
             ).join("");
 
+
+
+        /*
+        =====================================
+        BOTÓN EDITAR
+        =====================================
+        */
+
+        document
+            .querySelectorAll(
+                ".edit-property-btn"
+            )
+            .forEach(
+                boton => {
+
+                    boton.addEventListener(
+                        "click",
+                        () => {
+
+                            const id =
+                                boton.dataset.id;
+
+
+                            window.location.href =
+                                `agregar.html?id=${id}`;
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+        /*
+        =====================================
+        BOTÓN CAMBIAR ESTADO
+        =====================================
+        */
+
+        document
+            .querySelectorAll(
+                ".status-property-btn"
+            )
+            .forEach(
+                boton => {
+
+                    boton.addEventListener(
+                        "click",
+                        async () => {
+
+
+                            const id =
+                                boton.dataset.id;
+
+
+                            const estadoActual =
+                                boton.dataset.status;
+
+
+                            const nuevoEstado =
+
+                                estadoActual
+                                    .toLowerCase()
+                                    === "vendida"
+
+                                    ? "Disponible"
+
+                                    : "Vendida";
+
+
+                            boton.disabled =
+                                true;
+
+
+                            const {
+                                error
+                            } =
+                                await supabase
+                                    .from("Inmorio")
+                                    .update({
+                                        estado:
+                                            nuevoEstado
+                                    })
+                                    .eq(
+                                        "id",
+                                        id
+                                    );
+
+
+                            if (error) {
+
+                                console.error(
+                                    error
+                                );
+
+
+                                alert(
+                                    "No se pudo cambiar el estado: "
+                                    + error.message
+                                );
+
+
+                                boton.disabled =
+                                    false;
+
+                                return;
+
+                            }
+
+
+                            await cargarPropiedades();
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+        /*
+        =====================================
+        BOTÓN ELIMINAR
+        =====================================
+        */
+
+        document
+            .querySelectorAll(
+                ".delete-property-btn"
+            )
+            .forEach(
+                boton => {
+
+                    boton.addEventListener(
+                        "click",
+                        async () => {
+
+
+                            const id =
+                                boton.dataset.id;
+
+
+                            const confirmar =
+                                confirm(
+                                    "¿Seguro que quieres eliminar esta propiedad?\n\nEsta acción no se puede deshacer."
+                                );
+
+
+                            if (!confirmar) {
+
+                                return;
+
+                            }
+
+
+                            boton.disabled =
+                                true;
+
+
+                            /*
+                            ELIMINAR DE LA TABLA
+                            */
+
+                            const {
+                                error
+                            } =
+                                await supabase
+                                    .from("Inmorio")
+                                    .delete()
+                                    .eq(
+                                        "id",
+                                        id
+                                    );
+
+
+                            if (error) {
+
+                                console.error(
+                                    error
+                                );
+
+
+                                alert(
+                                    "No se pudo eliminar la propiedad: "
+                                    + error.message
+                                );
+
+
+                                boton.disabled =
+                                    false;
+
+                                return;
+
+                            }
+
+
+                            /*
+                            RECARGAR
+                            */
+
+                            await cargarPropiedades();
+
+
+                        }
+                    );
+
+                }
+            );
+
+
     }
 
 
+
     /*
-    ================================
+    =====================================
     INICIAR
-    ================================
+    =====================================
     */
 
     cargarPropiedades();
+
 
 </script>
 ```
