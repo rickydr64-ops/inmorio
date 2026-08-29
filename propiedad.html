@@ -1,205 +1,532 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Propiedad | INMORIO</title>
+```
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="estilos.css">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>
+    Propiedad | INMORIO
+</title>
+
+<link rel="stylesheet"
+    href="estilos.css">
+```
+
 </head>
 
 <body>
 
-    <header class="navbar">
+```
+<!-- NAVBAR -->
 
-        <div class="logo">
-            INMORIO
+<header class="navbar">
+
+    <div class="logo">
+        INMORIO
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Inicio
+        </a>
+
+        <a href="Propiedades.html">
+            Propiedades
+        </a>
+
+        <a href="Nosotros.html">
+            Nosotros
+        </a>
+
+        <a href="Contactos.html">
+            Contacto
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- DETALLE -->
+
+<main class="detalle-propiedad">
+
+
+    <section class="detalle-contenido">
+
+
+        <!-- IMAGEN -->
+
+        <div class="detalle-imagen">
+
+            <img
+                id="imagenPropiedad"
+                src=""
+                alt="Propiedad"
+            >
+
         </div>
 
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="propiedades.html">Propiedades</a>
-            <a href="Nosotros.html">Nosotros</a>
-            <a href="Contacto.html">Contacto</a>
-        </nav>
-
-    </header>
 
 
-    <main class="detalle-propiedad">
+        <!-- INFORMACIÓN -->
 
-        <section class="detalle-contenido">
+        <div class="detalle-info">
 
-            <div class="detalle-imagen">
 
-                <img id="imagenPropiedad" src="" alt="Propiedad">
+            <p
+                class="subtitle"
+                id="tipoPropiedad">
+
+                PROPIEDAD
+
+            </p>
+
+
+
+            <h1 id="nombrePropiedad">
+
+                Cargando...
+
+            </h1>
+
+
+
+            <p
+                class="detalle-ubicacion"
+                id="ubicacionPropiedad">
+
+                📍 Cargando...
+
+            </p>
+
+
+
+            <div
+                class="detalle-precio"
+                id="precioPropiedad">
+
+                $0
+
+            </div>
+
+
+
+            <!-- CARACTERÍSTICAS -->
+
+            <div class="detalle-caracteristicas">
+
+
+                <div>
+
+                    <strong id="habitaciones">
+                        —
+                    </strong>
+
+                    <span>
+                        Habitaciones
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="banos">
+                        —
+                    </strong>
+
+                    <span>
+                        Baños
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="area">
+                        —
+                    </strong>
+
+                    <span>
+                        Área
+                    </span>
+
+                </div>
+
 
             </div>
 
 
-            <div class="detalle-info">
 
-                <p class="subtitle" id="tipoPropiedad">
-                    PROPIEDAD
-                </p>
+            <!-- ESTADO -->
 
-                <h1 id="nombrePropiedad">
-                    Cargando...
-                </h1>
+            <div
+                id="estadoPropiedad"
+                class="detalle-estado">
 
-                <p class="detalle-ubicacion" id="ubicacionPropiedad">
-                    📍 Cargando...
-                </p>
-
-                <div class="detalle-precio" id="precioPropiedad">
-                    $0
-                </div>
-
-
-                <div class="detalle-caracteristicas">
-
-                    <div>
-                        <strong id="habitaciones">-</strong>
-                        <span>Habitaciones</span>
-                    </div>
-
-                    <div>
-                        <strong id="banos">-</strong>
-                        <span>Baños</span>
-                    </div>
-
-                    <div>
-                        <strong id="area">-</strong>
-                        <span>Área</span>
-                    </div>
-
-                </div>
-
-
-                <div class="detalle-descripcion">
-
-                    <h2>Descripción</h2>
-
-                    <p id="descripcionPropiedad">
-                        Cargando información...
-                    </p>
-
-                </div>
-
-
-                <a href="contacto.html" class="boton-contacto">
-                    ESTOY INTERESADO
-                </a>
+                Cargando...
 
             </div>
 
-        </section>
-
-    </main>
 
 
-    <script>
+            <!-- DESCRIPCIÓN -->
 
-        const propiedades = {
+            <div class="detalle-descripcion">
 
-            casa1: {
-                tipo: "CASA",
-                nombre: "Casa Moderna",
-                ubicacion: "Riobamba",
-                precio: "$120.000",
-                habitaciones: "3",
-                banos: "2",
-                area: "180 m²",
-                imagen: "imagenes/riobamba.jpeg",
-                descripcion:
-                    "Hermosa casa moderna ubicada en Riobamba, ideal para familias que buscan comodidad, tranquilidad y un espacio acogedor."
-            },
-
-            depto1: {
-                tipo: "DEPARTAMENTO",
-                nombre: "Departamento Central",
-                ubicacion: "Riobamba",
-                precio: "$85.000",
-                habitaciones: "2",
-                banos: "2",
-                area: "95 m²",
-                imagen: "imagenes/riobamba.jpeg",
-                descripcion:
-                    "Cómodo departamento ubicado en una zona estratégica de Riobamba, ideal para vivir con comodidad y tener acceso a los principales servicios."
-            },
-
-            terreno1: {
-                tipo: "TERRENO",
-                nombre: "Terreno Residencial",
-                ubicacion: "Riobamba",
-                precio: "$60.000",
-                habitaciones: "—",
-                banos: "—",
-                area: "250 m²",
-                imagen: "imagenes/riobamba.jpeg",
-                descripcion:
-                    "Terreno residencial con excelente potencial para construir una vivienda o desarrollar un proyecto inmobiliario."
-            }
-
-        };
+                <h2>
+                    Descripción
+                </h2>
 
 
-        const parametros = new URLSearchParams(window.location.search);
+                <p id="descripcionPropiedad">
 
-        const id = parametros.get("id");
+                    Cargando información...
 
-        const propiedad = propiedades[id];
+                </p>
+
+            </div>
 
 
-        if (propiedad) {
 
-            document.getElementById("tipoPropiedad").textContent =
-                propiedad.tipo;
+            <!-- CONTACTO -->
 
-            document.getElementById("nombrePropiedad").textContent =
-                propiedad.nombre;
+            <a
+                href="Contactos.html"
+                class="boton-contacto">
 
-            document.getElementById("ubicacionPropiedad").textContent =
-                "📍 " + propiedad.ubicacion;
+                ESTOY INTERESADO
 
-            document.getElementById("precioPropiedad").textContent =
-                propiedad.precio;
+            </a>
 
-            document.getElementById("habitaciones").textContent =
-                propiedad.habitaciones;
 
-            document.getElementById("banos").textContent =
-                propiedad.banos;
+        </div>
 
-            document.getElementById("area").textContent =
-                propiedad.area;
 
-            document.getElementById("descripcionPropiedad").textContent =
-                propiedad.descripcion;
+    </section>
 
-            document.getElementById("imagenPropiedad").src =
-                propiedad.imagen;
 
-            document.getElementById("imagenPropiedad").alt =
-                propiedad.nombre;
+</main>
 
-            document.title =
-                propiedad.nombre + " | INMORIO";
+
+
+<!-- SUPABASE -->
+
+<script type="module">
+
+
+    import {
+        createClient
+    } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+
+    /*
+    =====================================
+    CONFIGURACIÓN SUPABASE
+    =====================================
+    */
+
+    const SUPABASE_URL =
+        "https://suvhbicsdldrncwkwzdz.supabase.co";
+
+
+    const SUPABASE_KEY =
+        "sb_publishable_9qelxKXyfJopNRFMN41JGA_vleUoVW5";
+
+
+    const supabase =
+        createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+
+    /*
+    =====================================
+    OBTENER ID DE LA URL
+    =====================================
+    */
+
+    const parametros =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const id =
+        parametros.get("id");
+
+
+
+    /*
+    =====================================
+    ELEMENTOS
+    =====================================
+    */
+
+    const imagen =
+        document.getElementById(
+            "imagenPropiedad"
+        );
+
+
+    const tipo =
+        document.getElementById(
+            "tipoPropiedad"
+        );
+
+
+    const nombre =
+        document.getElementById(
+            "nombrePropiedad"
+        );
+
+
+    const ubicacion =
+        document.getElementById(
+            "ubicacionPropiedad"
+        );
+
+
+    const precio =
+        document.getElementById(
+            "precioPropiedad"
+        );
+
+
+    const habitaciones =
+        document.getElementById(
+            "habitaciones"
+        );
+
+
+    const banos =
+        document.getElementById(
+            "banos"
+        );
+
+
+    const area =
+        document.getElementById(
+            "area"
+        );
+
+
+    const descripcion =
+        document.getElementById(
+            "descripcionPropiedad"
+        );
+
+
+    const estado =
+        document.getElementById(
+            "estadoPropiedad"
+        );
+
+
+
+    /*
+    =====================================
+    COMPROBAR ID
+    =====================================
+    */
+
+    if (!id) {
+
+        nombre.textContent =
+            "Propiedad no encontrada";
+
+
+        descripcion.textContent =
+            "No se recibió el identificador de la propiedad.";
+
+
+    } else {
+
+
+        /*
+        =====================================
+        BUSCAR PROPIEDAD
+        =====================================
+        */
+
+        const {
+            data,
+            error
+        } =
+            await supabase
+                .from("Inmorio")
+                .select("*")
+                .eq(
+                    "id",
+                    id
+                )
+                .single();
+
+
+
+        /*
+        =====================================
+        ERROR
+        =====================================
+        */
+
+        if (error) {
+
+            console.error(
+                "Error cargando propiedad:",
+                error
+            );
+
+
+            nombre.textContent =
+                "Propiedad no encontrada";
+
+
+            descripcion.textContent =
+                "No se pudo encontrar esta propiedad.";
+
 
         } else {
 
-            document.getElementById("nombrePropiedad").textContent =
-                "Propiedad no encontrada";
 
-            document.getElementById("descripcionPropiedad").textContent =
-                "La propiedad que buscas no existe o ya no está disponible.";
+            /*
+            =====================================
+            MOSTRAR DATOS
+            =====================================
+            */
+
+
+            tipo.textContent =
+                data.tipo
+                    ?.toUpperCase()
+                    || "PROPIEDAD";
+
+
+            nombre.textContent =
+                data.nombre
+                    || "Propiedad INMORIO";
+
+
+            ubicacion.textContent =
+                "📍 " +
+                (
+                    data.ubicacion
+                    || "Ubicación no disponible"
+                );
+
+
+            precio.textContent =
+                "$" +
+                Number(
+                    data.precio || 0
+                ).toLocaleString();
+
+
+            descripcion.textContent =
+                data.descripcion
+                    || "No hay una descripción disponible para esta propiedad.";
+
+
+
+            /*
+            =====================================
+            IMAGEN
+            =====================================
+            */
+
+            if (data.imagen) {
+
+                imagen.src =
+                    data.imagen;
+
+                imagen.alt =
+                    data.nombre
+                    || "Propiedad INMORIO";
+
+            } else {
+
+                imagen.style.display =
+                    "none";
+
+            }
+
+
+
+            /*
+            =====================================
+            CARACTERÍSTICAS
+            =====================================
+
+            Como tu tabla actualmente no tiene
+            habitaciones, baños ni área,
+            dejamos estos campos como "—".
+            */
+
+            habitaciones.textContent =
+                data.habitaciones
+                || "—";
+
+
+            banos.textContent =
+                data.banos
+                || "—";
+
+
+            area.textContent =
+                data.area
+                || "—";
+
+
+
+            /*
+            =====================================
+            ESTADO
+            =====================================
+            */
+
+            estado.textContent =
+                data.estado
+                || "Disponible";
+
+
+
+            /*
+            =====================================
+            TÍTULO DE LA PÁGINA
+            =====================================
+            */
+
+            document.title =
+                (
+                    data.nombre
+                    || "Propiedad"
+                )
+                + " | INMORIO";
+
 
         }
 
-    </script>
+    }
+
+
+</script>
+```
 
 </body>
 
+</html>
 </html>
