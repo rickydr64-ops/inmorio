@@ -1083,3 +1083,472 @@ body {
 
 }
 ```
+
+```css
+/* ==========================================
+   PÁGINA AGREGAR PROPIEDAD
+   ========================================== */
+
+.add-page {
+
+    min-height: 100vh;
+
+    background: #080808;
+
+    padding: 45px 7% 80px;
+}
+
+
+/* HEADER */
+
+.add-header {
+
+    max-width: 1050px;
+
+    margin: 0 auto 45px;
+}
+
+
+.back-button {
+
+    display: inline-block;
+
+    margin-bottom: 35px;
+
+    color: #777;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    transition: 0.2s;
+}
+
+
+.back-button:hover {
+
+    color: #d4af37;
+}
+
+
+.add-header h1 {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 42px;
+
+    font-weight: 600;
+
+    color: #fff;
+}
+
+
+.add-header p {
+
+    margin-top: 7px;
+
+    color: #555;
+
+    font-size: 11px;
+}
+
+
+/* FORMULARIO */
+
+.form-container {
+
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    background: #0d0d0d;
+
+    border:
+        1px solid #1d1d1d;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+}
+
+
+/* SECCIONES */
+
+.form-section {
+
+    padding: 35px 40px;
+
+    border-bottom:
+        1px solid #1d1d1d;
+}
+
+
+.form-section-title {
+
+    display: flex;
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+
+.form-section-title > span {
+
+    color: #d4af37;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 20px;
+}
+
+
+.form-section-title h2 {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 25px;
+
+    font-weight: 600;
+
+    color: #eee;
+}
+
+
+.form-section-title p {
+
+    margin-top: 4px;
+
+    color: #555;
+
+    font-size: 10px;
+}
+
+
+/* GRID */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 22px;
+}
+
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.form-group.full {
+
+    grid-column: 1 / -1;
+}
+
+
+.form-group label {
+
+    margin-bottom: 8px;
+
+    color: #aaa;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* INPUTS */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border:
+        1px solid #292929;
+
+    border-radius: 7px;
+
+    background: #111;
+
+    color: #eee;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 12px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(212, 175, 55, 0.07);
+}
+
+
+.form-group textarea {
+
+    resize: vertical;
+
+    min-height: 140px;
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color: #444;
+}
+
+
+/* SELECT */
+
+.form-group select {
+
+    cursor: pointer;
+}
+
+
+/* PRECIO */
+
+.price-input {
+
+    position: relative;
+}
+
+
+.price-input span {
+
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #d4af37;
+
+    font-size: 13px;
+
+    pointer-events: none;
+}
+
+
+.price-input input {
+
+    padding-left: 30px;
+}
+
+
+/* MENSAJES */
+
+.form-message {
+
+    min-height: 20px;
+
+    padding: 20px 40px 0;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+
+.loading-message {
+
+    color: #777;
+}
+
+
+.success-message {
+
+    color: #8fbd8f;
+}
+
+
+.error-message {
+
+    color: #d47c7c;
+}
+
+
+/* BOTONES */
+
+.form-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding: 25px 40px;
+
+    background: #0a0a0a;
+}
+
+
+.cancel-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    border:
+        1px solid #292929;
+
+    border-radius: 7px;
+
+    color: #777;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+
+.cancel-button:hover {
+
+    color: #ddd;
+
+    border-color: #444;
+}
+
+
+.save-button {
+
+    padding: 13px 24px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b8860b,
+            #d4af37,
+            #b8860b
+        );
+
+    color: #080808;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.save-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(212, 175, 55, 0.2);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .add-page {
+
+        padding: 30px 15px 50px;
+    }
+
+
+    .form-section {
+
+        padding: 28px 20px;
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .form-group.full {
+
+        grid-column: auto;
+    }
+
+
+    .form-actions {
+
+        padding: 20px;
+
+        flex-direction: column;
+    }
+
+
+    .cancel-button,
+    .save-button {
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .add-header h1 {
+
+        font-size: 34px;
+    }
+
+}
+```
+
