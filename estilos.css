@@ -473,12 +473,22 @@ body {
    ========================= */
 
 .propiedades-page {
-    min-height: 100vh;
-    background: #0b0b0b;
-    color: white;
+    text-align: center;
+    padding: 90px 20px 70px;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.60),
+            rgba(0, 0, 0, 0.60)
+        ),
+        url("Imagenes/propiedades.jpg");
+
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-color: #080808;
 }
-
-
 /* ENCABEZADO */
 
 .propiedades-hero {
