@@ -39,9 +39,10 @@ body {
         ),
         url("../Imagenes/logo.jpeg");
 
-   background-size: cover;
+background-size: 80%;
 background-position: center;
 background-repeat: no-repeat;
+background-color: #080808;
 }
 
 
