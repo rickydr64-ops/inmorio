@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,284 +6,505 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Propiedades | INMORIO</title>
+    <title>Panel | INMORIO</title>
 
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
 
-    <header class="navbar">
+    <div class="dashboard">
 
-        <div class="logo">
-            INMORIO
-        </div>
+        <!-- SIDEBAR -->
 
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="Propiedades.html">Propiedades</a>
-            <a href="Nosotros.html">Nosotros</a>
-            <a href="Contactos.html">Contacto</a>
-        </nav>
+        <aside class="sidebar">
 
-    </header>
+            <div class="brand">
+                <span>INMORIO</span>
+                <small>ADMINISTRACIÓN</small>
+            </div>
 
+            <nav class="menu">
 
-    <main class="propiedades-page">
+                <a href="#" class="menu-item active">
+                    <span class="menu-icon">⌂</span>
+                    <span>Dashboard</span>
+                </a>
 
-        <section class="propiedades-hero">
+                <a href="#propiedades" class="menu-item">
+                    <span class="menu-icon">▦</span>
+                    <span>Propiedades</span>
+                </a>
 
-   <section id="propiedades">
+                <a href="#agregar" class="menu-item">
+                    <span class="menu-icon">＋</span>
+                    <span>Agregar propiedad</span>
+                </a>
 
+            </nav>
 
-</section>
-            <p class="subtitle">INMORIO</p>
+            <div class="sidebar-bottom">
 
-            <h1>
-                Encuentra tu<br>
-                próximo espacio.
-            </h1>
+                <div class="gold-line"></div>
 
-            <p>
-                Explora nuestras propiedades y encuentra el lugar
-                ideal para comenzar tu próxima historia.
-            </p>
+                <button id="logoutBtn" class="logout-btn">
+                    <span>↪</span>
+                    Cerrar sesión
+                </button>
 
-        </section>
+            </div>
 
-
-        <!-- CATEGORÍAS -->
-
-        <section class="categorias">
-
-            <button class="categoria activa" onclick="mostrarPropiedades('todas')">
-                TODAS
-            </button>
-
-            <button class="categoria" onclick="mostrarPropiedades('casa')">
-                CASAS
-            </button>
-
-            <button class="categoria" onclick="mostrarPropiedades('departamento')">
-                DEPARTAMENTOS
-            </button>
-
-            <button class="categoria" onclick="mostrarPropiedades('terreno')">
-                TERRENOS
-            </button>
-
-        </section>
+        </aside>
 
 
-        <!-- PROPIEDADES -->
+        <!-- CONTENIDO PRINCIPAL -->
 
-        <section class="propiedades-grid">
+        <main class="main-content">
 
+            <!-- HEADER -->
 
-            <!-- CASA -->
+            <header class="topbar">
 
-            <article class="propiedad-card propiedad casa">
+                <div class="welcome">
 
-                <div class="propiedad-imagen">
-
-                    <img src="imagenes/riobamba.jpeg" alt="Casa moderna">
-
-                    <span class="estado disponible">
-                        DISPONIBLE
+                    <span class="eyebrow">
+                        PANEL DE CONTROL
                     </span>
 
+                    <h1>
+                        Bienvenido, Administrador
+                    </h1>
+
+                    <p>
+                        Gestiona las propiedades de INMORIO desde aquí.
+                    </p>
+
                 </div>
 
-                <div class="propiedad-info">
+                <div class="profile">
 
-                    <p class="tipo-propiedad">
-                        CASA
-                    </p>
-
-                    <h2>
-                        Casa Moderna
-                    </h2>
-
-                    <p class="ubicacion">
-                        📍 Riobamba
-                    </p>
-
-                    <div class="caracteristicas">
-
-                        <span>🛏 3</span>
-                        <span>🚿 2</span>
-                        <span>📐 180 m²</span>
-
+                    <div class="profile-avatar">
+                        A
                     </div>
 
-                    <div class="propiedad-footer">
-
-                        <strong>
-                            $120.000
-                        </strong>
-
-                        <a href="propiedad.html">
-                            VER MÁS
-                        </a>
-
+                    <div class="profile-info">
+                        <strong>Administrador</strong>
+                        <span>Cuenta activa</span>
                     </div>
 
                 </div>
 
-            </article>
+            </header>
 
 
-            <!-- DEPARTAMENTO -->
+            <!-- ESTADÍSTICAS -->
 
-            <article class="propiedad-card propiedad departamento">
+            <section class="statistics">
 
-                <div class="propiedad-imagen">
+                <div class="stat">
 
-                    <img src="imagenes/riobamba.jpeg" alt="Departamento">
+                    <div class="stat-top">
+                        <span>Total propiedades</span>
+                        <div class="stat-symbol">▦</div>
+                    </div>
 
-                    <span class="estado disponible">
-                        DISPONIBLE
-                    </span>
+                    <strong id="totalPropiedades">
+                        0
+                    </strong>
+
+                    <small>
+                        Propiedades registradas
+                    </small>
 
                 </div>
 
-                <div class="propiedad-info">
 
-                    <p class="tipo-propiedad">
-                        DEPARTAMENTO
-                    </p>
+                <div class="stat">
 
-                    <h2>
-                        Departamento Central
-                    </h2>
+                    <div class="stat-top">
+                        <span>Disponibles</span>
+                        <div class="stat-symbol">✓</div>
+                    </div>
 
-                    <p class="ubicacion">
-                        📍 Riobamba
-                    </p>
+                    <strong id="disponibles">
+                        0
+                    </strong>
 
-                    <div class="caracteristicas">
+                    <small>
+                        Actualmente disponibles
+                    </small>
 
-                        <span>🛏 2</span>
-                        <span>🚿 2</span>
-                        <span>📐 95 m²</span>
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-top">
+                        <span>Vendidas</span>
+                        <div class="stat-symbol">◆</div>
+                    </div>
+
+                    <strong id="vendidas">
+                        0
+                    </strong>
+
+                    <small>
+                        Propiedades vendidas
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROPIEDADES -->
+
+            <section id="propiedades" class="properties">
+
+                <div class="section-title">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            INVENTARIO
+                        </span>
+
+                        <h2>
+                            Propiedades
+                        </h2>
 
                     </div>
 
-                    <div class="propiedad-footer">
+                    <button
+                        id="addPropertyBtn"
+                        class="add-btn">
 
-                        <strong>
-                            $85.000
-                        </strong>
-                         <a href="propiedad.html?id=depto1">
-                            VER MÁS
-                        </a>
+                        <span>＋</span>
+                        Nueva propiedad
 
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="propertiesContainer"
+                    class="property-grid">
+
+                    <div class="loading">
+                        Cargando propiedades...
                     </div>
 
                 </div>
 
-            </article>
+            </section>
+
+        </main>
+
+    </div>
 
 
-            <!-- TERRENO -->
+    <!-- SUPABASE -->
 
-            <article class="propiedad-card propiedad terreno">
+    <script type="module">
 
-                <div class="propiedad-imagen">
-
-                    <img src="imagenes/riobamba.jpeg" alt="Terreno">
-
-                    <span class="estado disponible">
-                        DISPONIBLE
-                    </span>
-
-                </div>
-
-                <div class="propiedad-info">
-
-                    <p class="tipo-propiedad">
-                        TERRENO
-                    </p>
-
-                    <h2>
-                        Terreno Residencial
-                    </h2>
-
-                    <p class="ubicacion">
-                        📍 Riobamba
-                    </p>
-
-                    <div class="caracteristicas">
-
-                        <span>📐 250 m²</span>
-
-                    </div>
-
-                    <div class="propiedad-footer">
-
-                        <strong>
-                            $60.000
-                        </strong>
-
-                        <a href="propiedad.html?id=terreno1">
-                            VER MÁS
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
+        import {
+            createClient
+        } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
-        </section>
-
-    </main>
-
-
-    <script>
-
-        function mostrarPropiedades(categoria) {
-
-            const propiedades = document.querySelectorAll('.propiedad');
-
-            const botones = document.querySelectorAll('.categoria');
+        const SUPABASE_URL =
+            "https://suvhbicsdldrncwkwzdz.supabase.co";
 
 
-            botones.forEach(boton => {
-                boton.classList.remove('activa');
-            });
+        const SUPABASE_KEY =
+            "sb_publishable_9qelxkXyfJopNRFMN41JGA_vleUoVW5";
 
 
-            event.target.classList.add('activa');
+        const supabase =
+            createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
 
 
-            propiedades.forEach(propiedad => {
+        /*
+        ================================
+        COMPROBAR SESIÓN
+        ================================
+        */
 
-                if (categoria === 'todas') {
+        const {
+            data: {
+                session
+            }
+        } = await supabase.auth.getSession();
 
-                    propiedad.style.display = 'block';
 
-                } else {
+        if (!session) {
 
-                    if (propiedad.classList.contains(categoria)) {
-
-                        propiedad.style.display = 'block';
-
-                    } else {
-
-                        propiedad.style.display = 'none';
-
-                    }
-
-                }
-
-            });
+            window.location.href =
+                "login.html";
 
         }
+
+
+        /*
+        ================================
+        CERRAR SESIÓN
+        ================================
+        */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                async () => {
+
+                    await supabase.auth.signOut();
+
+                    window.location.href =
+                        "login.html";
+
+                }
+            );
+
+
+        /*
+        ================================
+        CARGAR PROPIEDADES
+        ================================
+        */
+
+        async function cargarPropiedades() {
+
+            const {
+                data,
+                error
+            } = await supabase
+                .from("Inmorio")
+                .select("*")
+                .order(
+                    "id",
+                    {
+                        ascending: false
+                    }
+                );
+
+
+            if (error) {
+
+                console.error(error);
+
+                document
+                    .getElementById(
+                        "propertiesContainer"
+                    )
+                    .innerHTML = `
+                    
+                        <div class="loading">
+                            No se pudieron cargar las propiedades.
+                        </div>
+
+                    `;
+
+                return;
+
+            }
+
+
+            const propiedades =
+                data || [];
+
+
+            /*
+            ESTADÍSTICAS
+            */
+
+            document
+                .getElementById(
+                    "totalPropiedades"
+                )
+                .textContent =
+                propiedades.length;
+
+
+            const disponibles =
+                propiedades.filter(
+                    propiedad =>
+                        propiedad.estado
+                        ?.toLowerCase()
+                        === "disponible"
+                ).length;
+
+
+            const vendidas =
+                propiedades.filter(
+                    propiedad =>
+                        propiedad.estado
+                        ?.toLowerCase()
+                        === "vendida"
+                ).length;
+
+
+            document
+                .getElementById(
+                    "disponibles"
+                )
+                .textContent =
+                disponibles;
+
+
+            document
+                .getElementById(
+                    "vendidas"
+                )
+                .textContent =
+                vendidas;
+
+
+            /*
+            PROPIEDADES
+            */
+
+            const container =
+                document.getElementById(
+                    "propertiesContainer"
+                );
+
+
+            if (propiedades.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            ＋
+                        </div>
+
+                        <h3>
+                            No hay propiedades
+                        </h3>
+
+                        <p>
+                            Comienza agregando tu primera propiedad.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                propiedades.map(
+                    propiedad => `
+
+                    <article class="property-card">
+
+                        <div class="property-image">
+
+                            ${
+                                propiedad.imagen
+
+                                ?
+
+                                `
+                                <img
+                                    src="${propiedad.imagen}"
+                                    alt="${propiedad.nombre || "Propiedad"}"
+                                >
+                                `
+
+                                :
+
+                                `
+                                <div class="no-image">
+                                    SIN IMAGEN
+                                </div>
+                                `
+                            }
+
+                            <span class="property-badge">
+                                ${propiedad.tipo || "PROPIEDAD"}
+                            </span>
+
+                        </div>
+
+
+                        <div class="property-details">
+
+                            <h3>
+                                ${propiedad.nombre || "Sin nombre"}
+                            </h3>
+
+                            <p class="property-location">
+                                ${propiedad.ubicacion || "Sin ubicación"}
+                            </p>
+
+
+                            <div class="property-footer">
+
+                                <strong class="price">
+                                    $${Number(
+                                        propiedad.precio || 0
+                                    ).toLocaleString()}
+                                </strong>
+
+
+                                <span class="
+                                    property-status
+                                    ${
+                                        propiedad.estado
+                                        ?.toLowerCase()
+                                        === "vendida"
+
+                                        ? "sold"
+
+                                        : "available"
+                                    }
+                                ">
+
+                                    ${propiedad.estado || "Sin estado"}
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                `
+                ).join("");
+
+        }
+
+
+       cargarPropiedades();
+
+
+        /*
+        ================================
+        BOTÓN NUEVA PROPIEDAD
+        ================================
+        */
+
+        document
+            .getElementById("addPropertyBtn")
+            .addEventListener("click", () => {
+
+                window.location.href = "agregar.html";
+
+            });
 
     </script>
 
 </body>
 
 </html>
+```
