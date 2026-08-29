@@ -170,24 +170,31 @@ body {
 
 /* ENCABEZADO */
 
-.nosotros-hero {
+.propiedades-hero {
+    min-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
-    padding: 100px 20px 70px;
-}
+    padding: 90px 20px 70px;
 
-.nosotros-hero h1 {
-    font-size: 55px;
-    line-height: 1.1;
-    margin-bottom: 25px;
-}
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.60),
+            rgba(0, 0, 0, 0.60)
+        ),
+        url("Imagenes/propiedades.jpg");
 
-.nosotros-hero > p:last-child {
-    max-width: 650px;
-    margin: auto;
-    color: #cccccc;
-    line-height: 1.7;
-}
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
+    background-color: #080808;
+}
 
 /* IMAGEN + TEXTO */
 
