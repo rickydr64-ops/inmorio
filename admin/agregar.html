@@ -493,40 +493,23 @@
                 INSERTAR EN SUPABASE
                 */
 
-                const {
-                    data,
-                    error
-                } =
-                    await supabase
-                        .from("propiedades")
-                        .insert([
-                            {
-
-                                nombre:
-                                    nombre,
-
-                                tipo:
-                                    tipo,
-
-                                precio:
-                                    precio,
-
-                                ubicacion:
-                                    ubicacion,
-
-                                imagen:
-                                    imagen || null,
-
-                                estado:
-                                    estado,
-
-                                descripcion:
-                                    descripcion
-
-                            }
-                        ])
-                        .select();
-
+               const {
+    data,
+    error
+} = await supabase
+    .from("inmorio")
+    .insert([
+        {
+            nombre: nombre,
+            tipo: tipo,
+            precio: precio,
+            ubicacion: ubicacion,
+            imagen: imagen || null,
+            estado: estado,
+            descripcion: descripcion
+        }
+    ])
+    .select();
 
                 /*
                 ERROR
