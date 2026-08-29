@@ -1,28 +1,27 @@
+```html
 <!DOCTYPE html>
 
 <html lang="es">
 
 <head>
 
-```
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<title id="pageTitle">
-    Nueva propiedad | INMORIO
-</title>
+    <title id="pageTitle">
+        Nueva propiedad | INMORIO
+    </title>
 
-<link rel="stylesheet"
-    href="admin.css">
-```
+    <link rel="stylesheet"
+        href="admin.css">
 
 </head>
 
+
 <body>
 
-```
 <main class="add-page">
 
 
@@ -167,6 +166,8 @@
 
                         </div>
 
+                    </div>
+
 
                     <!-- UBICACIÓN -->
 
@@ -190,59 +191,92 @@
             </div>
 
 
-            <!-- HABITACIONES -->
+            <!-- CARACTERÍSTICAS -->
 
-<div class="form-group">
+            <div class="form-section">
 
-    <label for="habitaciones">
-        Habitaciones
-    </label>
+                <div class="form-section-title">
 
-    <input
-        type="number"
-        id="habitaciones"
-        placeholder="3"
-        min="0"
-    >
+                    <span>
+                        02
+                    </span>
 
-</div>
+                    <div>
 
+                        <h2>
+                            Características
+                        </h2>
 
-<!-- BAÑOS -->
+                        <p>
+                            Información adicional de la propiedad.
+                        </p>
 
-<div class="form-group">
+                    </div>
 
-    <label for="banos">
-        Baños
-    </label>
-
-    <input
-        type="number"
-        id="banos"
-        placeholder="2"
-        min="0"
-    >
-
-</div>
+                </div>
 
 
-<!-- ÁREA -->
+                <div class="form-grid">
 
-<div class="form-group">
 
-    <label for="area">
-        Área (m²)
-    </label>
+                    <!-- HABITACIONES -->
 
-    <input
-        type="number"
-        id="area"
-        placeholder="180"
-        min="0"
-        step="0.01"
-    >
+                    <div class="form-group">
 
-</div>
+                        <label for="habitaciones">
+                            Habitaciones
+                        </label>
+
+                        <input
+                            type="number"
+                            id="habitaciones"
+                            placeholder="3"
+                            min="0"
+                        >
+
+                    </div>
+
+
+                    <!-- BAÑOS -->
+
+                    <div class="form-group">
+
+                        <label for="banos">
+                            Baños
+                        </label>
+
+                        <input
+                            type="number"
+                            id="banos"
+                            placeholder="2"
+                            min="0"
+                        >
+
+                    </div>
+
+
+                    <!-- ÁREA -->
+
+                    <div class="form-group">
+
+                        <label for="area">
+                            Área (m²)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="area"
+                            placeholder="180"
+                            min="0"
+                            step="0.01"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
 
             <!-- ESTADO -->
 
@@ -251,7 +285,7 @@
                 <div class="form-section-title">
 
                     <span>
-                        02
+                        03
                     </span>
 
                     <div>
@@ -302,7 +336,7 @@
                 <div class="form-section-title">
 
                     <span>
-                        03
+                        04
                     </span>
 
                     <div>
@@ -337,24 +371,24 @@
             </div>
 
 
-            <!-- IMAGEN -->
+            <!-- IMÁGENES -->
 
             <div class="form-section">
 
                 <div class="form-section-title">
 
                     <span>
-                        04
+                        05
                     </span>
 
                     <div>
 
                         <h2>
-                            Imagen
+                            Imágenes
                         </h2>
 
-                        <p id="imageDescription">
-                            Selecciona una imagen desde tu computadora.
+                        <p>
+                            Puedes seleccionar varias fotografías.
                         </p>
 
                     </div>
@@ -365,24 +399,41 @@
                 <div class="form-group">
 
                     <label for="imagen">
-                        Foto de la propiedad
+                        Fotos de la propiedad
                     </label>
 
-                  <input
-    type="file"
-    id="imagen"
-    accept="image/*"
-    multiple
->
+
+                    <input
+                        type="file"
+                        id="imagen"
+                        accept="image/*"
+                        multiple
+                    >
+
 
                     <p class="image-help">
-                        Al editar, puedes dejarlo vacío para conservar la imagen actual.
+
+                        Puedes seleccionar varias imágenes
+                        manteniendo presionado CTRL.
+
                     </p>
+
 
                     <p
                         id="currentImage"
                         class="image-help">
                     </p>
+
+
+                    <div
+                        id="previewContainer"
+                        style="
+                            display:grid;
+                            grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+                            gap:12px;
+                            margin-top:20px;
+                        ">
+                    </div>
 
                 </div>
 
@@ -429,601 +480,767 @@
 </main>
 
 
+
 <!-- SUPABASE -->
 
 <script type="module">
 
-    import {
-        createClient
-    } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import {
+    createClient
+} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
-    /*
-    ==================================
-    CONFIGURACIÓN SUPABASE
-    ==================================
-    */
 
-    const SUPABASE_URL =
-        "https://suvhbicsdldrncwkwzdz.supabase.co";
+/*
+==================================
+CONFIGURACIÓN SUPABASE
+==================================
+*/
 
-
-    const SUPABASE_KEY =
-        "sb_publishable_9qelxkXyfJopNRFMN41JGA_vleUoVW5";
+const SUPABASE_URL =
+    "https://suvhbicsdldrncwkwzdz.supabase.co";
 
 
-    const supabase =
-        createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
+const SUPABASE_KEY =
+    "sb_publishable_9qelxkXyfJopNRFMN41JGA_vleUoVW5";
+
+
+const supabase =
+    createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+
+/*
+==================================
+COMPROBAR SESIÓN
+==================================
+*/
+
+const {
+    data: {
+        session
+    }
+} =
+    await supabase.auth.getSession();
+
+
+if (!session) {
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/*
+==================================
+ELEMENTOS
+==================================
+*/
+
+const form =
+    document.getElementById(
+        "propertyForm"
+    );
+
+
+const message =
+    document.getElementById(
+        "formMessage"
+    );
+
+
+const saveButton =
+    document.getElementById(
+        "saveButton"
+    );
+
+
+const imagenInput =
+    document.getElementById(
+        "imagen"
+    );
+
+
+const previewContainer =
+    document.getElementById(
+        "previewContainer"
+    );
+
+
+
+/*
+==================================
+SABER SI ESTAMOS EDITANDO
+==================================
+*/
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const id =
+    params.get("id");
+
+
+let propiedadActual =
+    null;
+
+
+
+/*
+==================================
+PREVISUALIZAR IMÁGENES
+==================================
+*/
+
+imagenInput.addEventListener(
+    "change",
+    () => {
+
+        previewContainer.innerHTML = "";
+
+        const archivos =
+            Array.from(
+                imagenInput.files
+            );
+
+
+        archivos.forEach(
+            archivo => {
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    event => {
+
+                        const div =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        div.style.cssText = `
+                            border-radius:10px;
+                            overflow:hidden;
+                            aspect-ratio:1/1;
+                            background:#eee;
+                        `;
+
+
+                        const img =
+                            document.createElement(
+                                "img"
+                            );
+
+
+                        img.src =
+                            event.target.result;
+
+
+                        img.style.cssText = `
+                            width:100%;
+                            height:100%;
+                            object-fit:cover;
+                        `;
+
+
+                        div.appendChild(img);
+
+
+                        previewContainer.appendChild(
+                            div
+                        );
+
+                    };
+
+
+                reader.readAsDataURL(
+                    archivo
+                );
+
+            }
         );
 
-
-    /*
-    ==================================
-    COMPROBAR SESIÓN
-    ==================================
-    */
-
-    const {
-        data: {
-            session
-        }
-    } =
-        await supabase.auth.getSession();
+    }
+);
 
 
-    if (!session) {
 
-        window.location.href =
-            "login.html";
+/*
+==================================
+CARGAR PROPIEDAD PARA EDITAR
+==================================
+*/
+
+async function cargarPropiedad() {
+
+    if (!id) {
+
+        return;
 
     }
 
 
+    document.getElementById(
+        "pageTitle"
+    ).textContent =
+        "Editar propiedad | INMORIO";
+
+
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Editar propiedad";
+
+
+    document.getElementById(
+        "formSubtitle"
+    ).textContent =
+        "Modifica los datos de esta propiedad.";
+
+
+    saveButton.textContent =
+        "Guardar cambios";
+
+
+    message.textContent =
+        "Cargando propiedad...";
+
+
+    const {
+        data,
+        error
+    } =
+        await supabase
+            .from("Inmorio")
+            .select("*")
+            .eq("id", id)
+            .single();
+
+
+    if (error) {
+
+        console.error(error);
+
+        message.textContent =
+            "No se pudo cargar la propiedad: "
+            + error.message;
+
+        message.className =
+            "form-message error-message";
+
+        return;
+
+    }
+
+
+    propiedadActual =
+        data;
+
+
+
     /*
-    ==================================
-    ELEMENTOS
-    ==================================
+    LLENAR FORMULARIO
     */
 
-    const form =
-        document.getElementById(
-            "propertyForm"
-        );
+    document.getElementById(
+        "nombre"
+    ).value =
+        data.nombre || "";
 
 
-    const message =
-        document.getElementById(
-            "formMessage"
-        );
+    document.getElementById(
+        "tipo"
+    ).value =
+        data.tipo || "";
 
 
-    const saveButton =
-        document.getElementById(
-            "saveButton"
-        );
+    document.getElementById(
+        "precio"
+    ).value =
+        data.precio || "";
+
+
+    document.getElementById(
+        "ubicacion"
+    ).value =
+        data.ubicacion || "";
+
+
+    document.getElementById(
+        "estado"
+    ).value =
+        data.estado || "Disponible";
+
+
+    document.getElementById(
+        "descripcion"
+    ).value =
+        data.descripcion || "";
+
+
+    document.getElementById(
+        "habitaciones"
+    ).value =
+        data.habitaciones ?? "";
+
+
+    document.getElementById(
+        "banos"
+    ).value =
+        data.banos ?? "";
+
+
+    document.getElementById(
+        "area"
+    ).value =
+        data.area ?? "";
+
 
 
     /*
-    ==================================
-    SABER SI ESTAMOS EDITANDO
-    ==================================
+    IMÁGENES EXISTENTES
     */
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    const id =
-        params.get("id");
-
-
-    let propiedadActual = null;
-
-
-    /*
-    ==================================
-    CARGAR PROPIEDAD PARA EDITAR
-    ==================================
-    */
-
-    async function cargarPropiedad() {
-
-        if (!id) {
-
-            return;
-
-        }
-
+    if (data.imagen) {
 
         document.getElementById(
-            "pageTitle"
+            "currentImage"
         ).textContent =
-            "Editar propiedad | INMORIO";
+            "La propiedad ya tiene imágenes. Selecciona nuevas fotografías para reemplazarlas.";
+
+    }
 
 
-        document.getElementById(
-            "formTitle"
-        ).textContent =
-            "Editar propiedad";
+    message.textContent = "";
+
+}
 
 
-        document.getElementById(
-            "formSubtitle"
-        ).textContent =
-            "Modifica los datos de esta propiedad.";
+
+/*
+==================================
+SUBIR UNA IMAGEN
+==================================
+*/
+
+async function subirImagen(
+    archivo
+) {
+
+    const extension =
+        archivo.name
+            .split(".")
+            .pop();
 
 
-        saveButton.textContent =
-            "Guardar cambios";
+    const nombreArchivo =
+        `${Date.now()}-${Math.random()
+            .toString(36)
+            .substring(2)}.${extension}`;
+
+
+    const {
+        error
+    } =
+        await supabase.storage
+            .from("propiedades")
+            .upload(
+                nombreArchivo,
+                archivo,
+                {
+                    cacheControl: "3600",
+                    upsert: false
+                }
+            );
+
+
+    if (error) {
+
+        throw error;
+
+    }
+
+
+    const {
+        data
+    } =
+        supabase.storage
+            .from("propiedades")
+            .getPublicUrl(
+                nombreArchivo
+            );
+
+
+    return data.publicUrl;
+
+}
+
+
+
+/*
+==================================
+GUARDAR FORMULARIO
+==================================
+*/
+
+form.addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+
+        saveButton.disabled =
+            true;
 
 
         message.textContent =
-            "Cargando propiedad...";
+            id
+                ? "Guardando cambios..."
+                : "Guardando propiedad...";
 
 
-        const {
-            data,
-            error
-        } =
-            await supabase
-                .from("Inmorio")
-                .select("*")
-                .eq("id", id)
-                .single();
+        message.className =
+            "form-message loading-message";
 
-
-        if (error) {
-
-            console.error(error);
-
-            message.textContent =
-                "No se pudo cargar la propiedad: "
-                + error.message;
-
-            message.className =
-                "form-message error-message";
-
-            return;
-
-        }
-
-
-        propiedadActual =
-            data;
 
 
         /*
-        LLENAR FORMULARIO
+        DATOS
         */
 
-        document.getElementById(
-            "nombre"
-        ).value =
-            data.nombre || "";
-
-
-        document.getElementById(
-            "tipo"
-        ).value =
-            data.tipo || "";
-
-
-        document.getElementById(
-            "precio"
-        ).value =
-            data.precio || "";
-
-
-        document.getElementById(
-            "ubicacion"
-        ).value =
-            data.ubicacion || "";
-
-
-        document.getElementById(
-            "estado"
-        ).value =
-            data.estado || "Disponible";
-
-
-        document.getElementById(
-            "descripcion"
-        ).value =
-            data.descripcion || "";
-
-
-        if (data.imagen) {
-
+        const nombre =
             document.getElementById(
-                "currentImage"
-            ).textContent =
-                "La propiedad ya tiene una imagen. Puedes seleccionar otra para reemplazarla.";
+                "nombre"
+            ).value.trim();
+
+
+        const tipo =
+            document.getElementById(
+                "tipo"
+            ).value;
+
+
+        const precio =
+            Number(
+                document.getElementById(
+                    "precio"
+                ).value
+            );
+
+
+        const ubicacion =
+            document.getElementById(
+                "ubicacion"
+            ).value.trim();
+
+
+        const estado =
+            document.getElementById(
+                "estado"
+            ).value;
+
+
+        const descripcion =
+            document.getElementById(
+                "descripcion"
+            ).value.trim();
+
+
+        const habitacionesValue =
+            document.getElementById(
+                "habitaciones"
+            ).value;
+
+
+        const banosValue =
+            document.getElementById(
+                "banos"
+            ).value;
+
+
+        const areaValue =
+            document.getElementById(
+                "area"
+            ).value;
+
+
+
+        const habitaciones =
+            habitacionesValue === ""
+                ? null
+                : Number(habitacionesValue);
+
+
+        const banos =
+            banosValue === ""
+                ? null
+                : Number(banosValue);
+
+
+        const area =
+            areaValue === ""
+                ? null
+                : Number(areaValue);
+
+
+
+        /*
+        ==================================
+        TODAS LAS IMÁGENES
+        ==================================
+        */
+
+        const archivos =
+            Array.from(
+                imagenInput.files
+            );
+
+
+        let imagenes = [];
+
+
+
+        /*
+        SI ESTAMOS EDITANDO Y NO
+        SELECCIONÓ NUEVAS IMÁGENES
+        */
+
+        if (
+            id &&
+            archivos.length === 0 &&
+            propiedadActual?.imagen
+        ) {
+
+            try {
+
+                const antiguas =
+                    JSON.parse(
+                        propiedadActual.imagen
+                    );
+
+
+                if (
+                    Array.isArray(
+                        antiguas
+                    )
+                ) {
+
+                    imagenes =
+                        antiguas;
+
+                } else {
+
+                    imagenes = [
+                        propiedadActual.imagen
+                    ];
+
+                }
+
+            }
+            catch {
+
+                imagenes = [
+                    propiedadActual.imagen
+                ];
+
+            }
 
         }
 
 
-        message.textContent = "";
 
-    }
+        /*
+        SUBIR TODAS LAS IMÁGENES
+        */
 
+        if (
+            archivos.length > 0
+        ) {
 
-    /*
-    ==================================
-    SUBIR IMAGEN
-    ==================================
-    */
+            try {
 
-    async function subirImagen(
-        archivoImagen
-    ) {
-
-        const extension =
-            archivoImagen.name
-                .split(".")
-                .pop();
-
-
-        const nombreArchivo =
-            `${Date.now()}-${Math.random()
-                .toString(36)
-                .substring(2)}.${extension}`;
-
-
-        const {
-            error
-        } =
-            await supabase.storage
-                .from("propiedades")
-                .upload(
-                    nombreArchivo,
-                    archivoImagen,
-                    {
-                        cacheControl: "3600",
-                        upsert: false
-                    }
-                );
-
-
-        if (error) {
-
-            throw error;
-
-        }
-
-
-        const {
-            data
-        } =
-            supabase.storage
-                .from("propiedades")
-                .getPublicUrl(
-                    nombreArchivo
-                );
-
-
-        return data.publicUrl;
-
-    }
-
-
-    /*
-    ==================================
-    GUARDAR
-    ==================================
-    */
-
-    form.addEventListener(
-        "submit",
-        async (event) => {
-
-            event.preventDefault();
-
-
-            saveButton.disabled =
-                true;
-
-
-            message.textContent =
-                id
-                    ? "Guardando cambios..."
-                    : "Guardando propiedad...";
-
-
-            message.className =
-                "form-message loading-message";
-
-
-            /*
-            DATOS
-            */
-
-            const nombre =
-                document.getElementById(
-                    "nombre"
-                ).value.trim();
-
-
-            const tipo =
-                document.getElementById(
-                    "tipo"
-                ).value;
-
-
-            const precio =
-                Number(
-                    document.getElementById(
-                        "precio"
-                    ).value
-                );
-
-
-            const ubicacion =
-                document.getElementById(
-                    "ubicacion"
-                ).value.trim();
-
-
-            const estado =
-                document.getElementById(
-                    "estado"
-                ).value;
-
-
-            const descripcion =
-                document.getElementById(
-                    "descripcion"
-                ).value.trim();
-
-          
-
-
-            const habitaciones =
-    Number(
-        document.getElementById("habitaciones").value
-    );
-
-const banos =
-    Number(
-        document.getElementById("banos").value
-    );
-
-const area =
-    Number(
-        document.getElementById("area").value
-    );
-
-
-            const archivoImagen =
-                document.getElementById(
-                    "imagen"
-                ).files[0];
-
-
-            /*
-            ==================================
-            IMAGEN
-            ==================================
-            */
-
-            let imagen =
-                propiedadActual?.imagen
-                || null;
-
-
-            /*
-            SI HAY NUEVA IMAGEN
-            */
-
-            if (archivoImagen) {
-
-                try {
+                for (
+                    let i = 0;
+                    i < archivos.length;
+                    i++
+                ) {
 
                     message.textContent =
-                        "Subiendo imagen...";
+                        `Subiendo imagen ${i + 1} de ${archivos.length}...`;
 
 
-                    imagen =
+                    const url =
                         await subirImagen(
-                            archivoImagen
+                            archivos[i]
                         );
 
-                }
-                catch (error) {
 
-                    console.error(error);
-
-                    message.textContent =
-                        "No se pudo subir la imagen: "
-                        + error.message;
-
-                    message.className =
-                        "form-message error-message";
-
-                    saveButton.disabled =
-                        false;
-
-                    return;
+                    imagenes.push(
+                        url
+                    );
 
                 }
 
             }
+            catch (error) {
 
-
-            /*
-            ==================================
-            DATOS A GUARDAR
-            ==================================
-            */
-
-          const datos = {
-
-    nombre:
-        nombre,
-
-    tipo:
-        tipo,
-
-    precio:
-        precio,
-
-    ubicacion:
-        ubicacion,
-
-    imagen:
-        imagen,
-
-    estado:
-        estado,
-
-    descripcion:
-        descripcion,
-
-    habitaciones:
-        habitaciones,
-
-    banos:
-        banos,
-
-    area:
-        area
-
-};
-
-            /*
-            ==================================
-            EDITAR
-            ==================================
-            */
-
-            if (id) {
-
-                const {
-                    error
-                } =
-                    await supabase
-                        .from("Inmorio")
-                        .update(
-                            datos
-                        )
-                        .eq(
-                            "id",
-                            id
-                        );
-
-
-                if (error) {
-
-                    console.error(error);
-
-                    message.textContent =
-                        "Error: "
-                        + error.message;
-
-                    message.className =
-                        "form-message error-message";
-
-                    saveButton.disabled =
-                        false;
-
-                    return;
-
-                }
+                console.error(error);
 
 
                 message.textContent =
-                    "¡Propiedad actualizada correctamente!";
+                    "No se pudo subir una imagen: "
+                    + error.message;
 
-
-                message.className =
-                    "form-message success-message";
-
-
-                setTimeout(
-                    () => {
-
-                        window.location.href =
-                            "panel.html";
-
-                    },
-                    1000
-                );
-
-
-                return;
-
-            }
-
-
-            /*
-            ==================================
-            CREAR
-            ==================================
-            */
-
-            if (!imagen) {
-
-                message.textContent =
-                    "Selecciona una imagen.";
 
                 message.className =
                     "form-message error-message";
 
+
                 saveButton.disabled =
                     false;
+
 
                 return;
 
             }
 
+        }
+
+
+
+        /*
+        SI ES NUEVA PROPIEDAD
+        */
+
+        if (
+            !id &&
+            imagenes.length === 0
+        ) {
+
+            message.textContent =
+                "Selecciona al menos una imagen.";
+
+
+            message.className =
+                "form-message error-message";
+
+
+            saveButton.disabled =
+                false;
+
+
+            return;
+
+        }
+
+
+
+        /*
+        ==================================
+        DATOS A GUARDAR
+        ==================================
+        */
+
+        const datos = {
+
+            nombre:
+                nombre,
+
+            tipo:
+                tipo,
+
+            precio:
+                precio,
+
+            ubicacion:
+                ubicacion,
+
+            imagen:
+                JSON.stringify(
+                    imagenes
+                ),
+
+            estado:
+                estado,
+
+            descripcion:
+                descripcion,
+
+            habitaciones:
+                habitaciones,
+
+            banos:
+                banos,
+
+            area:
+                area
+
+        };
+
+
+
+        /*
+        ==================================
+        EDITAR
+        ==================================
+        */
+
+        if (id) {
 
             const {
                 error
             } =
                 await supabase
                     .from("Inmorio")
-                    .insert([
+                    .update(
                         datos
-                    ]);
+                    )
+                    .eq(
+                        "id",
+                        id
+                    );
 
 
             if (error) {
 
                 console.error(error);
 
+
                 message.textContent =
                     "Error: "
                     + error.message;
 
+
                 message.className =
                     "form-message error-message";
 
+
                 saveButton.disabled =
                     false;
+
 
                 return;
 
             }
 
 
-            /*
-            ==================================
-            ÉXITO
-            ==================================
-            */
-
             message.textContent =
-                "¡Propiedad guardada correctamente!";
+                "¡Propiedad actualizada correctamente!";
 
 
             message.className =
                 "form-message success-message";
-
-
-            form.reset();
 
 
             setTimeout(
@@ -1036,21 +1253,99 @@ const area =
                 1000
             );
 
+
+            return;
+
         }
-    );
 
 
-    /*
-    ==================================
-    INICIAR
-    ==================================
-    */
 
-    cargarPropiedad();
+        /*
+        ==================================
+        CREAR
+        ==================================
+        */
+
+        const {
+            error
+        } =
+            await supabase
+                .from("Inmorio")
+                .insert([
+                    datos
+                ]);
+
+
+        if (error) {
+
+            console.error(error);
+
+
+            message.textContent =
+                "Error: "
+                + error.message;
+
+
+            message.className =
+                "form-message error-message";
+
+
+            saveButton.disabled =
+                false;
+
+
+            return;
+
+        }
+
+
+
+        /*
+        ==================================
+        ÉXITO
+        ==================================
+        */
+
+        message.textContent =
+            "¡Propiedad guardada correctamente!";
+
+
+        message.className =
+            "form-message success-message";
+
+
+        form.reset();
+
+
+        previewContainer.innerHTML = "";
+
+
+        setTimeout(
+            () => {
+
+                window.location.href =
+                    "panel.html";
+
+            },
+            1000
+        );
+
+    }
+);
+
+
+
+/*
+==================================
+INICIAR
+==================================
+*/
+
+cargarPropiedad();
 
 </script>
-```
 
 </body>
 
 </html>
+```
