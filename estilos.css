@@ -10,7 +10,7 @@ body {
 
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
-        url("imagenes/riobamba.jpeg");
+        url("Imagenes/riobamba.jpeg");
 
     background-size: cover;
     background-position: center;
@@ -142,52 +142,38 @@ h1 {
     color: #111111;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-        url("Imagenes/Riobamba..jpeg");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
 
 /* =========================
    PÁGINA NOSOTROS
    ========================= */
 
-.propiedades-page {
+.nosotros-page {
     min-height: 100vh;
-
-    background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.55),
-            rgba(0, 0, 0, 0.55)
-        ),
-        url("Imagenes/propiedades.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: #0b0b0b;
+    color: white;
 }
 
-.propiedades-hero {
-    min-height: 90vh;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* ENCABEZADO */
 
+.nosotros-hero {
     text-align: center;
-    padding: 90px 20px 70px;
+    padding: 100px 20px 70px;
 }
+
+.nosotros-hero h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.nosotros-hero > p:last-child {
+    max-width: 650px;
+    margin: auto;
+    color: #cccccc;
+    line-height: 1.7;
+}
+
 
 /* IMAGEN + TEXTO */
 
@@ -333,6 +319,7 @@ body {
 
     line-height: 1.6;
 }
+
 /* =========================
    PÁGINA CONTACTO
    ========================= */
@@ -468,33 +455,40 @@ body {
     background: white;
 }
 
+
 /* =========================
    PÁGINA PROPIEDADES
    ========================= */
 
 .propiedades-page {
     min-height: 100vh;
-    background: #080808;
-}
-/* ENCABEZADO */
-
-.propiedades-hero {
-    text-align: center;
-    padding: 90px 20px 70px;
 
     background-image:
         linear-gradient(
-            rgba(0, 0, 0, 0.60),
-            rgba(0, 0, 0, 0.60)
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.55)
         ),
-        url("Imagenes/propiedad.jpeg");
+        url("Imagenes/propiedades.jpg");
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
 
-    background-color: #080808;
+
+/* ENCABEZADO */
+
+.propiedades-hero {
+    min-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 90px 20px 70px;
 }
 
 .propiedades-hero h1 {
@@ -961,21 +955,6 @@ body {
         font-size: 42px;
     }
 
-}
-
-
-.properties {
-    position: relative;
-    background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.65),
-            rgba(0, 0, 0, 0.65)
-        ),
-        url("Imagenes/propiedad.jpeg");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 @media (max-width: 600px) {
