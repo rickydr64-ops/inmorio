@@ -13,72 +13,85 @@
 
 <body>
 
-    <div class="admin-layout">
+    <div class="dashboard">
 
-        <!-- BARRA LATERAL -->
+        <!-- SIDEBAR -->
 
         <aside class="sidebar">
 
-            <div class="admin-logo">
-                INMORIO
+            <div class="brand">
+                <span>INMORIO</span>
+                <small>ADMINISTRACIÓN</small>
             </div>
 
-            <div class="admin-label">
-                ADMINISTRACIÓN
-            </div>
+            <nav class="menu">
 
-            <nav>
-
-                <a href="#" class="active">
-                    <span>⌂</span>
-                    Inicio
+                <a href="#" class="menu-item active">
+                    <span class="menu-icon">⌂</span>
+                    <span>Dashboard</span>
                 </a>
 
-                <a href="#propiedades">
-                    <span>▣</span>
-                    Propiedades
+                <a href="#propiedades" class="menu-item">
+                    <span class="menu-icon">▦</span>
+                    <span>Propiedades</span>
                 </a>
 
-                <a href="#agregar">
-                    <span>＋</span>
-                    Agregar propiedad
+                <a href="#agregar" class="menu-item">
+                    <span class="menu-icon">＋</span>
+                    <span>Agregar propiedad</span>
                 </a>
 
             </nav>
 
-            <button id="logoutBtn" class="logout">
-                <span>↪</span>
-                Cerrar sesión
-            </button>
+            <div class="sidebar-bottom">
+
+                <div class="gold-line"></div>
+
+                <button id="logoutBtn" class="logout-btn">
+                    <span>↪</span>
+                    Cerrar sesión
+                </button>
+
+            </div>
 
         </aside>
 
 
-        <!-- CONTENIDO -->
+        <!-- CONTENIDO PRINCIPAL -->
 
-        <main class="admin-content">
+        <main class="main-content">
 
-            <header class="admin-header">
+            <!-- HEADER -->
 
-                <div>
-                    <p class="small-title">
-                        PANEL ADMINISTRATIVO
-                    </p>
+            <header class="topbar">
+
+                <div class="welcome">
+
+                    <span class="eyebrow">
+                        PANEL DE CONTROL
+                    </span>
 
                     <h1>
-                        Bienvenido a INMORIO
+                        Bienvenido, Administrador
                     </h1>
+
+                    <p>
+                        Gestiona las propiedades de INMORIO desde aquí.
+                    </p>
+
                 </div>
 
-                <div class="admin-user">
-                    <div class="user-icon">
+                <div class="profile">
+
+                    <div class="profile-avatar">
                         A
                     </div>
 
-                    <div>
+                    <div class="profile-info">
                         <strong>Administrador</strong>
-                        <small>Sesión activa</small>
+                        <span>Cuenta activa</span>
                     </div>
+
                 </div>
 
             </header>
@@ -86,40 +99,58 @@
 
             <!-- ESTADÍSTICAS -->
 
-            <section class="stats">
+            <section class="statistics">
 
-                <div class="stat-card">
+                <div class="stat">
 
-                    <span class="stat-icon">▣</span>
-
-                    <div>
-                        <p>Total propiedades</p>
-                        <strong id="totalPropiedades">0</strong>
+                    <div class="stat-top">
+                        <span>Total propiedades</span>
+                        <div class="stat-symbol">▦</div>
                     </div>
+
+                    <strong id="totalPropiedades">
+                        0
+                    </strong>
+
+                    <small>
+                        Propiedades registradas
+                    </small>
 
                 </div>
 
 
-                <div class="stat-card">
+                <div class="stat">
 
-                    <span class="stat-icon">✓</span>
-
-                    <div>
-                        <p>Disponibles</p>
-                        <strong id="disponibles">0</strong>
+                    <div class="stat-top">
+                        <span>Disponibles</span>
+                        <div class="stat-symbol">✓</div>
                     </div>
+
+                    <strong id="disponibles">
+                        0
+                    </strong>
+
+                    <small>
+                        Actualmente disponibles
+                    </small>
 
                 </div>
 
 
-                <div class="stat-card">
+                <div class="stat">
 
-                    <span class="stat-icon">◆</span>
-
-                    <div>
-                        <p>Vendidas</p>
-                        <strong id="vendidas">0</strong>
+                    <div class="stat-top">
+                        <span>Vendidas</span>
+                        <div class="stat-symbol">◆</div>
                     </div>
+
+                    <strong id="vendidas">
+                        0
+                    </strong>
+
+                    <small>
+                        Propiedades vendidas
+                    </small>
 
                 </div>
 
@@ -128,28 +159,37 @@
 
             <!-- PROPIEDADES -->
 
-            <section id="propiedades" class="properties-section">
+            <section id="propiedades" class="properties">
 
-                <div class="section-header">
+                <div class="section-title">
 
                     <div>
-                        <p class="small-title">
+
+                        <span class="eyebrow">
                             INVENTARIO
-                        </p>
+                        </span>
 
                         <h2>
-                            Mis propiedades
+                            Propiedades
                         </h2>
+
                     </div>
 
-                    <button class="gold-button" id="addPropertyBtn">
-                        ＋ Agregar propiedad
+                    <button
+                        id="addPropertyBtn"
+                        class="add-btn">
+
+                        <span>＋</span>
+                        Nueva propiedad
+
                     </button>
 
                 </div>
 
 
-                <div id="propertiesContainer">
+                <div
+                    id="propertiesContainer"
+                    class="property-grid">
 
                     <div class="loading">
                         Cargando propiedades...
@@ -176,6 +216,7 @@
         const SUPABASE_URL =
             "https://suvhbicsdldrncwkwzdz.supabase.co";
 
+
         const SUPABASE_KEY =
             "sb_publishable_9qelxkXyfJopNRFMN41JGA_vleUoVW5";
 
@@ -188,9 +229,9 @@
 
 
         /*
-        ==========================================
+        ================================
         COMPROBAR SESIÓN
-        ==========================================
+        ================================
         */
 
         const {
@@ -209,27 +250,30 @@
 
 
         /*
-        ==========================================
+        ================================
         CERRAR SESIÓN
-        ==========================================
+        ================================
         */
 
         document
             .getElementById("logoutBtn")
-            .addEventListener("click", async () => {
+            .addEventListener(
+                "click",
+                async () => {
 
-                await supabase.auth.signOut();
+                    await supabase.auth.signOut();
 
-                window.location.href =
-                    "login.html";
+                    window.location.href =
+                        "login.html";
 
-            });
+                }
+            );
 
 
         /*
-        ==========================================
+        ================================
         CARGAR PROPIEDADES
-        ==========================================
+        ================================
         */
 
         async function cargarPropiedades() {
@@ -240,9 +284,12 @@
             } = await supabase
                 .from("propiedades")
                 .select("*")
-                .order("id", {
-                    ascending: false
-                });
+                .order(
+                    "id",
+                    {
+                        ascending: false
+                    }
+                );
 
 
             if (error) {
@@ -250,11 +297,15 @@
                 console.error(error);
 
                 document
-                    .getElementById("propertiesContainer")
+                    .getElementById(
+                        "propertiesContainer"
+                    )
                     .innerHTML = `
+                    
                         <div class="loading">
                             No se pudieron cargar las propiedades.
                         </div>
+
                     `;
 
                 return;
@@ -271,7 +322,9 @@
             */
 
             document
-                .getElementById("totalPropiedades")
+                .getElementById(
+                    "totalPropiedades"
+                )
                 .textContent =
                 propiedades.length;
 
@@ -279,7 +332,8 @@
             const disponibles =
                 propiedades.filter(
                     propiedad =>
-                        propiedad.estado?.toLowerCase()
+                        propiedad.estado
+                        ?.toLowerCase()
                         === "disponible"
                 ).length;
 
@@ -287,25 +341,30 @@
             const vendidas =
                 propiedades.filter(
                     propiedad =>
-                        propiedad.estado?.toLowerCase()
+                        propiedad.estado
+                        ?.toLowerCase()
                         === "vendida"
                 ).length;
 
 
             document
-                .getElementById("disponibles")
+                .getElementById(
+                    "disponibles"
+                )
                 .textContent =
                 disponibles;
 
 
             document
-                .getElementById("vendidas")
+                .getElementById(
+                    "vendidas"
+                )
                 .textContent =
                 vendidas;
 
 
             /*
-            MOSTRAR PROPIEDADES
+            PROPIEDADES
             */
 
             const container =
@@ -317,9 +376,23 @@
             if (propiedades.length === 0) {
 
                 container.innerHTML = `
+
                     <div class="empty">
-                        No hay propiedades todavía.
+
+                        <div class="empty-icon">
+                            ＋
+                        </div>
+
+                        <h3>
+                            No hay propiedades
+                        </h3>
+
+                        <p>
+                            Comienza agregando tu primera propiedad.
+                        </p>
+
                     </div>
+
                 `;
 
                 return;
@@ -328,7 +401,8 @@
 
 
             container.innerHTML =
-                propiedades.map(propiedad => `
+                propiedades.map(
+                    propiedad => `
 
                     <article class="property-card">
 
@@ -336,47 +410,67 @@
 
                             ${
                                 propiedad.imagen
+
                                 ?
-                                `<img src="${propiedad.imagen}" alt="${propiedad.nombre}">`
+
+                                `
+                                <img
+                                    src="${propiedad.imagen}"
+                                    alt="${propiedad.nombre || "Propiedad"}"
+                                >
+                                `
+
                                 :
-                                `<div class="no-image">
-                                    SIN FOTO
-                                </div>`
+
+                                `
+                                <div class="no-image">
+                                    SIN IMAGEN
+                                </div>
+                                `
                             }
+
+                            <span class="property-badge">
+                                ${propiedad.tipo || "PROPIEDAD"}
+                            </span>
 
                         </div>
 
 
-                        <div class="property-info">
-
-                            <span class="property-type">
-                                ${propiedad.tipo || "Propiedad"}
-                            </span>
+                        <div class="property-details">
 
                             <h3>
                                 ${propiedad.nombre || "Sin nombre"}
                             </h3>
 
-                            <p class="location">
-                                📍 ${propiedad.ubicacion || "Sin ubicación"}
+                            <p class="property-location">
+                                ${propiedad.ubicacion || "Sin ubicación"}
                             </p>
 
-                            <div class="property-bottom">
 
-                                <strong>
-                                    $${Number(propiedad.precio || 0).toLocaleString()}
+                            <div class="property-footer">
+
+                                <strong class="price">
+                                    $${Number(
+                                        propiedad.precio || 0
+                                    ).toLocaleString()}
                                 </strong>
 
+
                                 <span class="
-                                    status
+                                    property-status
                                     ${
-                                        propiedad.estado?.toLowerCase()
+                                        propiedad.estado
+                                        ?.toLowerCase()
                                         === "vendida"
+
                                         ? "sold"
+
                                         : "available"
                                     }
                                 ">
+
                                     ${propiedad.estado || "Sin estado"}
+
                                 </span>
 
                             </div>
@@ -385,7 +479,8 @@
 
                     </article>
 
-                `).join("");
+                `
+                ).join("");
 
         }
 
@@ -394,18 +489,25 @@
 
 
         /*
-        BOTÓN AGREGAR
+        ================================
+        BOTÓN NUEVA PROPIEDAD
+        ================================
         */
 
         document
-            .getElementById("addPropertyBtn")
-            .addEventListener("click", () => {
+            .getElementById(
+                "addPropertyBtn"
+            )
+            .addEventListener(
+                "click",
+                () => {
 
-                alert(
-                    "Aquí construiremos el formulario para agregar propiedades."
-                );
+                    alert(
+                        "Aquí construiremos el formulario para agregar propiedades."
+                    );
 
-            });
+                }
+            );
 
     </script>
 
