@@ -51,9 +51,14 @@
 
             <div class="gold-line"></div>
 
-            <button id="logoutBtn" class="logout-btn">
+            <button
+                type="button"
+                id="logoutBtn"
+                class="logout-btn">
+
                 <span>↪</span>
                 Cerrar sesión
+
             </button>
 
         </div>
@@ -64,6 +69,8 @@
     <!-- CONTENIDO PRINCIPAL -->
 
     <main class="main-content">
+
+        <!-- HEADER -->
 
         <header class="topbar">
 
@@ -90,8 +97,15 @@
                 </div>
 
                 <div class="profile-info">
-                    <strong>Administrador</strong>
-                    <span>Cuenta activa</span>
+
+                    <strong>
+                        Administrador
+                    </strong>
+
+                    <span>
+                        Cuenta activa
+                    </span>
+
                 </div>
 
             </div>
@@ -106,8 +120,15 @@
             <div class="stat">
 
                 <div class="stat-top">
-                    <span>Total propiedades</span>
-                    <div class="stat-symbol">▦</div>
+
+                    <span>
+                        Total propiedades
+                    </span>
+
+                    <div class="stat-symbol">
+                        ▦
+                    </div>
+
                 </div>
 
                 <strong id="totalPropiedades">
@@ -124,8 +145,15 @@
             <div class="stat">
 
                 <div class="stat-top">
-                    <span>Disponibles</span>
-                    <div class="stat-symbol">✓</div>
+
+                    <span>
+                        Disponibles
+                    </span>
+
+                    <div class="stat-symbol">
+                        ✓
+                    </div>
+
                 </div>
 
                 <strong id="disponibles">
@@ -142,8 +170,15 @@
             <div class="stat">
 
                 <div class="stat-top">
-                    <span>Vendidas</span>
-                    <div class="stat-symbol">◆</div>
+
+                    <span>
+                        Vendidas
+                    </span>
+
+                    <div class="stat-symbol">
+                        ◆
+                    </div>
+
                 </div>
 
                 <strong id="vendidas">
@@ -161,7 +196,9 @@
 
         <!-- PROPIEDADES -->
 
-        <section id="propiedades" class="properties">
+        <section
+            id="propiedades"
+            class="properties">
 
             <div class="section-title">
 
@@ -177,16 +214,21 @@
 
                 </div>
 
-              <button
-    type="button"
-    id="addPropertyBtn"
-    class="add-btn"
-    onclick="window.location.href='agregar.html'">
 
-    <span>＋</span>
-    Nueva propiedad
+                <button
+                    type="button"
+                    id="addPropertyBtn"
+                    class="add-btn"
+                    onclick="window.location.href='agregar.html'">
 
-</button>
+                    <span>
+                        ＋
+                    </span>
+
+                    Nueva propiedad
+
+                </button>
+
             </div>
 
 
@@ -216,6 +258,12 @@
     } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
+    /*
+    ================================
+    CONFIGURACIÓN SUPABASE
+    ================================
+    */
+
     const SUPABASE_URL =
         "https://suvhbicsdldrncwkwzdz.supabase.co";
 
@@ -241,7 +289,8 @@
         data: {
             session
         }
-    } = await supabase.auth.getSession();
+    } =
+        await supabase.auth.getSession();
 
 
     if (!session) {
@@ -284,16 +333,21 @@
         const {
             data,
             error
-        } = await supabase
-            .from("Inmorio")
-            .select("*")
-            .order(
-                "id",
-                {
-                    ascending: false
-                }
-            );
+        } =
+            await supabase
+                .from("Inmorio")
+                .select("*")
+                .order(
+                    "id",
+                    {
+                        ascending: false
+                    }
+                );
 
+
+        /*
+        ERROR
+        */
 
         if (error) {
 
@@ -302,14 +356,21 @@
                 error
             );
 
+
             document
                 .getElementById(
                     "propertiesContainer"
                 )
                 .innerHTML = `
-                
+
                     <div class="loading">
-                        No se pudieron cargar las propiedades.
+
+                        Error al cargar propiedades:
+
+                        <br>
+
+                        ${error.message}
+
                     </div>
 
                 `;
@@ -319,12 +380,24 @@
         }
 
 
+        /*
+        DATOS RECIBIDOS
+        */
+
+        console.log(
+            "Propiedades encontradas:",
+            data
+        );
+
+
         const propiedades =
             data || [];
 
 
         /*
+        ================================
         ESTADÍSTICAS
+        ================================
         */
 
         document
@@ -338,18 +411,22 @@
         const disponibles =
             propiedades.filter(
                 propiedad =>
+
                     propiedad.estado
-                    ?.toLowerCase()
-                    === "disponible"
+                        ?.toLowerCase()
+                        === "disponible"
+
             ).length;
 
 
         const vendidas =
             propiedades.filter(
                 propiedad =>
+
                     propiedad.estado
-                    ?.toLowerCase()
-                    === "vendida"
+                        ?.toLowerCase()
+                        === "vendida"
+
             ).length;
 
 
@@ -370,7 +447,9 @@
 
 
         /*
-        PROPIEDADES
+        ================================
+        CONTENEDOR
+        ================================
         */
 
         const container =
@@ -379,7 +458,13 @@
             );
 
 
-        if (propiedades.length === 0) {
+        /*
+        SIN PROPIEDADES
+        */
+
+        if (
+            propiedades.length === 0
+        ) {
 
             container.innerHTML = `
 
@@ -406,7 +491,14 @@
         }
 
 
+        /*
+        ================================
+        CREAR TARJETAS
+        ================================
+        */
+
         container.innerHTML =
+
             propiedades.map(
                 propiedad => `
 
@@ -422,7 +514,10 @@
                             `
                             <img
                                 src="${propiedad.imagen}"
-                                alt="${propiedad.nombre || "Propiedad"}"
+                                alt="${
+                                    propiedad.nombre
+                                    || "Propiedad"
+                                }"
                             >
                             `
 
@@ -435,8 +530,14 @@
                             `
                         }
 
+
                         <span class="property-badge">
-                            ${propiedad.tipo || "PROPIEDAD"}
+
+                            ${
+                                propiedad.tipo
+                                || "PROPIEDAD"
+                            }
+
                         </span>
 
                     </div>
@@ -445,37 +546,54 @@
                     <div class="property-details">
 
                         <h3>
-                            ${propiedad.nombre || "Sin nombre"}
+
+                            ${
+                                propiedad.nombre
+                                || "Sin nombre"
+                            }
+
                         </h3>
 
+
                         <p class="property-location">
-                            ${propiedad.ubicacion || "Sin ubicación"}
+
+                            ${
+                                propiedad.ubicacion
+                                || "Sin ubicación"
+                            }
+
                         </p>
 
 
                         <div class="property-footer">
 
                             <strong class="price">
+
                                 $${Number(
                                     propiedad.precio || 0
                                 ).toLocaleString()}
+
                             </strong>
 
 
                             <span class="
                                 property-status
+
                                 ${
                                     propiedad.estado
-                                    ?.toLowerCase()
-                                    === "vendida"
+                                        ?.toLowerCase()
+                                        === "vendida"
 
-                                    ? "sold"
+                                        ? "sold"
 
-                                    : "available"
+                                        : "available"
                                 }
                             ">
 
-                                ${propiedad.estado || "Sin estado"}
+                                ${
+                                    propiedad.estado
+                                    || "Sin estado"
+                                }
 
                             </span>
 
@@ -498,25 +616,6 @@
     */
 
     cargarPropiedades();
-
-
-    /*
-    ================================
-    NUEVA PROPIEDAD
-    ================================
-    */
-
-    document
-        .getElementById("addPropertyBtn")
-        .addEventListener(
-            "click",
-            () => {
-
-                window.location.href =
-                    "agregar.html";
-
-            }
-        );
 
 </script>
 ```
