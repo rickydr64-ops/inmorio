@@ -308,16 +308,21 @@
 
                     <div class="form-group">
 
-                        <label for="imagen">
-          Foto de la propiedad
-          </label>
+                     <label for="imagen">
+    Foto de la propiedad
+</label>
 
-          <input
-          type="file"
-          id="imagen"
-          accept="image/*"
-           >
+<input
+    type="file"
+    id="imagen"
+    accept="image/*"
+    required
+>
 
+<p class="image-help">
+    Selecciona una imagen desde tu computadora.
+</p>
+           
                     </div>
 
                 </div>
@@ -483,12 +488,77 @@
                     ).value.trim();
 
 
-                const imagen =
-                    document.getElementById(
-                        "imagen"
-                    ).value.trim();
+              const archivoImagen =
+        document.getElementById("imagen").files[0];
+
+       if (!archivoImagen) {
+
+         message.textContent =
+           "Selecciona una imagen.";
+
+           message.className =
+        "form-message error-message";
+
+       return;
+    }
+
+     const extension =
+    archivoImagen.name
+        .split(".")
+        .pop();
+
+const nombreArchivo =
+    `${Date.now()}-${Math.random()
+        .toString(36)
+        .substring(2)}.${extension}`;
 
 
+message.textContent =
+    "Subiendo imagen...";
+
+
+const {
+    error: uploadError
+} =
+    await supabase.storage
+        .from("propiedades")
+        .upload(
+            nombreArchivo,
+            archivoImagen,
+            {
+                cacheControl: "3600",
+                upsert: false
+            }
+        );
+
+
+if (uploadError) {
+
+    console.error(uploadError);
+
+    message.textContent =
+        "No se pudo subir la imagen: "
+        + uploadError.message;
+
+    message.className =
+        "form-message error-message";
+
+    return;
+}
+
+
+                const {
+    data: publicUrlData
+} =
+    supabase.storage
+        .from("propiedades")
+        .getPublicUrl(
+            nombreArchivo
+        );
+
+
+const imagen =
+    publicUrlData.publicUrl;
                 /*
                 INSERTAR EN SUPABASE
                 */
