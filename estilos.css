@@ -481,7 +481,7 @@ body {
             rgba(0, 0, 0, 0.60),
             rgba(0, 0, 0, 0.60)
         ),
-        url("Imagenes/propiedad.jpeg");
+        url("Imagenes/propiedades.jpg");
 
     background-size: 100% auto;
     background-position: center;
@@ -500,11 +500,12 @@ body {
             rgba(0, 0, 0, 0.60),
             rgba(0, 0, 0, 0.60)
         ),
-        url("Imagenes/propiedades.jpg");
+        url("Imagenes/propiedad.jpeg");
 
-    background-size: 100% auto;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 
     background-color: #080808;
 }
