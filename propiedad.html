@@ -109,8 +109,55 @@
         display: none !important;
     }
 
+    <style>
+
+    /* =====================================
+       GALERÍA DE IMÁGENES
+    ===================================== */
+
+    .detalle-imagen {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* ...todo tu CSS actual... */
+
+
+    /* =====================================
+       BOTÓN VOLVER
+    ===================================== */
+
+    .boton-volver-nuevo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 25px;
+        padding: 9px 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: white;
+        color: #222;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+    .boton-volver-nuevo span {
+        font-size: 28px;
+        line-height: 14px;
+        font-weight: 300;
+    }
+
+    .boton-volver-nuevo:hover {
+        transform: translateX(-3px);
+        border-color: #b08d57;
+        color: #b08d57;
+    }
+
+
 </style>
-```
+
 
 </head>
 
@@ -152,12 +199,13 @@
 <!-- DETALLE -->
 
 <main class="detalle-propiedad">
-   <a href="Propiedades.html" class="boton-volver">
-    <span class="flecha-volver">←</span>
-    Volver a propiedades
-</a>
 
-<section class="detalle-contenido">
+    <a href="Propiedades.html" class="boton-volver-nuevo">
+        <span>‹</span>
+        Volver a propiedades
+    </a>
+
+    <section class="detalle-contenido">
 
 
     <!-- GALERÍA -->
