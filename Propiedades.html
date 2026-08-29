@@ -124,51 +124,35 @@
     CARGAR PROPIEDADES DESDE SUPABASE
     =====================================
     */
+async function cargarPropiedades() {
 
-    async function cargarPropiedades() {
+    const {
+        data,
+        error
+    } = await supabase
+        .from("Inmorio")
+        .select("*");
 
-        const {
-            data,
-            error
-        } = await supabase
-            .from("Inmorio")
-            .select("*")
-            .order(
-                "id",
-                {
-                    ascending: false
-                }
-            );
+    console.log("PROPIEDADES SUPABASE:", data);
+    console.log("ERROR SUPABASE:", error);
 
+    if (error) {
 
-        if (error) {
+        document
+            .getElementById("propiedadesGrid")
+            .innerHTML = `
+                <p style="text-align:center;">
+                    ERROR: ${error.message}
+                </p>
+            `;
 
-            console.error(
-                "Error cargando propiedades:",
-                error
-            );
-
-            document
-                .getElementById("propiedadesGrid")
-                .innerHTML = `
-                
-                    <p style="text-align:center;">
-                        No se pudieron cargar las propiedades.
-                    </p>
-
-                `;
-
-            return;
-
-        }
-
-
-        propiedades = data || [];
-
-        mostrarPropiedades("todas");
-
+        return;
     }
 
+    propiedades = data || [];
+
+    mostrarPropiedades("todas");
+}
 
     /*
     =====================================
