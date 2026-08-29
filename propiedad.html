@@ -10,216 +10,350 @@
 <meta name="viewport"
     content="width=device-width, initial-scale=1.0">
 
-<title>
+<title id="pageTitle">
     Propiedad | INMORIO
 </title>
 
 <link rel="stylesheet"
     href="estilos.css">
+
+<style>
+
+    /* =====================================
+       GALERÍA DE IMÁGENES
+    ===================================== */
+
+    .detalle-imagen {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .detalle-imagen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .galeria-boton {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45px;
+        height: 45px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.55);
+        color: white;
+        font-size: 25px;
+        cursor: pointer;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+    }
+
+    .galeria-boton:hover {
+        background: rgba(0, 0, 0, 0.8);
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    #anterior {
+        left: 15px;
+    }
+
+    #siguiente {
+        right: 15px;
+    }
+
+    .galeria-indicadores {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 7px;
+        z-index: 5;
+    }
+
+    .galeria-indicador {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.55);
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .galeria-indicador.activo {
+        background: white;
+        transform: scale(1.25);
+    }
+
+    .galeria-contador {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0,0,0,0.55);
+        color: white;
+        padding: 7px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        z-index: 5;
+    }
+
+    /* Ocultar controles cuando solo hay una imagen */
+
+    .galeria-oculta {
+        display: none !important;
+    }
+
+</style>
 ```
 
 </head>
 
 <body>
 
-```
 <!-- NAVBAR -->
 
 <header class="navbar">
 
-    <div class="logo">
-        INMORIO
-    </div>
+```
+<div class="logo">
+    INMORIO
+</div>
 
 
-    <nav>
+<nav>
 
-        <a href="index.html">
-            Inicio
-        </a>
+    <a href="index.html">
+        Inicio
+    </a>
 
-        <a href="Propiedades.html">
-            Propiedades
-        </a>
+    <a href="Propiedades.html">
+        Propiedades
+    </a>
 
-        <a href="Nosotros.html">
-            Nosotros
-        </a>
+    <a href="Nosotros.html">
+        Nosotros
+    </a>
 
-        <a href="Contactos.html">
-            Contacto
-        </a>
+    <a href="Contactos.html">
+        Contacto
+    </a>
 
-    </nav>
+</nav>
+```
 
 </header>
-
-
 
 <!-- DETALLE -->
 
 <main class="detalle-propiedad">
 
+```
+<section class="detalle-contenido">
 
-    <section class="detalle-contenido">
+
+    <!-- GALERÍA -->
+
+    <div class="detalle-imagen">
+
+        <img
+            id="imagenPropiedad"
+            src=""
+            alt="Propiedad"
+        >
 
 
-        <!-- IMAGEN -->
+        <!-- BOTÓN ANTERIOR -->
 
-        <div class="detalle-imagen">
+        <button
+            id="anterior"
+            class="galeria-boton galeria-oculta"
+            type="button">
 
-            <img
-                id="imagenPropiedad"
-                src=""
-                alt="Propiedad"
-            >
+            ‹
+
+        </button>
+
+
+        <!-- BOTÓN SIGUIENTE -->
+
+        <button
+            id="siguiente"
+            class="galeria-boton galeria-oculta"
+            type="button">
+
+            ›
+
+        </button>
+
+
+        <!-- CONTADOR -->
+
+        <div
+            id="contadorFotos"
+            class="galeria-contador galeria-oculta">
+
+            1 / 1
+
+        </div>
+
+
+        <!-- INDICADORES -->
+
+        <div
+            id="indicadores"
+            class="galeria-indicadores">
+        </div>
+
+    </div>
+
+
+
+    <!-- INFORMACIÓN -->
+
+    <div class="detalle-info">
+
+
+        <p
+            class="subtitle"
+            id="tipoPropiedad">
+
+            PROPIEDAD
+
+        </p>
+
+
+
+        <h1 id="nombrePropiedad">
+
+            Cargando...
+
+        </h1>
+
+
+
+        <p
+            class="detalle-ubicacion"
+            id="ubicacionPropiedad">
+
+            📍 Cargando...
+
+        </p>
+
+
+
+        <div
+            class="detalle-precio"
+            id="precioPropiedad">
+
+            $0
 
         </div>
 
 
 
-        <!-- INFORMACIÓN -->
+        <!-- CARACTERÍSTICAS -->
 
-        <div class="detalle-info">
-
-
-            <p
-                class="subtitle"
-                id="tipoPropiedad">
-
-                PROPIEDAD
-
-            </p>
+        <div class="detalle-caracteristicas">
 
 
+            <div>
 
-            <h1 id="nombrePropiedad">
+                <strong id="habitaciones">
+                    —
+                </strong>
 
-                Cargando...
-
-            </h1>
-
-
-
-            <p
-                class="detalle-ubicacion"
-                id="ubicacionPropiedad">
-
-                📍 Cargando...
-
-            </p>
-
-
-
-            <div
-                class="detalle-precio"
-                id="precioPropiedad">
-
-                $0
+                <span>
+                    Habitaciones
+                </span>
 
             </div>
 
 
+            <div>
 
-            <!-- CARACTERÍSTICAS -->
+                <strong id="banos">
+                    —
+                </strong>
 
-            <div class="detalle-caracteristicas">
-
-
-                <div>
-
-                    <strong id="habitaciones">
-                        —
-                    </strong>
-
-                    <span>
-                        Habitaciones
-                    </span>
-
-                </div>
-
-
-                <div>
-
-                    <strong id="banos">
-                        —
-                    </strong>
-
-                    <span>
-                        Baños
-                    </span>
-
-                </div>
-
-
-                <div>
-
-                    <strong id="area">
-                        —
-                    </strong>
-
-                    <span>
-                        Área
-                    </span>
-
-                </div>
-
+                <span>
+                    Baños
+                </span>
 
             </div>
 
 
+            <div>
 
-            <!-- ESTADO -->
+                <strong id="area">
+                    —
+                </strong>
 
-            <div
-                id="estadoPropiedad"
-                class="detalle-estado">
-
-                Cargando...
-
-            </div>
-
-
-
-            <!-- DESCRIPCIÓN -->
-
-            <div class="detalle-descripcion">
-
-                <h2>
-                    Descripción
-                </h2>
-
-
-                <p id="descripcionPropiedad">
-
-                    Cargando información...
-
-                </p>
+                <span>
+                    Área
+                </span>
 
             </div>
-
-
-
-            <!-- CONTACTO -->
-
-            <a
-                href="Contactos.html"
-                class="boton-contacto">
-
-                ESTOY INTERESADO
-
-            </a>
 
 
         </div>
 
 
-    </section>
 
+        <!-- ESTADO -->
+
+        <div
+            id="estadoPropiedad"
+            class="detalle-estado">
+
+            Cargando...
+
+        </div>
+
+
+
+        <!-- DESCRIPCIÓN -->
+
+        <div class="detalle-descripcion">
+
+            <h2>
+                Descripción
+            </h2>
+
+
+            <p id="descripcionPropiedad">
+
+                Cargando información...
+
+            </p>
+
+        </div>
+
+
+
+        <!-- CONTACTO -->
+
+        <a
+            href="Contactos.html"
+            class="boton-contacto">
+
+            ESTOY INTERESADO
+
+        </a>
+
+
+    </div>
+
+
+</section>
+```
 
 </main>
-
-
 
 <!-- SUPABASE -->
 
@@ -229,7 +363,6 @@
     import {
         createClient
     } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-
 
 
     /*
@@ -256,7 +389,7 @@
 
     /*
     =====================================
-    OBTENER ID DE LA URL
+    OBTENER ID
     =====================================
     */
 
@@ -337,6 +470,322 @@
         );
 
 
+    const anterior =
+        document.getElementById(
+            "anterior"
+        );
+
+
+    const siguiente =
+        document.getElementById(
+            "siguiente"
+        );
+
+
+    const contador =
+        document.getElementById(
+            "contadorFotos"
+        );
+
+
+    const indicadores =
+        document.getElementById(
+            "indicadores"
+        );
+
+
+
+    /*
+    =====================================
+    VARIABLES DE GALERÍA
+    =====================================
+    */
+
+    let imagenes = [];
+
+    let indiceActual = 0;
+
+
+
+    /*
+    =====================================
+    CONVERTIR IMAGEN A ARRAY
+    =====================================
+
+    Esto permite trabajar con:
+
+    1. Una imagen antigua:
+    "https://..."
+
+    2. Varias imágenes:
+    ["https://...", "https://..."]
+
+    3. JSON guardado como texto:
+    '["https://...", "https://..."]'
+    */
+
+    function prepararImagenes(valor) {
+
+        if (!valor) {
+
+            return [];
+
+        }
+
+
+        if (Array.isArray(valor)) {
+
+            return valor.filter(
+                imagen => imagen
+            );
+
+        }
+
+
+        if (typeof valor === "string") {
+
+            try {
+
+                const posibles =
+                    JSON.parse(valor);
+
+
+                if (Array.isArray(posibles)) {
+
+                    return posibles.filter(
+                        imagen => imagen
+                    );
+
+                }
+
+            }
+            catch (error) {
+
+                // Es una URL normal.
+            }
+
+
+            return [valor];
+
+        }
+
+
+        return [];
+
+    }
+
+
+
+    /*
+    =====================================
+    MOSTRAR IMAGEN
+    =====================================
+    */
+
+    function mostrarImagen() {
+
+        if (!imagenes.length) {
+
+            imagen.style.display =
+                "none";
+
+            anterior.classList.add(
+                "galeria-oculta"
+            );
+
+            siguiente.classList.add(
+                "galeria-oculta"
+            );
+
+            contador.classList.add(
+                "galeria-oculta"
+            );
+
+            indicadores.innerHTML =
+                "";
+
+            return;
+
+        }
+
+
+        imagen.style.display =
+            "block";
+
+
+        imagen.src =
+            imagenes[indiceActual];
+
+
+        imagen.alt =
+            nombre.textContent
+            || "Propiedad INMORIO";
+
+
+        /*
+        CONTADOR
+        */
+
+        contador.textContent =
+            `${indiceActual + 1} / ${imagenes.length}`;
+
+
+        /*
+        INDICADORES
+        */
+
+        indicadores.innerHTML =
+            imagenes.map(
+                (_, index) => `
+
+                    <span
+                        class="galeria-indicador
+                        ${index === indiceActual ? "activo" : ""}"
+                        data-index="${index}">
+                    </span>
+
+                `
+            ).join("");
+
+
+        /*
+        SI SOLO HAY UNA FOTO
+        */
+
+        if (imagenes.length <= 1) {
+
+            anterior.classList.add(
+                "galeria-oculta"
+            );
+
+            siguiente.classList.add(
+                "galeria-oculta"
+            );
+
+            contador.classList.add(
+                "galeria-oculta"
+            );
+
+        }
+
+        else {
+
+            anterior.classList.remove(
+                "galeria-oculta"
+            );
+
+            siguiente.classList.remove(
+                "galeria-oculta"
+            );
+
+            contador.classList.remove(
+                "galeria-oculta"
+            );
+
+        }
+
+
+        /*
+        CLICK EN INDICADORES
+        */
+
+        document
+            .querySelectorAll(
+                ".galeria-indicador"
+            )
+            .forEach(
+                indicador => {
+
+                    indicador.addEventListener(
+                        "click",
+                        () => {
+
+                            indiceActual =
+                                Number(
+                                    indicador.dataset.index
+                                );
+
+                            mostrarImagen();
+
+                        }
+                    );
+
+                }
+            );
+
+    }
+
+
+
+    /*
+    =====================================
+    FOTO ANTERIOR
+    =====================================
+    */
+
+    anterior.addEventListener(
+        "click",
+        () => {
+
+            if (!imagenes.length) {
+
+                return;
+
+            }
+
+
+            indiceActual--;
+
+            if (indiceActual < 0) {
+
+                indiceActual =
+                    imagenes.length - 1;
+
+            }
+
+
+            mostrarImagen();
+
+        }
+    );
+
+
+
+    /*
+    =====================================
+    FOTO SIGUIENTE
+    =====================================
+    */
+
+    siguiente.addEventListener(
+        "click",
+        () => {
+
+            if (!imagenes.length) {
+
+                return;
+
+            }
+
+
+            indiceActual++;
+
+            if (
+                indiceActual >=
+                imagenes.length
+            ) {
+
+                indiceActual = 0;
+
+            }
+
+
+            mostrarImagen();
+
+        }
+    );
+
+
 
     /*
     =====================================
@@ -353,8 +802,9 @@
         descripcion.textContent =
             "No se recibió el identificador de la propiedad.";
 
+    }
 
-    } else {
+    else {
 
 
         /*
@@ -363,22 +813,39 @@
         =====================================
         */
 
-       const {
-    data,
-    error
-} =
-    await supabase
-        .from("Inmorio")
-        .select("*")
-        .eq(
-            "id",
-            id
-        )
-        .single();
+        const {
+            data,
+            error
+        } =
+            await supabase
+                .from("Inmorio")
+                .select("*")
+                .eq(
+                    "id",
+                    id
+                )
+                .single();
 
-console.log("ID recibido:", id);
-console.log("DATOS RECIBIDOS:", data);
-console.log("ERROR:", error);
+
+
+        console.log(
+            "ID recibido:",
+            id
+        );
+
+
+        console.log(
+            "DATOS RECIBIDOS:",
+            data
+        );
+
+
+        console.log(
+            "ERROR:",
+            error
+        );
+
+
 
         /*
         =====================================
@@ -401,16 +868,16 @@ console.log("ERROR:", error);
             descripcion.textContent =
                 "No se pudo encontrar esta propiedad.";
 
+        }
 
-        } else {
+        else {
 
 
             /*
             =====================================
-            MOSTRAR DATOS
+            MOSTRAR INFORMACIÓN
             =====================================
             */
-
 
             tipo.textContent =
                 data.tipo
@@ -438,77 +905,63 @@ console.log("ERROR:", error);
                 ).toLocaleString();
 
 
+            habitaciones.textContent =
+                data.habitaciones !== null
+                &&
+                data.habitaciones !== undefined
+                    ? data.habitaciones
+                    : "—";
+
+
+            banos.textContent =
+                data.banos !== null
+                &&
+                data.banos !== undefined
+                    ? data.banos
+                    : "—";
+
+
+            area.textContent =
+                data.area !== null
+                &&
+                data.area !== undefined
+                    ? data.area + " m²"
+                    : "—";
+
+
             descripcion.textContent =
                 data.descripcion
                     || "No hay una descripción disponible para esta propiedad.";
 
 
-
-            /*
-            =====================================
-            IMAGEN
-            =====================================
-            */
-
-            if (data.imagen) {
-
-                imagen.src =
-                    data.imagen;
-
-                imagen.alt =
-                    data.nombre
-                    || "Propiedad INMORIO";
-
-            } else {
-
-                imagen.style.display =
-                    "none";
-
-            }
-
-
-
-            /*
-            =====================================
-            CARACTERÍSTICAS
-            =====================================
-
-            Como tu tabla actualmente no tiene
-            habitaciones, baños ni área,
-            dejamos estos campos como "—".
-            */
-
-            habitaciones.textContent =
-                data.habitaciones
-                || "—";
-
-
-            banos.textContent =
-                data.banos
-                || "—";
-
-
-            area.textContent =
-                data.area
-                || "—";
-
-
-
-            /*
-            =====================================
-            ESTADO
-            =====================================
-            */
-
             estado.textContent =
                 data.estado
-                || "Disponible";
+                    || "Disponible";
 
 
 
             /*
             =====================================
-            TÍTULO DE LA PÁGINA
+            CARGAR TODAS LAS IMÁGENES
+            =====================================
+            */
+
+            imagenes =
+                prepararImagenes(
+                    data.imagen
+                );
+
+
+            indiceActual = 0;
+
+
+            mostrarImagen();
+
+
+
+            /*
+            =====================================
+            TÍTULO
             =====================================
             */
 
@@ -519,16 +972,54 @@ console.log("ERROR:", error);
                 )
                 + " | INMORIO";
 
-
         }
 
     }
 
 
+
+    /*
+    =====================================
+    CAMBIAR FOTO CON TECLADO
+    =====================================
+    */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (imagenes.length <= 1) {
+
+                return;
+
+            }
+
+
+            if (
+                event.key ===
+                "ArrowLeft"
+            ) {
+
+                anterior.click();
+
+            }
+
+
+            if (
+                event.key ===
+                "ArrowRight"
+            ) {
+
+                siguiente.click();
+
+            }
+
+        }
+    );
+
 </script>
-```
 
 </body>
 
-
+</html>
 </html>
