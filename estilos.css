@@ -968,33 +968,35 @@ h1 {
     transition: 0.2s ease;
 }
 
+.boton-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    color: #111;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.flecha-volver {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    font-size: 20px;
+    transition: 0.25s ease;
+}
+
 .boton-volver:hover {
+    color: #b08d57;
+}
+
+.boton-volver:hover .flecha-volver {
     transform: translateX(-4px);
-    opacity: 0.7;
-}
-
-}
-
-@media (max-width: 600px) {
-
-    .detalle-propiedad {
-        padding: 70px 20px;
-    }
-
-    .detalle-imagen {
-        height: 350px;
-    }
-
-    .detalle-info h1 {
-        font-size: 35px;
-    }
-
-    .detalle-precio {
-        font-size: 30px;
-    }
-
-    .detalle-caracteristicas {
-        gap: 20px;
-    }
-
+    border-color: #b08d57;
 }
