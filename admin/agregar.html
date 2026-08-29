@@ -1,625 +1,867 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
 
-    <meta charset="UTF-8">
+```
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
-    <title>Nueva propiedad | INMORIO</title>
+<title id="pageTitle">
+    Nueva propiedad | INMORIO
+</title>
 
-    <link rel="stylesheet"
-        href="admin.css">
+<link rel="stylesheet"
+    href="admin.css">
+```
 
 </head>
 
-
 <body>
 
-    <main class="add-page">
+```
+<main class="add-page">
 
 
-        <!-- ENCABEZADO -->
+    <!-- ENCABEZADO -->
 
-        <header class="add-header">
+    <header class="add-header">
 
-            <a href="panel.html"
-                class="back-button">
+        <a href="panel.html"
+            class="back-button">
 
-                ← Volver al panel
+            ← Volver al panel
 
-            </a>
+        </a>
 
-            <div>
+        <div>
 
-                <span class="eyebrow">
-                    INMORIO
-                </span>
+            <span class="eyebrow">
+                INMORIO
+            </span>
 
-                <h1>
-                    Nueva propiedad
-                </h1>
+            <h1 id="formTitle">
+                Nueva propiedad
+            </h1>
 
-                <p>
-                    Agrega una propiedad al inventario.
-                </p>
+            <p id="formSubtitle">
+                Agrega una propiedad al inventario.
+            </p>
 
-            </div>
+        </div>
 
-        </header>
-
-
-        <!-- FORMULARIO -->
-
-        <section class="form-container">
-
-            <form id="propertyForm">
+    </header>
 
 
-                <!-- INFORMACIÓN PRINCIPAL -->
+    <!-- FORMULARIO -->
 
-                <div class="form-section">
+    <section class="form-container">
 
-                    <div class="form-section-title">
-
-                        <span>
-                            01
-                        </span>
-
-                        <div>
-
-                            <h2>
-                                Información principal
-                            </h2>
-
-                            <p>
-                                Datos básicos de la propiedad.
-                            </p>
-
-                        </div>
-
-                    </div>
+        <form id="propertyForm">
 
 
-                    <div class="form-grid">
+            <!-- INFORMACIÓN PRINCIPAL -->
 
+            <div class="form-section">
 
-                        <!-- NOMBRE -->
+                <div class="form-section-title">
 
-                        <div class="form-group full">
+                    <span>
+                        01
+                    </span>
 
-                            <label for="nombre">
-                                Nombre de la propiedad
-                            </label>
+                    <div>
 
-                            <input
-                                type="text"
-                                id="nombre"
-                                placeholder="Ej. Casa Moderna"
-                                required
-                            >
+                        <h2>
+                            Información principal
+                        </h2>
 
-                        </div>
-
-
-                        <!-- TIPO -->
-
-                        <div class="form-group">
-
-                            <label for="tipo">
-                                Tipo
-                            </label>
-
-                            <select
-                                id="tipo"
-                                required
-                            >
-
-                                <option value="">
-                                    Selecciona un tipo
-                                </option>
-
-                                <option value="Casa">
-                                    Casa
-                                </option>
-
-                                <option value="Departamento">
-                                    Departamento
-                                </option>
-
-                                <option value="Terreno">
-                                    Terreno
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- PRECIO -->
-
-                        <div class="form-group">
-
-                            <label for="precio">
-                                Precio
-                            </label>
-
-                            <div class="price-input">
-
-                                <span>
-                                    $
-                                </span>
-
-                                <input
-                                    type="number"
-                                    id="precio"
-                                    placeholder="120000"
-                                    min="0"
-                                    required
-                                >
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- UBICACIÓN -->
-
-                        <div class="form-group full">
-
-                            <label for="ubicacion">
-                                Ubicación
-                            </label>
-
-                            <input
-                                type="text"
-                                id="ubicacion"
-                                placeholder="Ej. Riobamba, Chimborazo"
-                                required
-                            >
-
-                        </div>
+                        <p>
+                            Datos básicos de la propiedad.
+                        </p>
 
                     </div>
 
                 </div>
 
 
-                <!-- ESTADO -->
+                <div class="form-grid">
 
-                <div class="form-section">
 
-                    <div class="form-section-title">
+                    <!-- NOMBRE -->
 
-                        <span>
-                            02
-                        </span>
+                    <div class="form-group full">
 
-                        <div>
+                        <label for="nombre">
+                            Nombre de la propiedad
+                        </label>
 
-                            <h2>
-                                Estado
-                            </h2>
-
-                            <p>
-                                Define la disponibilidad.
-                            </p>
-
-                        </div>
+                        <input
+                            type="text"
+                            id="nombre"
+                            placeholder="Ej. Casa Moderna"
+                            required
+                        >
 
                     </div>
 
 
+                    <!-- TIPO -->
+
                     <div class="form-group">
 
-                        <label for="estado">
-                            Estado de la propiedad
+                        <label for="tipo">
+                            Tipo
                         </label>
 
                         <select
-                            id="estado"
+                            id="tipo"
                             required
                         >
 
-                            <option value="Disponible">
-                                Disponible
+                            <option value="">
+                                Selecciona un tipo
                             </option>
 
-                            <option value="Vendida">
-                                Vendida
+                            <option value="Casa">
+                                Casa
+                            </option>
+
+                            <option value="Departamento">
+                                Departamento
+                            </option>
+
+                            <option value="Terreno">
+                                Terreno
                             </option>
 
                         </select>
 
                     </div>
 
-                </div>
 
-
-                <!-- DESCRIPCIÓN -->
-
-                <div class="form-section">
-
-                    <div class="form-section-title">
-
-                        <span>
-                            03
-                        </span>
-
-                        <div>
-
-                            <h2>
-                                Descripción
-                            </h2>
-
-                            <p>
-                                Describe las características de la propiedad.
-                            </p>
-
-                        </div>
-
-                    </div>
-
+                    <!-- PRECIO -->
 
                     <div class="form-group">
 
-                        <label for="descripcion">
-                            Descripción
+                        <label for="precio">
+                            Precio
                         </label>
 
-                        <textarea
-                            id="descripcion"
-                            rows="6"
-                            placeholder="Describe la propiedad..."
-                        ></textarea>
+                        <div class="price-input">
 
-                    </div>
+                            <span>
+                                $
+                            </span>
 
-                </div>
-
-
-                <!-- IMAGEN -->
-
-                <div class="form-section">
-
-                    <div class="form-section-title">
-
-                        <span>
-                            04
-                        </span>
-
-                        <div>
-
-                            <h2>
-                                Imagen
-                            </h2>
-
-                            <p>
-                                Por ahora puedes colocar una URL de imagen.
-                            </p>
+                            <input
+                                type="number"
+                                id="precio"
+                                placeholder="120000"
+                                min="0"
+                                required
+                            >
 
                         </div>
 
                     </div>
 
 
-                    <div class="form-group">
+                    <!-- UBICACIÓN -->
 
-                     <label for="imagen">
-    Foto de la propiedad
-</label>
+                    <div class="form-group full">
 
-<input
-    type="file"
-    id="imagen"
-    accept="image/*"
-    required
->
+                        <label for="ubicacion">
+                            Ubicación
+                        </label>
 
-<p class="image-help">
-    Selecciona una imagen desde tu computadora.
-</p>
-           
+                        <input
+                            type="text"
+                            id="ubicacion"
+                            placeholder="Ej. Riobamba, Chimborazo"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ESTADO -->
+
+            <div class="form-section">
+
+                <div class="form-section-title">
+
+                    <span>
+                        02
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Estado
+                        </h2>
+
+                        <p>
+                            Define la disponibilidad.
+                        </p>
+
                     </div>
 
                 </div>
 
 
-                <!-- MENSAJE -->
+                <div class="form-group">
 
-                <p
-                    id="formMessage"
-                    class="form-message">
-                </p>
+                    <label for="estado">
+                        Estado de la propiedad
+                    </label>
+
+                    <select
+                        id="estado"
+                        required
+                    >
+
+                        <option value="Disponible">
+                            Disponible
+                        </option>
+
+                        <option value="Vendida">
+                            Vendida
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
 
 
-                <!-- BOTONES -->
+            <!-- DESCRIPCIÓN -->
 
-                <div class="form-actions">
+            <div class="form-section">
 
-                    <a
-                        href="panel.html"
-                        class="cancel-button">
+                <div class="form-section-title">
 
-                        Cancelar
+                    <span>
+                        03
+                    </span>
 
-                    </a>
+                    <div>
 
+                        <h2>
+                            Descripción
+                        </h2>
 
-                    <button
-                        type="submit"
-                        class="save-button">
+                        <p>
+                            Describe las características de la propiedad.
+                        </p>
 
-                        Guardar propiedad
-
-                    </button>
+                    </div>
 
                 </div>
 
 
-            </form>
+                <div class="form-group">
 
-        </section>
+                    <label for="descripcion">
+                        Descripción
+                    </label>
 
-    </main>
+                    <textarea
+                        id="descripcion"
+                        rows="6"
+                        placeholder="Describe la propiedad..."
+                    ></textarea>
 
+                </div>
 
-    <!-- SUPABASE -->
-
-    <script type="module">
-
-        import {
-            createClient
-        } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-
-
-        const SUPABASE_URL =
-            "https://suvhbicsdldrncwkwzdz.supabase.co";
+            </div>
 
 
-        const SUPABASE_KEY =
-            "sb_publishable_9qelxkXyfJopNRFMN41JGA_vleUoVW5";
+            <!-- IMAGEN -->
+
+            <div class="form-section">
+
+                <div class="form-section-title">
+
+                    <span>
+                        04
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Imagen
+                        </h2>
+
+                        <p id="imageDescription">
+                            Selecciona una imagen desde tu computadora.
+                        </p>
+
+                    </div>
+
+                </div>
 
 
-        const supabase =
-            createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
-            );
+                <div class="form-group">
+
+                    <label for="imagen">
+                        Foto de la propiedad
+                    </label>
+
+                    <input
+                        type="file"
+                        id="imagen"
+                        accept="image/*"
+                    >
+
+                    <p class="image-help">
+                        Al editar, puedes dejarlo vacío para conservar la imagen actual.
+                    </p>
+
+                    <p
+                        id="currentImage"
+                        class="image-help">
+                    </p>
+
+                </div>
+
+            </div>
 
 
-        /*
-        ==================================
-        COMPROBAR SESIÓN
-        ==================================
-        */
+            <!-- MENSAJE -->
 
-        const {
-            data: {
-                session
-            }
-        } =
-            await supabase.auth.getSession();
+            <p
+                id="formMessage"
+                class="form-message">
+            </p>
 
 
-        if (!session) {
+            <!-- BOTONES -->
 
-            window.location.href =
-                "login.html";
+            <div class="form-actions">
 
+                <a
+                    href="panel.html"
+                    class="cancel-button">
+
+                    Cancelar
+
+                </a>
+
+
+                <button
+                    type="submit"
+                    id="saveButton"
+                    class="save-button">
+
+                    Guardar propiedad
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<!-- SUPABASE -->
+
+<script type="module">
+
+    import {
+        createClient
+    } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+    /*
+    ==================================
+    CONFIGURACIÓN SUPABASE
+    ==================================
+    */
+
+    const SUPABASE_URL =
+        "https://suvhbicsdldrncwkwzdz.supabase.co";
+
+
+    const SUPABASE_KEY =
+        "sb_publishable_9qelxKXyfJopNRFMN41JGA_vleUoVW5";
+
+
+    const supabase =
+        createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    /*
+    ==================================
+    COMPROBAR SESIÓN
+    ==================================
+    */
+
+    const {
+        data: {
+            session
         }
+    } =
+        await supabase.auth.getSession();
 
 
-        /*
-        ==================================
-        FORMULARIO
-        ==================================
-        */
+    if (!session) {
 
-        const form =
-            document.getElementById(
-                "propertyForm"
-            );
+        window.location.href =
+            "login.html";
 
-
-        const message =
-            document.getElementById(
-                "formMessage"
-            );
-
-
-        form.addEventListener(
-            "submit",
-            async (event) => {
-
-                event.preventDefault();
-
-
-                message.textContent =
-                    "Guardando propiedad...";
-
-
-                message.className =
-                    "form-message loading-message";
-
-
-                /*
-                OBTENER DATOS
-                */
-
-                const nombre =
-                    document.getElementById(
-                        "nombre"
-                    ).value.trim();
-
-
-                const tipo =
-                    document.getElementById(
-                        "tipo"
-                    ).value;
-
-
-                const precio =
-                    Number(
-                        document.getElementById(
-                            "precio"
-                        ).value
-                    );
-
-
-                const ubicacion =
-                    document.getElementById(
-                        "ubicacion"
-                    ).value.trim();
-
-
-                const estado =
-                    document.getElementById(
-                        "estado"
-                    ).value;
-
-
-                const descripcion =
-                    document.getElementById(
-                        "descripcion"
-                    ).value.trim();
-
-
-              const archivoImagen =
-        document.getElementById("imagen").files[0];
-
-       if (!archivoImagen) {
-
-         message.textContent =
-           "Selecciona una imagen.";
-
-           message.className =
-        "form-message error-message";
-
-       return;
     }
 
-     const extension =
-    archivoImagen.name
-        .split(".")
-        .pop();
 
-const nombreArchivo =
-    `${Date.now()}-${Math.random()
-        .toString(36)
-        .substring(2)}.${extension}`;
+    /*
+    ==================================
+    ELEMENTOS
+    ==================================
+    */
 
-
-message.textContent =
-    "Subiendo imagen...";
-
-
-const {
-    error: uploadError
-} =
-    await supabase.storage
-        .from("propiedades")
-        .upload(
-            nombreArchivo,
-            archivoImagen,
-            {
-                cacheControl: "3600",
-                upsert: false
-            }
+    const form =
+        document.getElementById(
+            "propertyForm"
         );
 
 
-if (uploadError) {
+    const message =
+        document.getElementById(
+            "formMessage"
+        );
 
-    console.error(uploadError);
 
-    message.textContent =
-        "No se pudo subir la imagen: "
-        + uploadError.message;
+    const saveButton =
+        document.getElementById(
+            "saveButton"
+        );
 
-    message.className =
-        "form-message error-message";
 
-    return;
-}
+    /*
+    ==================================
+    SABER SI ESTAMOS EDITANDO
+    ==================================
+    */
 
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const id =
+        params.get("id");
+
+
+    let propiedadActual = null;
+
+
+    /*
+    ==================================
+    CARGAR PROPIEDAD PARA EDITAR
+    ==================================
+    */
+
+    async function cargarPropiedad() {
+
+        if (!id) {
+
+            return;
+
+        }
+
+
+        document.getElementById(
+            "pageTitle"
+        ).textContent =
+            "Editar propiedad | INMORIO";
+
+
+        document.getElementById(
+            "formTitle"
+        ).textContent =
+            "Editar propiedad";
+
+
+        document.getElementById(
+            "formSubtitle"
+        ).textContent =
+            "Modifica los datos de esta propiedad.";
+
+
+        saveButton.textContent =
+            "Guardar cambios";
+
+
+        message.textContent =
+            "Cargando propiedad...";
+
+
+        const {
+            data,
+            error
+        } =
+            await supabase
+                .from("Inmorio")
+                .select("*")
+                .eq("id", id)
+                .single();
+
+
+        if (error) {
+
+            console.error(error);
+
+            message.textContent =
+                "No se pudo cargar la propiedad: "
+                + error.message;
+
+            message.className =
+                "form-message error-message";
+
+            return;
+
+        }
+
+
+        propiedadActual =
+            data;
+
+
+        /*
+        LLENAR FORMULARIO
+        */
+
+        document.getElementById(
+            "nombre"
+        ).value =
+            data.nombre || "";
+
+
+        document.getElementById(
+            "tipo"
+        ).value =
+            data.tipo || "";
+
+
+        document.getElementById(
+            "precio"
+        ).value =
+            data.precio || "";
+
+
+        document.getElementById(
+            "ubicacion"
+        ).value =
+            data.ubicacion || "";
+
+
+        document.getElementById(
+            "estado"
+        ).value =
+            data.estado || "Disponible";
+
+
+        document.getElementById(
+            "descripcion"
+        ).value =
+            data.descripcion || "";
+
+
+        if (data.imagen) {
+
+            document.getElementById(
+                "currentImage"
+            ).textContent =
+                "La propiedad ya tiene una imagen. Puedes seleccionar otra para reemplazarla.";
+
+        }
+
+
+        message.textContent = "";
+
+    }
+
+
+    /*
+    ==================================
+    SUBIR IMAGEN
+    ==================================
+    */
+
+    async function subirImagen(
+        archivoImagen
+    ) {
+
+        const extension =
+            archivoImagen.name
+                .split(".")
+                .pop();
+
+
+        const nombreArchivo =
+            `${Date.now()}-${Math.random()
+                .toString(36)
+                .substring(2)}.${extension}`;
+
+
+        const {
+            error
+        } =
+            await supabase.storage
+                .from("propiedades")
+                .upload(
+                    nombreArchivo,
+                    archivoImagen,
+                    {
+                        cacheControl: "3600",
+                        upsert: false
+                    }
+                );
+
+
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        const {
+            data
+        } =
+            supabase.storage
+                .from("propiedades")
+                .getPublicUrl(
+                    nombreArchivo
+                );
+
+
+        return data.publicUrl;
+
+    }
+
+
+    /*
+    ==================================
+    GUARDAR
+    ==================================
+    */
+
+    form.addEventListener(
+        "submit",
+        async (event) => {
+
+            event.preventDefault();
+
+
+            saveButton.disabled =
+                true;
+
+
+            message.textContent =
+                id
+                    ? "Guardando cambios..."
+                    : "Guardando propiedad...";
+
+
+            message.className =
+                "form-message loading-message";
+
+
+            /*
+            DATOS
+            */
+
+            const nombre =
+                document.getElementById(
+                    "nombre"
+                ).value.trim();
+
+
+            const tipo =
+                document.getElementById(
+                    "tipo"
+                ).value;
+
+
+            const precio =
+                Number(
+                    document.getElementById(
+                        "precio"
+                    ).value
+                );
+
+
+            const ubicacion =
+                document.getElementById(
+                    "ubicacion"
+                ).value.trim();
+
+
+            const estado =
+                document.getElementById(
+                    "estado"
+                ).value;
+
+
+            const descripcion =
+                document.getElementById(
+                    "descripcion"
+                ).value.trim();
+
+
+            const archivoImagen =
+                document.getElementById(
+                    "imagen"
+                ).files[0];
+
+
+            /*
+            ==================================
+            IMAGEN
+            ==================================
+            */
+
+            let imagen =
+                propiedadActual?.imagen
+                || null;
+
+
+            /*
+            SI HAY NUEVA IMAGEN
+            */
+
+            if (archivoImagen) {
+
+                try {
+
+                    message.textContent =
+                        "Subiendo imagen...";
+
+
+                    imagen =
+                        await subirImagen(
+                            archivoImagen
+                        );
+
+                }
+                catch (error) {
+
+                    console.error(error);
+
+                    message.textContent =
+                        "No se pudo subir la imagen: "
+                        + error.message;
+
+                    message.className =
+                        "form-message error-message";
+
+                    saveButton.disabled =
+                        false;
+
+                    return;
+
+                }
+
+            }
+
+
+            /*
+            ==================================
+            DATOS A GUARDAR
+            ==================================
+            */
+
+            const datos = {
+
+                nombre:
+                    nombre,
+
+                tipo:
+                    tipo,
+
+                precio:
+                    precio,
+
+                ubicacion:
+                    ubicacion,
+
+                imagen:
+                    imagen,
+
+                estado:
+                    estado,
+
+                descripcion:
+                    descripcion
+
+            };
+
+
+            /*
+            ==================================
+            EDITAR
+            ==================================
+            */
+
+            if (id) {
 
                 const {
-    data: publicUrlData
-} =
-    supabase.storage
-        .from("propiedades")
-        .getPublicUrl(
-            nombreArchivo
-        );
+                    error
+                } =
+                    await supabase
+                        .from("Inmorio")
+                        .update(
+                            datos
+                        )
+                        .eq(
+                            "id",
+                            id
+                        );
 
-
-const imagen =
-    publicUrlData.publicUrl;
-                /*
-                INSERTAR EN SUPABASE
-                */
-
-               const {
-    data,
-    error
-} = await supabase
-    .from("Inmorio")
-    .insert([
-        {
-            nombre: nombre,
-            tipo: tipo,
-            precio: precio,
-            ubicacion: ubicacion,
-            imagen: imagen || null,
-            estado: estado,
-            descripcion: descripcion
-        }
-    ])
-    .select();
-
-                /*
-                ERROR
-                */
 
                 if (error) {
 
                     console.error(error);
 
-
                     message.textContent =
-                   "Error: " + error.message;
-
+                        "Error: "
+                        + error.message;
 
                     message.className =
                         "form-message error-message";
 
+                    saveButton.disabled =
+                        false;
 
                     return;
 
                 }
 
 
-                /*
-                ÉXITO
-                */
-
                 message.textContent =
-                    "¡Propiedad guardada correctamente!";
+                    "¡Propiedad actualizada correctamente!";
 
 
                 message.className =
                     "form-message success-message";
 
-
-                form.reset();
-
-
-                /*
-                VOLVER AL PANEL
-                */
 
                 setTimeout(
                     () => {
@@ -628,16 +870,108 @@ const imagen =
                             "panel.html";
 
                     },
-                    1200
+                    1000
                 );
 
-            }
-        );
 
-    </script>
+                return;
+
+            }
+
+
+            /*
+            ==================================
+            CREAR
+            ==================================
+            */
+
+            if (!imagen) {
+
+                message.textContent =
+                    "Selecciona una imagen.";
+
+                message.className =
+                    "form-message error-message";
+
+                saveButton.disabled =
+                    false;
+
+                return;
+
+            }
+
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("Inmorio")
+                    .insert([
+                        datos
+                    ]);
+
+
+            if (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    "Error: "
+                    + error.message;
+
+                message.className =
+                    "form-message error-message";
+
+                saveButton.disabled =
+                    false;
+
+                return;
+
+            }
+
+
+            /*
+            ==================================
+            ÉXITO
+            ==================================
+            */
+
+            message.textContent =
+                "¡Propiedad guardada correctamente!";
+
+
+            message.className =
+                "form-message success-message";
+
+
+            form.reset();
+
+
+            setTimeout(
+                () => {
+
+                    window.location.href =
+                        "panel.html";
+
+                },
+                1000
+            );
+
+        }
+    );
+
+
+    /*
+    ==================================
+    INICIAR
+    ==================================
+    */
+
+    cargarPropiedad();
+
+</script>
+```
 
 </body>
 
 </html>
-```
-
