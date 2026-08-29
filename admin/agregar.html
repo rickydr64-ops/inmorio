@@ -16,6 +16,18 @@
     <link rel="stylesheet"
         href="admin.css">
 
+    <style>
+
+        /* =====================================
+           OCULTAR CAMPOS
+        ===================================== */
+
+        .campo-oculto {
+            display: none !important;
+        }
+
+    </style>
+
 </head>
 
 
@@ -61,7 +73,9 @@
         <form id="propertyForm">
 
 
-            <!-- INFORMACIÓN PRINCIPAL -->
+            <!-- =====================================
+                 INFORMACIÓN PRINCIPAL
+            ===================================== -->
 
             <div class="form-section">
 
@@ -190,7 +204,9 @@
             </div>
 
 
-            <!-- CARACTERÍSTICAS -->
+            <!-- =====================================
+                 CARACTERÍSTICAS
+            ===================================== -->
 
             <div class="form-section">
 
@@ -220,7 +236,9 @@
 
                     <!-- HABITACIONES -->
 
-                    <div class="form-group">
+                    <div
+                        class="form-group"
+                        id="grupoHabitaciones">
 
                         <label for="habitaciones">
                             Habitaciones
@@ -238,7 +256,9 @@
 
                     <!-- BAÑOS -->
 
-                    <div class="form-group">
+                    <div
+                        class="form-group"
+                        id="grupoBanos">
 
                         <label for="banos">
                             Baños
@@ -277,7 +297,9 @@
             </div>
 
 
-            <!-- ESTADO -->
+            <!-- =====================================
+                 ESTADO
+            ===================================== -->
 
             <div class="form-section">
 
@@ -328,7 +350,9 @@
             </div>
 
 
-            <!-- DESCRIPCIÓN -->
+            <!-- =====================================
+                 DESCRIPCIÓN
+            ===================================== -->
 
             <div class="form-section">
 
@@ -370,7 +394,9 @@
             </div>
 
 
-            <!-- IMÁGENES -->
+            <!-- =====================================
+                 IMÁGENES
+            ===================================== -->
 
             <div class="form-section">
 
@@ -480,7 +506,9 @@
 
 
 
-<!-- SUPABASE -->
+<!-- =====================================
+     SUPABASE
+===================================== -->
 
 <script type="module">
 
@@ -571,6 +599,107 @@ const previewContainer =
     );
 
 
+const tipoInput =
+    document.getElementById(
+        "tipo"
+    );
+
+
+const grupoHabitaciones =
+    document.getElementById(
+        "grupoHabitaciones"
+    );
+
+
+const grupoBanos =
+    document.getElementById(
+        "grupoBanos"
+    );
+
+
+const habitacionesInput =
+    document.getElementById(
+        "habitaciones"
+    );
+
+
+const banosInput =
+    document.getElementById(
+        "banos"
+    );
+
+
+
+/*
+==================================
+MOSTRAR CAMPOS SEGÚN EL TIPO
+==================================
+*/
+
+function actualizarCamposTipo() {
+
+    const tipo =
+        tipoInput.value
+            .trim()
+            .toLowerCase();
+
+
+    /*
+    SI ES TERRENO
+    */
+
+    if (tipo === "terreno") {
+
+        grupoHabitaciones.classList.add(
+            "campo-oculto"
+        );
+
+        grupoBanos.classList.add(
+            "campo-oculto"
+        );
+
+
+        /*
+        LIMPIAR VALORES
+        */
+
+        habitacionesInput.value = "";
+
+        banosInput.value = "";
+
+    }
+
+    else {
+
+        /*
+        CASA O DEPARTAMENTO
+        */
+
+        grupoHabitaciones.classList.remove(
+            "campo-oculto"
+        );
+
+        grupoBanos.classList.remove(
+            "campo-oculto"
+        );
+
+    }
+
+}
+
+
+/*
+==================================
+CAMBIAR AL SELECCIONAR TIPO
+==================================
+*/
+
+tipoInput.addEventListener(
+    "change",
+    actualizarCamposTipo
+);
+
+
 
 /*
 ==================================
@@ -595,7 +724,7 @@ let propiedadActual =
 
 /*
 ==================================
-PREVISUALIZAR IMÁGENES
+PREVISUALIZAR IMÁGENES NUEVAS
 ==================================
 */
 
@@ -604,6 +733,7 @@ imagenInput.addEventListener(
     () => {
 
         previewContainer.innerHTML = "";
+
 
         const archivos =
             Array.from(
@@ -652,7 +782,9 @@ imagenInput.addEventListener(
                         `;
 
 
-                        div.appendChild(img);
+                        div.appendChild(
+                            img
+                        );
 
 
                         previewContainer.appendChild(
@@ -683,6 +815,8 @@ CARGAR PROPIEDAD PARA EDITAR
 async function cargarPropiedad() {
 
     if (!id) {
+
+        actualizarCamposTipo();
 
         return;
 
@@ -722,7 +856,10 @@ async function cargarPropiedad() {
         await supabase
             .from("Inmorio")
             .select("*")
-            .eq("id", id)
+            .eq(
+                "id",
+                id
+            )
             .single();
 
 
@@ -730,12 +867,15 @@ async function cargarPropiedad() {
 
         console.error(error);
 
+
         message.textContent =
             "No se pudo cargar la propiedad: "
             + error.message;
 
+
         message.className =
             "form-message error-message";
+
 
         return;
 
@@ -803,6 +943,15 @@ async function cargarPropiedad() {
         "area"
     ).value =
         data.area ?? "";
+
+
+
+    /*
+    ACTUALIZAR CAMPOS
+    SEGÚN EL TIPO
+    */
+
+    actualizarCamposTipo();
 
 
 
@@ -914,131 +1063,178 @@ form.addEventListener(
 
 
 
-        /*
-        DATOS
-        */
-
-        const nombre =
-            document.getElementById(
-                "nombre"
-            ).value.trim();
+        try {
 
 
-        const tipo =
-            document.getElementById(
-                "tipo"
-            ).value;
+            /*
+            ==================================
+            DATOS
+            ==================================
+            */
 
-
-        const precio =
-            Number(
+            const nombre =
                 document.getElementById(
-                    "precio"
-                ).value
-            );
+                    "nombre"
+                ).value.trim();
 
 
-        const ubicacion =
-            document.getElementById(
-                "ubicacion"
-            ).value.trim();
+            const tipo =
+                document.getElementById(
+                    "tipo"
+                ).value;
 
 
-        const estado =
-            document.getElementById(
-                "estado"
-            ).value;
+            const precio =
+                Number(
+                    document.getElementById(
+                        "precio"
+                    ).value
+                );
 
 
-        const descripcion =
-            document.getElementById(
-                "descripcion"
-            ).value.trim();
+            const ubicacion =
+                document.getElementById(
+                    "ubicacion"
+                ).value.trim();
 
 
-        const habitacionesValue =
-            document.getElementById(
-                "habitaciones"
-            ).value;
+            const estado =
+                document.getElementById(
+                    "estado"
+                ).value;
 
 
-        const banosValue =
-            document.getElementById(
-                "banos"
-            ).value;
+            const descripcion =
+                document.getElementById(
+                    "descripcion"
+                ).value.trim();
 
 
-        const areaValue =
-            document.getElementById(
-                "area"
-            ).value;
+            const habitacionesValue =
+                habitacionesInput.value;
 
 
-
-        const habitaciones =
-            habitacionesValue === ""
-                ? null
-                : Number(habitacionesValue);
+            const banosValue =
+                banosInput.value;
 
 
-        const banos =
-            banosValue === ""
-                ? null
-                : Number(banosValue);
-
-
-        const area =
-            areaValue === ""
-                ? null
-                : Number(areaValue);
+            const areaValue =
+                document.getElementById(
+                    "area"
+                ).value;
 
 
 
-        /*
-        ==================================
-        TODAS LAS IMÁGENES
-        ==================================
-        */
+            /*
+            ==================================
+            HABITACIONES Y BAÑOS
+            ==================================
 
-        const archivos =
-            Array.from(
-                imagenInput.files
-            );
+            SI ES TERRENO:
+
+            habitaciones = null
+            banos = null
+            */
+
+            let habitaciones = null;
+
+            let banos = null;
 
 
-        let imagenes = [];
+            if (
+                tipo.toLowerCase()
+                !== "terreno"
+            ) {
+
+                habitaciones =
+                    habitacionesValue === ""
+                        ? null
+                        : Number(
+                            habitacionesValue
+                        );
+
+
+                banos =
+                    banosValue === ""
+                        ? null
+                        : Number(
+                            banosValue
+                        );
+
+            }
 
 
 
-        /*
-        SI ESTAMOS EDITANDO Y NO
-        SELECCIONÓ NUEVAS IMÁGENES
-        */
+            /*
+            ÁREA
+            */
 
-        if (
-            id &&
-            archivos.length === 0 &&
-            propiedadActual?.imagen
-        ) {
-
-            try {
-
-                const antiguas =
-                    JSON.parse(
-                        propiedadActual.imagen
+            const area =
+                areaValue === ""
+                    ? null
+                    : Number(
+                        areaValue
                     );
 
 
-                if (
-                    Array.isArray(
-                        antiguas
-                    )
-                ) {
 
-                    imagenes =
-                        antiguas;
+            /*
+            ==================================
+            TODAS LAS IMÁGENES
+            ==================================
+            */
 
-                } else {
+            const archivos =
+                Array.from(
+                    imagenInput.files
+                );
+
+
+            let imagenes = [];
+
+
+
+            /*
+            SI ESTAMOS EDITANDO Y NO
+            SELECCIONÓ NUEVAS IMÁGENES
+            */
+
+            if (
+                id &&
+                archivos.length === 0 &&
+                propiedadActual?.imagen
+            ) {
+
+                try {
+
+                    const antiguas =
+                        JSON.parse(
+                            propiedadActual.imagen
+                        );
+
+
+                    if (
+                        Array.isArray(
+                            antiguas
+                        )
+                    ) {
+
+                        imagenes =
+                            antiguas;
+
+                    }
+
+                    else {
+
+                        imagenes = [
+                            propiedadActual.imagen
+                        ];
+
+                    }
+
+                }
+
+                catch {
 
                     imagenes = [
                         propiedadActual.imagen
@@ -1047,27 +1243,18 @@ form.addEventListener(
                 }
 
             }
-            catch {
-
-                imagenes = [
-                    propiedadActual.imagen
-                ];
-
-            }
-
-        }
 
 
 
-        /*
-        SUBIR TODAS LAS IMÁGENES
-        */
+            /*
+            ==================================
+            SUBIR TODAS LAS IMÁGENES
+            ==================================
+            */
 
-        if (
-            archivos.length > 0
-        ) {
-
-            try {
+            if (
+                archivos.length > 0
+            ) {
 
                 for (
                     let i = 0;
@@ -1092,155 +1279,128 @@ form.addEventListener(
                 }
 
             }
-            catch (error) {
-
-                console.error(error);
 
 
-                message.textContent =
-                    "No se pudo subir una imagen: "
-                    + error.message;
+
+            /*
+            ==================================
+            DATOS PARA SUPABASE
+            ==================================
+            */
+
+            const datos = {
+
+                nombre:
+                    nombre,
+
+                tipo:
+                    tipo,
+
+                precio:
+                    precio,
+
+                ubicacion:
+                    ubicacion,
+
+                habitaciones:
+                    habitaciones,
+
+                banos:
+                    banos,
+
+                area:
+                    area,
+
+                estado:
+                    estado,
+
+                descripcion:
+                    descripcion,
+
+                imagen:
+                    imagenes.length > 0
+                        ? JSON.stringify(
+                            imagenes
+                        )
+                        : null
+
+            };
 
 
-                message.className =
-                    "form-message error-message";
+
+            /*
+            ==================================
+            INSERTAR O ACTUALIZAR
+            ==================================
+            */
+
+            let resultado;
 
 
-                saveButton.disabled =
-                    false;
+            if (id) {
 
-
-                return;
+                resultado =
+                    await supabase
+                        .from("Inmorio")
+                        .update(
+                            datos
+                        )
+                        .eq(
+                            "id",
+                            id
+                        );
 
             }
 
-        }
+            else {
 
-
-
-        /*
-        SI ES NUEVA PROPIEDAD
-        */
-
-        if (
-            !id &&
-            imagenes.length === 0
-        ) {
-
-            message.textContent =
-                "Selecciona al menos una imagen.";
-
-
-            message.className =
-                "form-message error-message";
-
-
-            saveButton.disabled =
-                false;
-
-
-            return;
-
-        }
-
-
-
-        /*
-        ==================================
-        DATOS A GUARDAR
-        ==================================
-        */
-
-        const datos = {
-
-            nombre:
-                nombre,
-
-            tipo:
-                tipo,
-
-            precio:
-                precio,
-
-            ubicacion:
-                ubicacion,
-
-            imagen:
-                JSON.stringify(
-                    imagenes
-                ),
-
-            estado:
-                estado,
-
-            descripcion:
-                descripcion,
-
-            habitaciones:
-                habitaciones,
-
-            banos:
-                banos,
-
-            area:
-                area
-
-        };
-
-
-
-        /*
-        ==================================
-        EDITAR
-        ==================================
-        */
-
-        if (id) {
-
-            const {
-                error
-            } =
-                await supabase
-                    .from("Inmorio")
-                    .update(
-                        datos
-                    )
-                    .eq(
-                        "id",
-                        id
-                    );
-
-
-            if (error) {
-
-                console.error(error);
-
-
-                message.textContent =
-                    "Error: "
-                    + error.message;
-
-
-                message.className =
-                    "form-message error-message";
-
-
-                saveButton.disabled =
-                    false;
-
-
-                return;
+                resultado =
+                    await supabase
+                        .from("Inmorio")
+                        .insert(
+                            datos
+                        );
 
             }
 
 
+
+            /*
+            ==================================
+            COMPROBAR ERROR
+            ==================================
+            */
+
+            if (
+                resultado.error
+            ) {
+
+                throw resultado.error;
+
+            }
+
+
+
+            /*
+            ==================================
+            ÉXITO
+            ==================================
+            */
+
             message.textContent =
-                "¡Propiedad actualizada correctamente!";
+                id
+                    ? "Propiedad actualizada correctamente."
+                    : "Propiedad guardada correctamente.";
 
 
             message.className =
                 "form-message success-message";
 
+
+
+            /*
+            ESPERAR UN MOMENTO
+            */
 
             setTimeout(
                 () => {
@@ -1253,35 +1413,18 @@ form.addEventListener(
             );
 
 
-            return;
-
         }
 
+        catch (error) {
 
-
-        /*
-        ==================================
-        CREAR
-        ==================================
-        */
-
-        const {
-            error
-        } =
-            await supabase
-                .from("Inmorio")
-                .insert([
-                    datos
-                ]);
-
-
-        if (error) {
-
-            console.error(error);
+            console.error(
+                "ERROR:",
+                error
+            );
 
 
             message.textContent =
-                "Error: "
+                "No se pudo guardar la propiedad: "
                 + error.message;
 
 
@@ -1292,42 +1435,7 @@ form.addEventListener(
             saveButton.disabled =
                 false;
 
-
-            return;
-
         }
-
-
-
-        /*
-        ==================================
-        ÉXITO
-        ==================================
-        */
-
-        message.textContent =
-            "¡Propiedad guardada correctamente!";
-
-
-        message.className =
-            "form-message success-message";
-
-
-        form.reset();
-
-
-        previewContainer.innerHTML = "";
-
-
-        setTimeout(
-            () => {
-
-                window.location.href =
-                    "panel.html";
-
-            },
-            1000
-        );
 
     }
 );
@@ -1347,4 +1455,3 @@ cargarPropiedad();
 </body>
 
 </html>
-
