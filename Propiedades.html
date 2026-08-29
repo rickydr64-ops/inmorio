@@ -265,26 +265,71 @@ async function cargarPropiedades() {
 
                         <div class="propiedad-imagen">
 
-                            ${
-                                propiedad.imagen
+                           ${
+    (() => {
 
-                                ?
+        let primeraImagen = "";
 
-                                `
-                                <img
-                                    src="${propiedad.imagen}"
-                                    alt="${propiedad.nombre || "Propiedad INMORIO"}"
-                                >
-                                `
+        if (Array.isArray(propiedad.imagen)) {
 
-                                :
+            primeraImagen =
+                propiedad.imagen[0] || "";
 
-                                `
-                                <div class="no-image">
-                                    SIN IMAGEN
-                                </div>
-                                `
-                            }
+        }
+
+        else if (typeof propiedad.imagen === "string") {
+
+            try {
+
+                const imagenes =
+                    JSON.parse(propiedad.imagen);
+
+                if (Array.isArray(imagenes)) {
+
+                    primeraImagen =
+                        imagenes[0] || "";
+
+                }
+
+                else {
+
+                    primeraImagen =
+                        propiedad.imagen;
+
+                }
+
+            }
+
+            catch {
+
+                primeraImagen =
+                    propiedad.imagen;
+
+            }
+
+        }
+
+        return primeraImagen
+
+            ?
+
+            `
+            <img
+                src="${primeraImagen}"
+                alt="${propiedad.nombre || "Propiedad INMORIO"}"
+            >
+            `
+
+            :
+
+            `
+            <div class="no-image">
+                SIN IMAGEN
+            </div>
+            `;
+
+    })()
+}
 
 
                             <span class="
