@@ -1,18 +1,415 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Panel | INMORIO</title>
+
+    <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
 
-    <h1>Panel de Administración INMORIO</h1>
+    <div class="admin-layout">
 
-    <p>¡Inicio de sesión correcto! 🔐</p>
+        <!-- BARRA LATERAL -->
+
+        <aside class="sidebar">
+
+            <div class="admin-logo">
+                INMORIO
+            </div>
+
+            <div class="admin-label">
+                ADMINISTRACIÓN
+            </div>
+
+            <nav>
+
+                <a href="#" class="active">
+                    <span>⌂</span>
+                    Inicio
+                </a>
+
+                <a href="#propiedades">
+                    <span>▣</span>
+                    Propiedades
+                </a>
+
+                <a href="#agregar">
+                    <span>＋</span>
+                    Agregar propiedad
+                </a>
+
+            </nav>
+
+            <button id="logoutBtn" class="logout">
+                <span>↪</span>
+                Cerrar sesión
+            </button>
+
+        </aside>
+
+
+        <!-- CONTENIDO -->
+
+        <main class="admin-content">
+
+            <header class="admin-header">
+
+                <div>
+                    <p class="small-title">
+                        PANEL ADMINISTRATIVO
+                    </p>
+
+                    <h1>
+                        Bienvenido a INMORIO
+                    </h1>
+                </div>
+
+                <div class="admin-user">
+                    <div class="user-icon">
+                        A
+                    </div>
+
+                    <div>
+                        <strong>Administrador</strong>
+                        <small>Sesión activa</small>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <section class="stats">
+
+                <div class="stat-card">
+
+                    <span class="stat-icon">▣</span>
+
+                    <div>
+                        <p>Total propiedades</p>
+                        <strong id="totalPropiedades">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-icon">✓</span>
+
+                    <div>
+                        <p>Disponibles</p>
+                        <strong id="disponibles">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-icon">◆</span>
+
+                    <div>
+                        <p>Vendidas</p>
+                        <strong id="vendidas">0</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROPIEDADES -->
+
+            <section id="propiedades" class="properties-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <p class="small-title">
+                            INVENTARIO
+                        </p>
+
+                        <h2>
+                            Mis propiedades
+                        </h2>
+                    </div>
+
+                    <button class="gold-button" id="addPropertyBtn">
+                        ＋ Agregar propiedad
+                    </button>
+
+                </div>
+
+
+                <div id="propertiesContainer">
+
+                    <div class="loading">
+                        Cargando propiedades...
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- SUPABASE -->
+
+    <script type="module">
+
+        import {
+            createClient
+        } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+        const SUPABASE_URL =
+            "https://suvhbicsdldrncwkwzdz.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_9qelxkXyfJopNRFMN41JGA_vleUoVW5";
+
+
+        const supabase =
+            createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /*
+        ==========================================
+        COMPROBAR SESIÓN
+        ==========================================
+        */
+
+        const {
+            data: {
+                session
+            }
+        } = await supabase.auth.getSession();
+
+
+        if (!session) {
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+        /*
+        ==========================================
+        CERRAR SESIÓN
+        ==========================================
+        */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener("click", async () => {
+
+                await supabase.auth.signOut();
+
+                window.location.href =
+                    "login.html";
+
+            });
+
+
+        /*
+        ==========================================
+        CARGAR PROPIEDADES
+        ==========================================
+        */
+
+        async function cargarPropiedades() {
+
+            const {
+                data,
+                error
+            } = await supabase
+                .from("propiedades")
+                .select("*")
+                .order("id", {
+                    ascending: false
+                });
+
+
+            if (error) {
+
+                console.error(error);
+
+                document
+                    .getElementById("propertiesContainer")
+                    .innerHTML = `
+                        <div class="loading">
+                            No se pudieron cargar las propiedades.
+                        </div>
+                    `;
+
+                return;
+
+            }
+
+
+            const propiedades =
+                data || [];
+
+
+            /*
+            ESTADÍSTICAS
+            */
+
+            document
+                .getElementById("totalPropiedades")
+                .textContent =
+                propiedades.length;
+
+
+            const disponibles =
+                propiedades.filter(
+                    propiedad =>
+                        propiedad.estado?.toLowerCase()
+                        === "disponible"
+                ).length;
+
+
+            const vendidas =
+                propiedades.filter(
+                    propiedad =>
+                        propiedad.estado?.toLowerCase()
+                        === "vendida"
+                ).length;
+
+
+            document
+                .getElementById("disponibles")
+                .textContent =
+                disponibles;
+
+
+            document
+                .getElementById("vendidas")
+                .textContent =
+                vendidas;
+
+
+            /*
+            MOSTRAR PROPIEDADES
+            */
+
+            const container =
+                document.getElementById(
+                    "propertiesContainer"
+                );
+
+
+            if (propiedades.length === 0) {
+
+                container.innerHTML = `
+                    <div class="empty">
+                        No hay propiedades todavía.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                propiedades.map(propiedad => `
+
+                    <article class="property-card">
+
+                        <div class="property-image">
+
+                            ${
+                                propiedad.imagen
+                                ?
+                                `<img src="${propiedad.imagen}" alt="${propiedad.nombre}">`
+                                :
+                                `<div class="no-image">
+                                    SIN FOTO
+                                </div>`
+                            }
+
+                        </div>
+
+
+                        <div class="property-info">
+
+                            <span class="property-type">
+                                ${propiedad.tipo || "Propiedad"}
+                            </span>
+
+                            <h3>
+                                ${propiedad.nombre || "Sin nombre"}
+                            </h3>
+
+                            <p class="location">
+                                📍 ${propiedad.ubicacion || "Sin ubicación"}
+                            </p>
+
+                            <div class="property-bottom">
+
+                                <strong>
+                                    $${Number(propiedad.precio || 0).toLocaleString()}
+                                </strong>
+
+                                <span class="
+                                    status
+                                    ${
+                                        propiedad.estado?.toLowerCase()
+                                        === "vendida"
+                                        ? "sold"
+                                        : "available"
+                                    }
+                                ">
+                                    ${propiedad.estado || "Sin estado"}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                `).join("");
+
+        }
+
+
+        cargarPropiedades();
+
+
+        /*
+        BOTÓN AGREGAR
+        */
+
+        document
+            .getElementById("addPropertyBtn")
+            .addEventListener("click", () => {
+
+                alert(
+                    "Aquí construiremos el formulario para agregar propiedades."
+                );
+
+            });
+
+    </script>
 
 </body>
 
 </html>
+```
