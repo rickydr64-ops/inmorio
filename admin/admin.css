@@ -49,6 +49,8 @@ body {
 
 
 .login-box {
+    align-self: center;
+}
 
     width: 430px;
 
