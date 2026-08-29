@@ -473,21 +473,8 @@ body {
    ========================= */
 
 .propiedades-page {
-    text-align: center;
-    padding: 90px 20px 70px;
-
-    background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.60),
-            rgba(0, 0, 0, 0.60)
-        ),
-        url("Imagenes/propiedades.jpg");
-
-    background-size: 100% auto;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    background-color: #080808;
+    min-height: 100vh;
+    background: #080808;
 }
 /* ENCABEZADO */
 
