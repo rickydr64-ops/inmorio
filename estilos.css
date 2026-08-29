@@ -177,8 +177,6 @@ body {
     background-attachment: fixed;
 }
 
-
-
 .propiedades-hero {
     min-height: 90vh;
 
@@ -190,6 +188,7 @@ body {
     text-align: center;
     padding: 90px 20px 70px;
 }
+
 /* IMAGEN + TEXTO */
 
 .nosotros-info {
